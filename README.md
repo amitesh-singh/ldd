@@ -33,3 +33,4 @@ Links
 5. https://sysplay.in/ -> interesting way
 6. http://www.tutorialsdaddy.com/2015/05/writing-character-device-driver/
 7. https://appusajeev.wordpress.com/2011/06/18/writing-a-linux-character-device-driver/
+8. http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/
