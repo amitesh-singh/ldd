@@ -2,15 +2,17 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 
-MODULE_LICENSE("Dual BSD/GPL");
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Amitesh Singh");
+MODULE_DESCRIPTION("A Hello Ami module");
 
 static int hello_init(void) {
-  printk(KERN_INFO " Hello world!\n");
+  printk(KERN_INFO " Hello ami!\n");
   return 0;
 }
 
 static void hello_exit(void) {
-  printk(KERN_INFO "Bye, cruel world\n");
+  printk(KERN_INFO "Bye, ami\n");
 }
 
 module_init(hello_init);

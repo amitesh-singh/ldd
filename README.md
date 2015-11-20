@@ -11,7 +11,7 @@ sudo apt-get build-dep linux-image-$(uname -r)
 
    modinfo hello.ko -> gives info abt that module
 
-   dmesg | tail -> to check the printk() output
+   dmesg | tail -f -> to check the printk() output
 
 Links
 ------
@@ -22,3 +22,4 @@ Links
 4. http://opensourceforu.efytimes.com/2015/05/writing-a-basic-framebuffer-driver/
 5. https://sysplay.in/ -> interesting way
 6. http://www.tutorialsdaddy.com/2015/05/writing-character-device-driver/
+7. https://appusajeev.wordpress.com/2011/06/18/writing-a-linux-character-device-driver/
