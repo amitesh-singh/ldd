@@ -1,2 +1,6 @@
 *.o
 *.ko
+*.mod.*
+*.symvers
+*.cmd
+*.tmp*
