@@ -13,6 +13,16 @@ sudo apt-get build-dep linux-image-$(uname -r)
 
    dmesg | tail -f -> to check the printk() output
 
+Tips
+-----
+1. how to login as root in ubuntu
+first change the password of root (if u r doing it for first time)
+sudo passwd root
+//change the password
+//to login into root, do
+su root
+
+
 Links
 ------
 
