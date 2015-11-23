@@ -34,3 +34,7 @@ Links
 6. http://www.tutorialsdaddy.com/2015/05/writing-character-device-driver/
 7. https://appusajeev.wordpress.com/2011/06/18/writing-a-linux-character-device-driver/
 8. http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/
+
+how to implement icotls on a char driver
+----------------------------------------
+http://linux.die.net/lkmpg/x892.html
