@@ -36,7 +36,8 @@ static struct file_operations fops =
    .release = dev_release
 };
 
-static int __init mynull_init(void)
+static int __init
+mynull_init(void)
 {
    //try to get the major name from kernel instead of hardcoding
    major_num = register_chrdev(0, DEVICE_NAME, &fops);
@@ -61,6 +62,7 @@ static int __init mynull_init(void)
         return PTR_ERR(nullClass);
      }
 
+   // this is doing mknod /dev/devicename c <major_num> <minor_num> for us.
    nullDevice = device_create(nullClass, NULL, MKDEV(major_num, 0),
                               NULL, DEVICE_NAME);
    if (IS_ERR(nullDevice))
@@ -76,7 +78,8 @@ static int __init mynull_init(void)
   return 0;
 }
 
-static void __exit mynull_exit(void)
+static void __exit
+mynull_exit(void)
 {
      device_destroy(nullClass, MKDEV(major_num, 0));
      class_unregister(nullClass);
@@ -85,7 +88,8 @@ static void __exit mynull_exit(void)
      printk("%s: %s device is destoryed\n", name, DEVICE_NAME);
 }
 
-static int   dev_open(struct inode *in, struct file *fl)
+static int
+dev_open(struct inode *in, struct file *fl)
 {
    printk(KERN_INFO "device is opened\n");
 
@@ -93,7 +97,8 @@ static int   dev_open(struct inode *in, struct file *fl)
 }
 
 ///This is called when u close the fd by close()
-static int dev_release(struct inode *in, struct file *fl)
+static int
+dev_release(struct inode *in, struct file *fl)
 {
    printk(KERN_INFO "device is closed, applied close(fd)?\n");
 
@@ -101,14 +106,16 @@ static int dev_release(struct inode *in, struct file *fl)
 }
 
 //userspace reads the device
-static ssize_t dev_read(struct file *f, char *buf, size_t len, loff_t *offset)
+static ssize_t
+dev_read(struct file *f, char *buf, size_t len, loff_t *offset)
 {
    printk(KERN_INFO "This is a black hole and i ate all your input, so i got nothing\n");
    return 0;
 }
 
 //userspace writes to device
-static ssize_t dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)
+static ssize_t
+dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)
 {
    printk(KERN_INFO "This all goes to black hole now.\n");
    return len;
