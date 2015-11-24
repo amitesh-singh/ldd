@@ -25,6 +25,7 @@ su root
 
 Links
 ------
+best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 
 1. http://lwn.net/Kernel/LDD3/
 2. https://github.com/martinezjavier/ldd3/
