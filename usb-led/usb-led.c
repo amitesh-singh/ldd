@@ -12,8 +12,6 @@ MODULE_AUTHOR("Amitesh Singh");
 MODULE_DESCRIPTION("first usb driver module");
 MODULE_VERSION("0.1"); // --> module version of kernel driver
 
-#define MY_USB_PRODUCT_ID 0x1843
-#define MY_USB_VENDOR_ID 0x8080
 
 //one structure for each connected device
 struct my_usb {
@@ -24,6 +22,8 @@ struct my_usb {
 //you might need to add file_operations support too if you want
 // the device to be accessed from user-space. For simplicity, i did not add it
 
+#define MY_USB_VENDOR_ID 0x16c0
+#define MY_USB_PRODUCT_ID 0x03e8
 static struct usb_device_id my_usb_table[] = {
        { USB_DEVICE(MY_USB_VENDOR_ID, MY_USB_PRODUCT_ID) },
        {},
