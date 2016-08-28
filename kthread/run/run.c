@@ -16,6 +16,7 @@ static int ret;
 static int
 thread_function(void *data)
 {
+   uint8_t val = 0;
    // its important to keep checking if someone requested to stop the thread.
    // kthread_stop or killall -9 <pid> actually requests to stop the kernel.
    // if you don't hv this check .. you will get kernel panic! :/
@@ -24,7 +25,8 @@ thread_function(void *data)
    // you need to all signal which it can obey. check allow_signal example
    while (!kthread_should_stop())
      {
-        printk(KERN_INFO "thread is running and doing the job required");
+        val ^= 0x01;
+        printk(KERN_INFO "thread is running and doing the job required: %d", val);
         ssleep(5);
      }
    printk(KERN_INFO "Stopping the thread function.. exiting..");
