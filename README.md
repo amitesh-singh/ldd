@@ -45,6 +45,8 @@ locate 2.6.28.9-custom
 
 delete the files manually and then sudo update-grub2
 
+To uninstall custom kernel, make sure you are not using that kernel currently.
+
 since i installed kernel in debian way,
       dpkg --list | grep kernel-image
       sudo apt-get remove kernel-image-your-kernel-image
