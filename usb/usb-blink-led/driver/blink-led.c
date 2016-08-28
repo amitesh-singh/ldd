@@ -31,7 +31,6 @@ static struct usb_device_id my_usb_table[] = {
 
 MODULE_DEVICE_TABLE(usb, my_usb_table);
 
-
 static int
 blink_led_func(void *data)
 {
@@ -45,15 +44,27 @@ blink_led_func(void *data)
    while (!kthread_should_stop())
      {
         value ^= 0x01;
-        printk(KERN_INFO "sending control msg: %d", value);
+        if (value)
+          printk(KERN_INFO "LED ON");
+        else
+          printk(KERN_ALERT "LED OFF");
+
         err = usb_control_msg(sd->udev,
                               usb_sndctrlpipe(sd->udev, 0),
                               value, USB_TYPE_VENDOR | USB_DIR_OUT,
                               0, 0,
                               NULL, 0,
                               1000);
-        ssleep(10);
+        ssleep(1);
      }
+
+   //switch off led while exiting from kthread work thread
+   usb_control_msg(sd->udev,
+                   usb_sndctrlpipe(sd->udev, 0),
+                   0, USB_TYPE_VENDOR | USB_DIR_OUT,
+                   0, 0,
+                   NULL, 0,
+                   1000);
 
    return 0;
 }
@@ -64,10 +75,30 @@ my_usb_probe(struct usb_interface *interface,
              const struct usb_device_id *id)
 {
    struct usb_device *udev = interface_to_usbdev(interface);
+   struct usb_host_interface *iface_desc;
+   struct usb_endpoint_descriptor *endpoint;
    struct my_usb *data;
+   int i;
 
    printk(KERN_INFO "manufacturer: %s", udev->manufacturer);
    printk(KERN_INFO "product: %s", udev->product);
+
+   iface_desc = interface->cur_altsetting;
+   printk(KERN_INFO "vusb led %d probed: (%04X:%04X)",
+          iface_desc->desc.bInterfaceNumber, id->idVendor, id->idProduct);
+
+   for (i = 0; i < iface_desc->desc.bNumEndpoints; i++)
+     {
+        endpoint = &iface_desc->endpoint[i].desc;
+
+        printk(KERN_INFO "ED[%d]->bEndpointAddress: 0x%02X\n",
+               i, endpoint->bEndpointAddress);
+        printk(KERN_INFO "ED[%d]->bmAttributes: 0x%02X\n",
+               i, endpoint->bmAttributes);
+        printk(KERN_INFO "ED[%d]->wMaxPacketSize: 0x%04X (%d)\n",
+               i, endpoint->wMaxPacketSize, endpoint->wMaxPacketSize);
+     }
+
 
    data = kzalloc(sizeof(struct my_usb), GFP_KERNEL);
    if (data == NULL)
@@ -94,6 +125,7 @@ my_usb_disconnect(struct usb_interface *interface)
    struct my_usb *data;
 
    data = usb_get_intfdata(interface);
+   //stop the thread
    kthread_stop(data->task);
 
    usb_set_intfdata(interface, NULL);
