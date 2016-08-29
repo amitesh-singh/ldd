@@ -91,5 +91,12 @@ best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 how to implement icotls on a char driver
 ----------------------------------------
 http://linux.die.net/lkmpg/x892.html
-
 https://fabiobaltieri.com/2012/05/20/linux-kernel-device-drivers-for-avr-v-usb-devices/
+
+how to check module info using objdump
+-------------------------
+
+modinfo module.ko
+or
+objdump hello-1.ko  --full-contents --section=.modinfo
+
