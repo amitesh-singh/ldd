@@ -72,7 +72,11 @@ section at the end of this file).
 
 /* --------------------------- Functional Range ---------------------------- */
 
-#define USB_CFG_HAVE_INTRIN_ENDPOINT    1
+// disabling as we are going to do bulk data transfer
+// check usbdrv.h - avr spent 90% of time in polling for bulk data so its
+// bad idea for this simple device to enable it.
+// default endpoint 0 is enabled. so no worries, control transfer/endpoint will work 
+#define USB_CFG_HAVE_INTRIN_ENDPOINT    0
 /* Define this to 1 if you want to compile a version with two endpoints: The
  * default control endpoint 0 and an interrupt-in endpoint (any other endpoint
  * number).

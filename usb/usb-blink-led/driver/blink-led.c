@@ -86,6 +86,7 @@ my_usb_probe(struct usb_interface *interface,
    iface_desc = interface->cur_altsetting;
    printk(KERN_INFO "vusb led %d probed: (%04X:%04X)",
           iface_desc->desc.bInterfaceNumber, id->idVendor, id->idProduct);
+   printk(KERN_INFO "bNumEndpoints: %d", iface_desc->desc.bNumEndpoints);
 
    for (i = 0; i < iface_desc->desc.bNumEndpoints; i++)
      {
