@@ -87,6 +87,7 @@ best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 6. http://www.tutorialsdaddy.com/2015/05/writing-character-device-driver/
 7. https://appusajeev.wordpress.com/2011/06/18/writing-a-linux-character-device-driver/
 8. http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/
+9. https://fabiobaltieri.com/2011/09/21/linux-led-subsystem/
 
 how to implement icotls on a char driver
 ----------------------------------------
