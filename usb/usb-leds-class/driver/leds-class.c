@@ -31,8 +31,6 @@ static struct usb_device_id my_usb_table[] = {
 
 MODULE_DEVICE_TABLE(usb, my_usb_table);
 
-static struct work_struct *work;
-
 static int8_t value = 0;
 static void
 usb_avr_led_work(struct work_struct *work)
@@ -87,7 +85,6 @@ my_usb_probe(struct usb_interface *interface,
                i, endpoint->wMaxPacketSize, endpoint->wMaxPacketSize);
      }
 
-
    data = kzalloc(sizeof(struct my_usb), GFP_KERNEL);
    if (data == NULL)
      {
@@ -97,7 +94,9 @@ my_usb_probe(struct usb_interface *interface,
    //increase ref count, make sure u call usb_put_dev() in disconnect()
    data->udev = usb_get_dev(udev);
 
-   data->led.name = "ami-led:w:avr-led";
+   data->led.name = kasprintf(GFP_KERNEL, "%s-%s:w:ami-led",
+                              dev_driver_string(&data->udev->dev),
+                              dev_name(&data->udev->dev));
    data->led.brightness_set = usb_avr_led_set;
    data->led.brightness = LED_OFF;
    data->led.max_brightness = 1;
@@ -106,7 +105,6 @@ my_usb_probe(struct usb_interface *interface,
 
    printk(KERN_INFO "usb device is connected");
 
-   work = &data->work;
    INIT_WORK(&data->work, usb_avr_led_work);
 
    //register led device class
@@ -123,14 +121,13 @@ my_usb_disconnect(struct usb_interface *interface)
 
    data = usb_get_intfdata(interface);
 
-   cancel_work_sync(&data->work);
    led_classdev_unregister(&data->led);
+   cancel_work_sync(&data->work);
 
    usb_set_intfdata(interface, NULL);
 
    //deref the count
    usb_put_dev(data->udev);
-
 
    kfree(data); //deallocate, allocated by kzmalloc()
 
@@ -144,6 +141,9 @@ static struct usb_driver my_usb_driver = {
      .disconnect = my_usb_disconnect,
 };
 
+
+//we could use module_usb_driver(my_usb_driver); instead of 
+// init and exit functions
 //called on module loading
 static int __init
 _usb_init(void)
