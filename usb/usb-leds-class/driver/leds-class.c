@@ -19,6 +19,7 @@ MODULE_VERSION("0.1"); //
 struct my_usb {
      struct usb_device *udev;
      struct work_struct work;
+     struct led_classdev led;
 };
 
 #define MY_USB_VENDOR_ID 0x16c0
@@ -38,29 +39,22 @@ usb_avr_led_work(struct work_struct *work)
 {
    struct my_usb *sd = container_of(work, struct my_usb, work);
 
-      usb_control_msg(sd->udev,
-      usb_sndctrlpipe(sd->udev, 0),
-      value, USB_TYPE_VENDOR | USB_DIR_OUT,
-      0, 0,
-      NULL, 0,
-      1000);
+   usb_control_msg(sd->udev,
+                   usb_sndctrlpipe(sd->udev, 0),
+                   value, USB_TYPE_VENDOR | USB_DIR_OUT,
+                   0, 0,
+                   NULL, 0,
+                   1000);
 }
 
 static void
 usb_avr_led_set(struct led_classdev *led,
-                 enum led_brightness brightness)
+                enum led_brightness brightness)
 {
+   struct my_usb *data = container_of(led, struct my_usb, led);
    value = brightness;
-   schedule_work(work);
+   schedule_work(&data->work);
 }
-
-static struct led_classdev led_classvar =
-{
-   .name = "ami-led:r:avr-led",
-   .brightness_set = usb_avr_led_set,
-   .brightness = LED_OFF,
-   .max_brightness = 1
-};
 
 //called when a usb device is connected to PC
 static int
@@ -102,6 +96,12 @@ my_usb_probe(struct usb_interface *interface,
 
    //increase ref count, make sure u call usb_put_dev() in disconnect()
    data->udev = usb_get_dev(udev);
+
+   data->led.name = "ami-led:w:avr-led";
+   data->led.brightness_set = usb_avr_led_set;
+   data->led.brightness = LED_OFF;
+   data->led.max_brightness = 1;
+
    usb_set_intfdata(interface, data);
 
    printk(KERN_INFO "usb device is connected");
@@ -110,7 +110,7 @@ my_usb_probe(struct usb_interface *interface,
    INIT_WORK(&data->work, usb_avr_led_work);
 
    //register led device class
-   led_classdev_register(&data->udev->dev, &led_classvar);
+   led_classdev_register(&data->udev->dev, &data->led);
 
    return 0;
 }
@@ -124,7 +124,7 @@ my_usb_disconnect(struct usb_interface *interface)
    data = usb_get_intfdata(interface);
 
    cancel_work_sync(&data->work);
-   led_classdev_unregister(&led_classvar);
+   led_classdev_unregister(&data->led);
 
    usb_set_intfdata(interface, NULL);
 
