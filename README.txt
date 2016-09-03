@@ -74,6 +74,7 @@ sudo passwd root
 //to login into root, do
 su root
 
+All compiled modules are in /lib/modules/`uname -r`/kernel/drivers/
 
 Links
 ------
@@ -88,6 +89,7 @@ best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 7. https://appusajeev.wordpress.com/2011/06/18/writing-a-linux-character-device-driver/
 8. http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/
 9. https://fabiobaltieri.com/2011/09/21/linux-led-subsystem/
+10. https://0xax.gitbooks.io/linux-insides/content/  --> best one
 
 how to implement icotls on a char driver
 ----------------------------------------
@@ -101,3 +103,8 @@ modinfo module.ko
 or
 objdump hello-1.ko  --full-contents --section=.modinfo
 
+how to send kernel patches
+--------------------------
+
+sudo apt-get install mutt
+mutt -H 001....path
