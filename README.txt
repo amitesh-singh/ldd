@@ -90,6 +90,7 @@ best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 8. http://derekmolloy.ie/writing-a-linux-kernel-module-part-1-introduction/
 9. https://fabiobaltieri.com/2011/09/21/linux-led-subsystem/
 10. https://0xax.gitbooks.io/linux-insides/content/  --> best one
+11. http://linux-sunxi.org/SPIdev
 
 how to implement icotls on a char driver
 ----------------------------------------
