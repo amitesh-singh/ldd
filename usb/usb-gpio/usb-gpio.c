@@ -168,6 +168,14 @@ my_usb_probe(struct usb_interface *interface,
 
    INIT_WORK(&data->work, _gpio_work_job);
 
+   //swith off the led
+   usb_control_msg(data->udev,
+                   usb_sndctrlpipe(data->udev, 0),
+                   0, USB_TYPE_VENDOR | USB_DIR_OUT,
+                   0, 0,
+                   NULL, 0,
+                   1000);
+
    return 0;
 }
 
