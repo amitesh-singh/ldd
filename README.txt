@@ -118,3 +118,4 @@ sudo apt-get install git-email
 git send-email --to <email address>  --cc gregkh@linuxfoundation.org --cc linux-gpio@vger.kernel.org --cc linux-kernel@vger.kernel.org 001....patch
 
 nice ascii flow diagram: http://asciiflow.com/
+Reference: https://burzalodowa.wordpress.com/2013/10/05/how-to-send-patches-with-git-send-email/
