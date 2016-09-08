@@ -107,5 +107,14 @@ objdump hello-1.ko  --full-contents --section=.modinfo
 how to send kernel patches
 --------------------------
 
+
 sudo apt-get install mutt
 mutt -H 001....path
+
+OR
+
+sudo apt-get install git-email
+
+git send-email --to <email address>  --cc gregkh@linuxfoundation.org --cc linux-gpio@vger.kernel.org --cc linux-kernel@vger.kernel.org 001....patch
+
+nice ascii flow diagram: http://asciiflow.com/

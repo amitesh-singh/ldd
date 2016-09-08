@@ -64,7 +64,8 @@ _gpioa_set(struct gpio_chip *chip,
      }
 }
 
-// this is called when you do echo 0 > value (/sys/class/gpio/gpio{X}/value)
+// this is called when you read 'value'
+// cat value (/sys/class/gpio/gpio{X}/value)
 static int
 _gpioa_get(struct gpio_chip *chip,
            unsigned offset)
