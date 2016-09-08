@@ -5,3 +5,5 @@
 *.cmd
 *.tmp*
 *.order
+*.hex
+*.elf
