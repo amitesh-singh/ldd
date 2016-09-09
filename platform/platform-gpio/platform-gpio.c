@@ -12,6 +12,8 @@ MODULE_VERSION("0.1");
 struct my_device_platform_data
 {
    struct gpio_chip chip;
+   int gpio_pin_val; // only 1 pin we have, for simplicity
+
    void (*gpio_create)(struct my_device_platform_data *, struct platform_device *pdev);
    void (*gpio_remove)(struct my_device_platform_data *, struct platform_device *pdev);
 };
@@ -20,16 +22,26 @@ static int
 _gpio_get(struct gpio_chip *chip,
           unsigned offset)
 {
-   printk(KERN_INFO "gpio_get():");
+   struct my_device_platform_data *sd =
+      container_of(chip,
+                   struct my_device_platform_data,
+                   chip);
 
-   return 1;
+   printk(KERN_INFO "gpio_get(): %d", sd->gpio_pin_val);
+
+   return sd->gpio_pin_val;
 }
 
 static void
 _gpio_set(struct gpio_chip *chip,
           unsigned offset, int value)
 {
-   printk(KERN_INFO "gpio_set():");
+   struct my_device_platform_data *sd =
+      container_of(chip,
+                   struct my_device_platform_data,
+                   chip);
+   sd->gpio_pin_val = value;
+   printk(KERN_INFO "gpio_set(): %d", value);
 }
 
 static int
@@ -39,6 +51,15 @@ _direction_output(struct gpio_chip *chip,
    printk(KERN_INFO "Setting pin to OUTPUT");
 
    return 0;
+}
+
+static int
+_to_irq(struct gpio_chip *chip,
+        unsigned offset)
+{
+   printk("to_irq():");
+
+   return 101;
 }
 
 static void
@@ -54,10 +75,11 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
    sd->chip.set = _gpio_set;
    sd->chip.get = _gpio_get;
    sd->chip.direction_output = _direction_output;
+   sd->chip.to_irq = _to_irq;
 
    if (gpiochip_add(&sd->chip) < 0)
      {
-         printk(KERN_ALERT "Failed to add gpio chip");
+        printk(KERN_ALERT "Failed to add gpio chip");
      }
    else
      printk (KERN_INFO "able to add gpiochip: %s",
@@ -104,7 +126,6 @@ _sample_platform_driver_probe(struct platform_device *pdev)
    ///struct my_driver_data *mdd;
 
    data = dev_get_platdata(&pdev->dev);
-
 
    if (data->gpio_create) data->gpio_create(data, pdev);
 

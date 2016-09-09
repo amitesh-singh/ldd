@@ -59,6 +59,7 @@ static struct platform_driver sample_platform_driver = {
      .remove = _sample_platform_driver_remove,
      .driver = {
           .name = DRIVER_NAME, //platform_device will also use same name
+          .owner = THIS_MODULE, //good practice to declare it
      },
 };
 

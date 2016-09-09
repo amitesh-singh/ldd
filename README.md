@@ -77,6 +77,7 @@ best one: http://www.tldp.org/LDP/lkmpg/2.6/html/x569.html#AEN687
 9. https://fabiobaltieri.com/2011/09/21/linux-led-subsystem/
 10. https://0xax.gitbooks.io/linux-insides/content/  --> best one
 11. http://linux-sunxi.org/SPIdev
+12. nice doc on writing spi driver - http://invo-tronics.com/spi-driver-for-linux-based-embedded-system/
 
 #### how to implement icotls on a char driver
 
@@ -96,9 +97,8 @@ https://fabiobaltieri.com/2012/05/20/linux-kernel-device-drivers-for-avr-v-usb-d
 `sudo apt-get install mutt`
 
 #### Raise the patch
-`mutt -H 001....path`
-
-OR
+`mutt -H 001....path`  
+OR  
 #### install git-send-email
 
 `sudo apt-get install git-email`
@@ -108,3 +108,8 @@ OR
 
 `nice ascii flow diagram:` http://asciiflow.com/   useful while sending RFCs  
 `Reference:` https://burzalodowa.wordpress.com/2013/10/05/how-to-send-patches-with-git-send-email/
+
+### how to make doc
+
+`make htmldocs`
+
