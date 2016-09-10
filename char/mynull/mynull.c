@@ -110,7 +110,8 @@ static ssize_t
 dev_read(struct file *f, char *buf, size_t len, loff_t *offset)
 {
    printk(KERN_INFO "This is a black hole and i ate all your input, so i got nothing\n");
-   return 0;
+   len = sprintf(buf, "null: %d", 1);
+   return len;
 }
 
 //userspace writes to device
