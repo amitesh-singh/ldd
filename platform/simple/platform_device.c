@@ -30,11 +30,22 @@ static struct resource sample_resources[] = {
           .flags = IORESOURCE_IRQ,
        },
 };
+
+static void
+_platform_device_release(struct device *dev)
+{
+   printk(KERN_ALERT "device relase():");
+}
+
 static struct platform_device sample_platform_device = {
    .name = DRIVER_NAME,
    .id = -1,
    .num_resources = ARRAY_SIZE(sample_resources),
    .resource = sample_resources,
+   .dev = {
+        .release = _platform_device_release
+           // device release() is called
+   }
 };
 
 static int __init

@@ -44,10 +44,17 @@ static struct my_device_platform_data my_device_data = {
      .reset = _reset,
 };
 
+static void
+_release(struct device *dev)
+{
+   printk("device.release()");
+}
+
 static struct platform_device my_device = {
      .name = "ami-custom-platform-device",
      .id = -1, //let kernel device 
      .dev.platform_data = &my_device_data,
+     .dev.release = _release,
 };
 
 static int
