@@ -1,3 +1,4 @@
+CONFIG_MODULE_SIG=n
 obj-m += platform_driver.o
 obj-m += platform_device.o
 

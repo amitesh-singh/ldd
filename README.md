@@ -113,3 +113,8 @@ OR
 
 `make htmldocs`
 
+### How to fix kernel module warnings
+
+1. *kernel module signature loading failed:* Add  
+`CONFIG_MODULE_SIG=n`  
+in your module Makefile
