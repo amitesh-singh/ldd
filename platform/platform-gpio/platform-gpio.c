@@ -70,7 +70,7 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
    sd->chip.label = "plat-gpio";
    sd->chip.owner = THIS_MODULE;
    sd->chip.base = -1;
-   sd->chip.ngpio = 1;
+   sd->chip.ngpio = 4;
    sd->chip.can_sleep = false;
    sd->chip.set = _gpio_set;
    sd->chip.get = _gpio_get;

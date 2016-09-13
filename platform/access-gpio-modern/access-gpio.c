@@ -68,7 +68,7 @@ _gpio_access_init(void)
    irq_no = gpiod_to_irq(desc);
    printk(KERN_INFO "gpio is mapped to IRQ: %d", irq_no);
 
-   result = request_irq(1,
+   result = request_irq(16,
                         (irq_handler_t)_irq_handler,
                         IRQF_TRIGGER_MASK,
                         "interrput-handler",
