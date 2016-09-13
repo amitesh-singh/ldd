@@ -7,6 +7,9 @@
 #include <linux/fs.h>
 #include <linux/miscdevice.h>
 
+// This provides an easy way to create a char device.
+// Major is 10, minor value is provided by user.
+
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Amitesh Singh");
 MODULE_DESCRIPTION("misc device");
