@@ -1,11 +1,16 @@
 ## ldd tips/setups
 
-### minimal setup on ubuntu
+### minimal setup on ubuntu 16.04
 
 `apt-get source linux-image-$(uname -r)` in /usr/src in case you are going to
 run your kernel  
 `sudo apt-get build-dep linux-image-$(uname -r)`  
 `sudo apt-get install kernel-package`  
+
+#### rpi2
+
+`sudo apt-get install linux-image-rpi-rpfv linux-headers-rpi-rpfv`
+
 
 ### how to build kernel on ubuntu
 

@@ -32,7 +32,7 @@ hello_init(void)
 static void __exit
 hello_exit(void)
 {
-   printk(KERN_INFO "unloading spin-lock example module");
+   printk(KERN_INFO "unloading mutex-lock example module");
 }
 
 module_init(hello_init);
