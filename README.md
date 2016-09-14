@@ -5,12 +5,22 @@
 `apt-get source linux-image-$(uname -r)` in /usr/src in case you are going to
 run your kernel  
 `sudo apt-get build-dep linux-image-$(uname -r)`  
-`sudo apt-get install kernel-package`  
+`sudo apt-get install kernel-package`
 
 #### rpi2
 
-`sudo apt-get install linux-image-rpi-rpfv linux-headers-rpi-rpfv`
+The below stuff did not work, so don't try it.
+~~`sudo apt-get install linux-image-rpi-rpfv linux-headers-rpi-rpfv`~~
 
+use `rpi-update` (do update it)  
+   `$ sudo rpi-update`  
+   It should give you the latest kernel and then reboot.  
+   
+   After that, Get `rpi-source`  
+   `$ sudo wget https://raw.githubusercontent.com/notro/rpi-source/master/rpi-source -O /usr/bin/rpi-source`  
+   `$ sudo chmod +x /usr/bin/rpi-source`  
+   `$ /usr/bin/rpi-source -q --tag-update`  
+   `$ rpi-source`
 
 ### how to build kernel on ubuntu
 
