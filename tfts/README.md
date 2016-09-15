@@ -46,6 +46,21 @@ Add to file /etc/modules-load.d/fbtft.conf
 
    `options fbtft_device name=sainsmart18`  
 
+### Run EFL App on fb
+
+`ELM_DISPLAY=fb`  
+`EVAS_FB_DEV=/dev/fb0 or /dev/fb1`  
+
+`./eflapp1`  
+`./eflapp2`  
+This would run efl without X11 which is pretty cool! ;)
+if you want x11 or wayland to involved, set the DISPLAY env variable for x11
+set the corresponding env variable for wayland.
+
+Tips on make usb drive faster by RASTER  
+
+~/.ccache to make i/o faster  
+
 ### Speed
 
 A monitor draws an image on the screen by using an electron beam (3 electron
