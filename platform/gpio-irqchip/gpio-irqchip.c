@@ -11,6 +11,7 @@ MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Amitesh Singh");
 MODULE_DESCRIPTION("custom soc chip driver to create fake GPIOs");
 MODULE_VERSION("0.1");
+#define DRIVER_NAME "platform-gpio-device"
 
 struct my_device_platform_data
 {
@@ -93,7 +94,7 @@ _irq_request_resources(struct irq_data *d)
 }
 
 static struct irq_chip my_gpio_irq_chip = {
-     .name = "irq-gpio",
+     .name = DRIVER_NAME,
      .irq_mask = _irq_mask,
      .irq_unmask = _irq_unmask,
      .irq_set_type = _irq_set_type,
@@ -113,7 +114,7 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
 {
    printk(KERN_INFO "GPIO created");
    sd->chip.dev = &pdev->dev;
-   sd->chip.label = "plat-gpio";
+   sd->chip.label = DRIVER_NAME;
    sd->chip.owner = THIS_MODULE;
    sd->chip.base = -1;
    sd->chip.ngpio = 4;
@@ -134,11 +135,13 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
              sd->chip.label);
 
    int ret;
-      /*
    ret = devm_request_threaded_irq(&pdev->dev, 36,
                                    NULL, _irq_handler, IRQF_TRIGGER_HIGH,
                                    dev_name(&pdev->dev), &sd->chip);
-                                   */
+   if (ret)
+     {
+        printk("Failed to request IRQ:\n");
+     }
 
    ret = gpiochip_irqchip_add(&sd->chip,
                               sd->irqchip,
@@ -155,18 +158,6 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
                                 sd->irqchip,
                                 36,
                                 NULL);
-
-
-   ret = request_irq(36,
-                     _irq_handler,
-                     IRQF_TRIGGER_HIGH,
-                     dev_name(&pdev->dev),
-                     NULL);
-   if (ret)
-     {
-        printk("Failed to request IRQ:\n");
-     }
-
 }
 
 static void
@@ -195,7 +186,7 @@ _device_release(struct device *pdev)
 }
 
 static struct platform_device my_device = {
-     .name = "platform-gpio-device",
+     .name = DRIVER_NAME,
      .id = -1, //let kernel decide 
      .dev.platform_data = &my_device_data,
      .dev.release = _device_release,
@@ -233,7 +224,7 @@ static struct platform_driver sample_platform_driver = {
      .probe = _sample_platform_driver_probe,
      .remove = _sample_platform_driver_remove,
      .driver = {
-          .name = "platform-gpio-device", //platform_device will also use same name
+          .name = DRIVER_NAME, //platform_device will also use same name
      },
 };
 

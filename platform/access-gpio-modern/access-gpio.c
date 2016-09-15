@@ -68,7 +68,7 @@ _gpio_access_init(void)
                         (irq_handler_t)_irq_handler,
                         IRQF_TRIGGER_HIGH,
                         //IRQF_TRIGGER_MASK,
-                        "interrput-handler",
+                        "platform-gpio-device",
                         NULL);
    if (result < 0)
      {
