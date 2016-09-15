@@ -13,12 +13,12 @@ static int __init
 _spi_init(void)
 {
    int ret;
-   unsigned char ch = 0x00;
+   unsigned char ch = 0x01;
    struct spi_master *master;
    struct spi_board_info spi_device_info = {
         .modalias = "ami-spi-device",
-        .max_speed_hz = 1, //speed of your device splace can handle
-        .bus_num = 435, //BUS number
+        .max_speed_hz = 12000000, //speed of your device splace can handle
+        .bus_num = 0, //BUS number
         .chip_select = 0,
         .mode = 3,
    };
@@ -50,6 +50,7 @@ _spi_init(void)
         return -ENODEV;
      }
 
+   printk(KERN_ALERT "Writing ch=0x01 to spi interface");
    spi_write(sdev, &ch, sizeof(ch));
 
    return 0;
