@@ -118,7 +118,7 @@ static void spi_data(struct spi_device *spi, unsigned int d)
    spi_write(spi, (u8 *)&w, 2);   
 }
 
-static struct fb_fix_screeninfo pcf8833_fix __devinitdata = {
+static struct fb_fix_screeninfo pcf8833_fix  = {
    .id             = "pcf8833",
    .type           = FB_TYPE_PACKED_PIXELS,
    .visual         = FB_VISUAL_TRUECOLOR,
@@ -129,7 +129,7 @@ static struct fb_fix_screeninfo pcf8833_fix __devinitdata = {
    .accel          = FB_ACCEL_NONE,
 };
 
-static struct fb_var_screeninfo pcf8833_var __devinitdata = {
+static struct fb_var_screeninfo pcf8833_var  = {
    .xres           = X_RES,
    .yres           = Y_RES,
    .xres_virtual   = X_RES,
@@ -275,7 +275,7 @@ static int pcf8833_thread(void *param)
    return 0;
 }
 
-static int __devinit pcf8833_probe(struct spi_device *spi)
+static int pcf8833_probe(struct spi_device *spi)
 {
    struct fb_info *info;
    int retval;
@@ -340,7 +340,7 @@ err:
    return retval;
 }
 
-static int __devexit pcf8833_remove(struct spi_device *spi)
+static int  pcf8833_remove(struct spi_device *spi)
 {
    struct fb_info *info = dev_get_drvdata(&spi->dev);
 
@@ -363,7 +363,7 @@ static struct spi_driver pcf8833_driver = {
       .owner      = THIS_MODULE,
    },
    .probe      = pcf8833_probe,
-   .remove     = __devexit_p(pcf8833_remove),
+   .remove     = (pcf8833_remove),
 };
 
 static int __init pcf8833_init(void)
