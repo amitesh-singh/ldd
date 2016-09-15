@@ -13,19 +13,15 @@ MODULE_DESCRIPTION("Access GPIO created by platform-gpio module");
 MODULE_VERSION("0.1");
 
 struct gpio_desc *desc;
-static long gpio_no = 436;
+static long gpio_no = 432;
 static unsigned irq_no;
 
-static irq_handler_t
-_irq_handler(unsigned irq, void *dev_id,
-             struct pt_regs *regs)
+static irqreturn_t
+_irq_handler(unsigned irq, void *dev_id)
 {
    printk(KERN_ALERT "irq handler or ISR is called");
-   return (irq_handler_t)IRQ_HANDLED;
+   return IRQ_HANDLED;
 }
-
-extern int gpiod_request(struct gpio_desc *desc, const char *label);
-extern void gpiod_free(struct gpio_desc *desc);
 
 static int __init
 _gpio_access_init(void)
@@ -68,14 +64,15 @@ _gpio_access_init(void)
    irq_no = gpiod_to_irq(desc);
    printk(KERN_INFO "gpio is mapped to IRQ: %d", irq_no);
 
-   result = request_irq(16,
+   result = request_irq(irq_no,
                         (irq_handler_t)_irq_handler,
-                        IRQF_TRIGGER_MASK,
+                        IRQF_TRIGGER_HIGH,
+                        //IRQF_TRIGGER_MASK,
                         "interrput-handler",
                         NULL);
    if (result < 0)
      {
-        printk(KERN_ALERT "Failed to aquire irq = 1");
+        printk(KERN_ALERT "Failed to aquire irq = %d", irq_no);
      }
    printk(KERN_ALERT "interrupt add result: %d",
           result);
