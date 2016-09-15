@@ -133,3 +133,7 @@ OR
 1. *kernel module signature loading failed:* Add  
 `CONFIG_MODULE_SIG=n`  
 in your module Makefile
+
+### Linux interrupts
+
+1. http://www.slideshare.net/kerneltlv/linux-interrupts-63978201?qid=aba0244c-f180-42f6-a9ad-e5791dda14db&v=&b=&from_search=5
