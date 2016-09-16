@@ -87,7 +87,6 @@ static void spi_data(struct spi_device *spi, unsigned char c)
    DC_LOW;
 }
 
-
 void _writeWord(uint16_t word)
 {
    spi_data(spi, (word >> 8));
@@ -125,24 +124,26 @@ void fillRec(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color)
 
 #define RST 25
 #define DC 24
-static int  _init_display(void)
+
+static void init_gpio(uint8_t gpio)
 {
    int status;
-   status = gpio_request(RST, "sysfs");
-   if (status < 0)
-     {
-        printk (KERN_ALERT "Failed to export 25");
-     }
-   gpio_direction_output(RST, 1);
-   gpio_export(RST, false);
 
-   gpio_request(DC, "sysfs");
+   status = gpio_request(gpio, "sysfs");
    if (status < 0)
      {
-        printk (KERN_ALERT "Failed to export 24");
+        printk (KERN_ALERT "Failed in gpio request");
      }
-   gpio_direction_output(DC, 1);
-   gpio_export(DC, false);
+   gpio_direction_output(gpio, 1);
+
+   //The below api will make gpio chip to seen in sysfs /sys/class/gpio/gpio25
+   //gpio_export(gpio);
+}
+
+static int  _init_display(void)
+{
+   init_gpio(RST);
+   init_gpio(DC);
 
    /*
       19 is MOSI, no need to explicitly export 19 since spi interface will do that for us. 
@@ -280,11 +281,11 @@ _spi_init(void)
 
    spi->bits_per_word = 8;
 
-   ret = spi_setup(sdev);
+   ret = spi_setup(spi);
    if (ret)
      {
         printk(KERN_ALERT "Failed to setup slave");
-        spi_unregister_device(sdev);
+        spi_unregister_device(spi);
         return -ENODEV;
      }
 
@@ -303,12 +304,12 @@ static void __exit
 _spi_exit(void)
 {
    printk(KERN_INFO "spi basic driver exit");
-   if (sdev)
+   if (spi)
      {
-        spi_unregister_device(sdev);
+        spi_unregister_device(spi);
      }
-   gpio_unexport(RST);
-   gpio_unexport(DC);
+   //gpio_unexport(RST);
+   // gpio_unexport(DC);
    gpio_free(RST);
    gpio_free(DC);
 }
