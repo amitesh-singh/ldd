@@ -452,7 +452,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    struct spi_master *master;
    struct spi_board_info spi_device_info = {
         .modalias = "st7735",
-        .max_speed_hz = 10000000, //speed of your device splace can handle
+        .max_speed_hz = 32000000, //speed of your device splace can handle
         .bus_num = 0, //BUS number
         .chip_select = 0,
         .mode = SPI_MODE_2,  //SPI mode 3, 2 and 0 works
