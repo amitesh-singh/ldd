@@ -1,14 +1,3 @@
-/*
- * linux/drivers/video/st7735fb.c -- FB driver for ST7735 LCD controller
- * Layout is based on skeletonfb.c by James Simmons and Geert Uytterhoeven.
- *
- * Copyright (C) 2011, Matt Porter
- *
- * This file is subject to the terms and conditions of the GNU General Public
- * License. See the file COPYING in the main directory of this archive for
- * more details.
- */
-
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/errno.h>
@@ -19,513 +8,360 @@
 #include <linux/init.h>
 #include <linux/fb.h>
 #include <linux/gpio.h>
-#include <linux/spi/spi.h>
 #include <linux/delay.h>
 #include <linux/uaccess.h>
+#include <linux/spi/spi.h>
+#include <linux/workqueue.h>
 
-#include "st7735fb.h"
 
-static struct st7735_function st7735_cfg_script[] = {
-       { ST7735_START, ST7735_START},
-       { ST7735_CMD, ST7735_SWRESET},
-       { ST7735_DELAY, 150},
-       { ST7735_CMD, ST7735_SLPOUT},
-       { ST7735_DELAY, 500},
-       { ST7735_CMD, ST7735_FRMCTR1},
-       { ST7735_DATA, 0x01},
-       { ST7735_DATA, 0x2c},
-       { ST7735_DATA, 0x2d},
-       { ST7735_CMD, ST7735_FRMCTR2},
-       { ST7735_DATA, 0x01},
-       { ST7735_DATA, 0x2c},
-       { ST7735_DATA, 0x2d},
-       { ST7735_CMD, ST7735_FRMCTR3},
-       { ST7735_DATA, 0x01},
-       { ST7735_DATA, 0x2c},
-       { ST7735_DATA, 0x2d},
-       { ST7735_DATA, 0x01},
-       { ST7735_DATA, 0x2c},
-       { ST7735_DATA, 0x2d},
-       { ST7735_CMD, ST7735_INVCTR},
-       { ST7735_DATA, 0x07},
-       { ST7735_CMD, ST7735_PWCTR1},
-       { ST7735_DATA, 0xa2},
-       { ST7735_DATA, 0x02},
-       { ST7735_DATA, 0x84},
-       { ST7735_CMD, ST7735_PWCTR2},
-       { ST7735_DATA, 0xc5},
-       { ST7735_CMD, ST7735_PWCTR3},
-       { ST7735_DATA, 0x0a},
-       { ST7735_DATA, 0x00},
-       { ST7735_CMD, ST7735_PWCTR4},
-       { ST7735_DATA, 0x8a},
-       { ST7735_DATA, 0x2a},
-       { ST7735_CMD, ST7735_PWCTR5},
-       { ST7735_DATA, 0x8a},
-       { ST7735_DATA, 0xee},
-       { ST7735_CMD, ST7735_VMCTR1},
-       { ST7735_DATA, 0x0e},
-       { ST7735_CMD, ST7735_INVOFF},
-       { ST7735_CMD, ST7735_MADCTL},
-       { ST7735_DATA, 0xc8},
-       { ST7735_CMD, ST7735_COLMOD},
-       { ST7735_DATA, 0x05},
-       { ST7735_CMD, ST7735_CASET},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x7f},
-       { ST7735_CMD, ST7735_RASET},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x9f},
-       { ST7735_CMD, ST7735_GMCTRP1},
-       { ST7735_DATA, 0x02},
-       { ST7735_DATA, 0x1c},
-       { ST7735_DATA, 0x07},
-       { ST7735_DATA, 0x12},
-       { ST7735_DATA, 0x37},
-       { ST7735_DATA, 0x32},
-       { ST7735_DATA, 0x29},
-       { ST7735_DATA, 0x2d},
-       { ST7735_DATA, 0x29},
-       { ST7735_DATA, 0x25},
-       { ST7735_DATA, 0x2b},
-       { ST7735_DATA, 0x39},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x01},
-       { ST7735_DATA, 0x03},
-       { ST7735_DATA, 0x10},
-       { ST7735_CMD, ST7735_GMCTRN1},
-       { ST7735_DATA, 0x03},
-       { ST7735_DATA, 0x1d},
-       { ST7735_DATA, 0x07},
-       { ST7735_DATA, 0x06},
-       { ST7735_DATA, 0x2e},
-       { ST7735_DATA, 0x2c},
-       { ST7735_DATA, 0x29},
-       { ST7735_DATA, 0x2d},
-       { ST7735_DATA, 0x2e},
-       { ST7735_DATA, 0x2e},
-       { ST7735_DATA, 0x37},
-       { ST7735_DATA, 0x3f},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x00},
-       { ST7735_DATA, 0x02},
-       { ST7735_DATA, 0x10},
-       { ST7735_CMD, ST7735_DISPON},
-       { ST7735_DELAY, 100},
-       { ST7735_CMD, ST7735_NORON},
-       { ST7735_DELAY, 10},
-       { ST7735_END, ST7735_END},
+#define ST7735_NOP         (0x0)
+#define ST7735_SWRESET     (0x01)
+#define ST7735_SLPIN       (0x10)
+#define ST7735_SLPOUT      (0x11)
+#define ST7735_PTLON       (0x12)
+#define ST7735_NORON       (0x13)
+#define ST7735_INVOFF      (0x20)
+#define ST7735_INVON       (0x21)
+#define ST7735_GAMSET      (0x26)
+#define ST7735_DISPOFF     (0x28)
+#define ST7735_DISPON      (0x29)
+#define ST7735_CASET       (0x2A)
+#define ST7735_RASET       (0x2B)
+#define ST7735_RAMWR       (0x2C)
+#define ST7735_RAMRD       (0x2E)
+#define ST7735_PTLAR       (0x30)
+#define ST7735_TEOFF       (0x34)
+#define ST7735_PEON        (0x35)
+#define ST7735_MADCTL      (0x36)
+#define ST7735_IDMOFF      (0x38)
+#define ST7735_IDMON       (0x39)
+#define ST7735_COLMOD      (0x3A)
+
+#define ST7735_FRMCTR1     (0xB1)
+#define ST7735_INVCTR      (0xB4)
+#define ST7735_DISSET5     (0xB6)
+#define ST7735_PWCTR1      (0xC0)
+#define ST7735_PWCTR2      (0xC1)
+#define ST7735_PWCTR3      (0xC2)
+#define ST7735_VMCTR1      (0xC5)
+#define ST7735_PWCTR6      (0xFC)
+#define ST7735_GMCTRP1     (0xE0)
+#define ST7735_GMCTRN1     (0xE1)
+
+static struct spi_board_info spi_device_info = {
+     .modalias = "st7735r",
+     .max_speed_hz = 60000000,
+     .bus_num = 0,
+     .chip_select = 0,
+     .mode = SPI_MODE_0
 };
 
-static struct fb_fix_screeninfo st7735fb_fix  = {
-     .id =		"ST7735", 
-     .type =		FB_TYPE_PACKED_PIXELS,
-     .visual =	FB_VISUAL_PSEUDOCOLOR,
-     .xpanstep =	0,
-     .ypanstep =	0,
-     .ywrapstep =	0, 
-     .line_length =	WIDTH*BPP/8,
-     .accel =	FB_ACCEL_NONE,
-};
+static struct spi_master *master;
+static struct spi_device *spi;
 
-static struct fb_var_screeninfo st7735fb_var  = {
-     .xres =			WIDTH,
-     .yres =			HEIGHT,
-     .xres_virtual =		WIDTH,
-     .yres_virtual =		HEIGHT,
-     .bits_per_pixel =	BPP,
-     .nonstd	=		1,
-};
+#define RST 25
+#define DC 24
 
-static int st7735_write(struct st7735fb_par *par, u8 data)
+#define RST_HIGH gpio_set_value(RST, 1)
+#define RST_LOW gpio_set_value(RST, 0)
+
+#define DC_HIGH gpio_set_value(DC, 1)
+#define DC_LOW gpio_set_value(DC, 0)
+
+static void spi_command(uint8_t c)
 {
-   u8 txbuf[2]; /* allocation from stack must go */
+   DC_LOW;
 
-   txbuf[0] = data;
-
-   return spi_write(par->spi, &txbuf[0], 1);
+   spi_write(spi, (u8 *)&c, 1);
+   DC_HIGH;
 }
 
-static void st7735_write_data(struct st7735fb_par *par, u8 data)
+static void spi_data(uint8_t c)
 {
-   int ret = 0;
-
-   /* Set data mode */
-   gpio_set_value(par->dc, 1);
-
-   ret = st7735_write(par, data);
-   if (ret < 0)
-     pr_err("%s: write data %02x failed with status %d\n",
-            par->info->fix.id, data, ret);
+   DC_HIGH;
+   spi_write(spi, &c, 1);
+   DC_LOW;
 }
 
-static int st7735_write_data_buf(struct st7735fb_par *par,
-                                 u8 *txbuf, int size)
+static void write_word(uint16_t word)
 {
-   /* Set data mode */
-   gpio_set_value(par->dc, 1);
-
-   /* Write entire buffer */
-   return spi_write(par->spi, txbuf, size);
+   spi_data((word >> 8));
+   spi_data(word & 0xFF);
 }
 
-static void st7735_write_cmd(struct st7735fb_par *par, u8 data)
+static void
+set_addr_window(uint8_t x0, uint8_t y0,
+                uint8_t x1, uint8_t y1)
 {
-   int ret = 0;
+   spi_command(ST7735_CASET);
+   write_word(x0);
+   write_word(x1);
 
-   /* Set command mode */
-   gpio_set_value(par->dc, 0);
+   spi_command(ST7735_RASET);
+   write_word(y0);
+   write_word(y1);
 
-   ret = st7735_write(par, data);
-   if (ret < 0)
-     pr_err("%s: write command %02x failed with status %d\n",
-            par->info->fix.id, data, ret);
+   spi_command(ST7735_RAMWR);
 }
 
-static void st7735_run_cfg_script(struct st7735fb_par *par)
+static void
+init_gpio(uint8_t gpio, uint8_t dir)
 {
-   int i = 0;
-   int end_script = 0;
+   int status;
 
-   do {
-        switch (st7735_cfg_script[i].cmd)
-          {
-           case ST7735_START:
-              break;
-           case ST7735_CMD:
-              st7735_write_cmd(par,
-                               st7735_cfg_script[i].data & 0xff);
-              break;
-           case ST7735_DATA:
-              st7735_write_data(par,
-                                st7735_cfg_script[i].data & 0xff);
-              break;
-           case ST7735_DELAY:
-              mdelay(st7735_cfg_script[i].data);
-              break;
-           case ST7735_END:
-              end_script = 1;
-          }
-        i++;
-   } while (!end_script);
+   status = gpio_request(gpio, "sysfs");
+   if (status < 0)
+     {
+        printk (KERN_ALERT "Failed in gpio request");
+     }
+   gpio_direction_output(gpio, dir);
+
+   //gpio_export(gpio);
 }
 
-static void st7735_set_addr_win(struct st7735fb_par *par,
-                                int xs, int ys, int xe, int ye)
+static void
+init_display(void)
 {
-   st7735_write_cmd(par, ST7735_CASET);
-   st7735_write_data(par, 0x00);
-   st7735_write_data(par, xs+2);
-   st7735_write_data(par, 0x00);
-   st7735_write_data(par, xe+2);
-   st7735_write_cmd(par, ST7735_RASET);
-   st7735_write_data(par, 0x00);
-   st7735_write_data(par, ys+1);
-   st7735_write_data(par, 0x00);
-   st7735_write_data(par, ye+1);
-}
+   //initialize gpio pins
+   init_gpio(RST, 1);
+   init_gpio(DC, 1);
 
-static void st7735_reset(struct st7735fb_par *par)
-{
-   /* Reset controller */
-   gpio_set_value(par->rst, 0);
-   udelay(10);
-   gpio_set_value(par->rst, 1);
+   //! --- Display init sequence
+   RST_LOW;
+   udelay(20);
+   RST_HIGH;
    mdelay(120);
+
+   spi_command(ST7735_SWRESET);
+   mdelay(150);
+
+   spi_command(ST7735_SLPOUT);
+   mdelay(120);
+
+   spi_command(ST7735_COLMOD);
+   // 011 --> 12 bits/pixel
+   // 101 --> 16 bits/pixel
+   // 110 --> 18 bits/pixel
+   spi_data(0x05);          // 16-bit color
+
+   spi_command(ST7735_FRMCTR1); // frame rate control
+   spi_data(0x00);          // fastest refresh
+   spi_data(0x06);          // 6 lines front porch
+   spi_data(0x03);          // 3 lines backporch
+
+   spi_command(ST7735_MADCTL);
+
+#define _BV(x) (1 << x)
+   spi_data(_BV(3));
+
+   spi_command(ST7735_DISSET5); // display settings #5
+   spi_data(0x15);          // 1 clock cycle nonoverlap, 2 cycle gate rise, 3 cycle oscil. equalize
+   spi_data(0x02);   
+
+   spi_command(ST7735_PWCTR1);  // power control
+   spi_data(0x02);          // GVDD = 4.7V
+   spi_data(0x70);          // 1.0uA
+
+   spi_command(ST7735_PWCTR2);  // power control
+   spi_data(0x05);          // VGH = 14.7V, VGL = -7.35V
+   spi_data(ST7735_PWCTR3);  // power control
+   spi_data(0x01);          // Opamp current small
+   spi_data(0x02);          // Boost frequency
+
+   spi_command(ST7735_VMCTR1);  // power control
+   spi_data(0x3C);          // VCOMH = 4V
+   spi_data(0x38);          // VCOML = -1.1V
+
+   spi_command(ST7735_PWCTR6);  // power control
+   spi_data(0x11);
+   spi_data(0x15);
+
+   spi_command(ST7735_GMCTRP1);
+
+   spi_data(0x09);
+   spi_data(0x16);
+   spi_data(0x09);
+   spi_data(0x20);
+   spi_data(0x21);
+   spi_data(0x1B);
+   spi_data(0x13);
+   spi_data(0x19);
+   spi_data(0x17);
+   spi_data(0x15);
+   spi_data(0x1E);
+   spi_data(0x2B);
+   spi_data(0x04);
+   spi_data(0x05);
+   spi_data(0x02);
+   spi_data(0x0E);
+
+   spi_command(ST7735_GMCTRN1);
+   spi_data(0x0B);
+   spi_data(0x14);
+   spi_data(0x08);
+   spi_data(0x1E);
+   spi_data(0x22);
+   spi_data(0x1D);
+   spi_data(0x18);
+   spi_data(0x1E);
+   spi_data(0x1B);
+   spi_data(0x1A);
+   spi_data(0x24);
+   spi_data(0x2B);
+   mdelay(120);
+   spi_data(0x3f);
+   mdelay(10);
+   spi_command(ST7735_DISPON);
+   mdelay(120);
+   //! --- display exit.
 }
 
-static void st7735fb_update_display(struct st7735fb_par *par)
+static void
+update_screen(unsigned int x, unsigned int y, unsigned int w,
+              unsigned int h)
 {
-   int ret = 0;
-   u8 *vmem = par->info->screen_base;
-#ifdef __LITTLE_ENDIAN
-   int i;
-   u16 *vmem16 = (u16 *)vmem;
-   u16 *ssbuf = par->ssbuf;
-
-   for (i=0; i<WIDTH*HEIGHT*BPP/8/2; i++)
-     ssbuf[i] = swab16(vmem16[i]);
-#endif
-   /*
-TODO:
-Allow a subset of pages to be passed in
-(for deferred I/O).  Check pages against
-pan display settings to see if they
-should be updated.
-    */
-   /* For now, just write the full 40KiB on each update */
-
-   /* Set row/column data window */
-   st7735_set_addr_win(par, 0, 0, WIDTH-1, HEIGHT-1);
-
-   /* Internal RAM write command */
-   st7735_write_cmd(par, ST7735_RAMWR);
-
-   /* Blast framebuffer to ST7735 internal display RAM */
-#ifdef __LITTLE_ENDIAN
-   ret = st7735_write_data_buf(par, (u8 *)ssbuf, WIDTH*HEIGHT*BPP/8);
-#else
-   ret = st7735_write_data_buf(par, vmem, WIDTH*HEIGHT*BPP/8);
-#endif
-   if (ret < 0)
-     pr_err("%s: spi_write failed to update display buffer\n",
-            par->info->fix.id);
+   set_addr_window(x, y, w, h);
+   for (int i = 0; i < w * h; ++i)
+     {
+        spi_data(color);
+     }
 }
 
-static void st7735fb_deferred_io(struct fb_info *info,
-                                 struct list_head *pagelist)
+static void
+fill_rec(uint8_t x, uint8_t y,
+         uint8_t w, uint8_t h, uint16_t color)
 {
-   st7735fb_update_display(info->par);
+   uint16_t i = 0;
+
+   set_addr_window(x, y, x + w - 1, y + h - 1);
+
+   for (; i < (w * h); ++i)
+     {
+        write_word(color);
+     }
+
+   spi_command(ST7735_NOP);
 }
 
-static int st7735fb_init_display(struct st7735fb_par *par)
+#define WIDTH 128
+#define HEIGHT 160
+
+struct fb_info *info;
+static int __init
+_st7735r_init(void)
 {
-   /* TODO: Need some error checking on gpios */
+   int ret;
 
-   /* Request GPIOs and initialize to default values */
-   gpio_request_one(par->rst, GPIOF_OUT_INIT_HIGH,
-                    "ST7735 Reset Pin");
-   gpio_request_one(par->dc, GPIOF_OUT_INIT_LOW,
-                    "ST7735 Data/Command Pin");
+   printk(KERN_INFO "driver init");
 
-   st7735_reset(par);
+   //Get master
+   master = spi_busnum_to_master(spi_device_info.bus_num);
+   if (!master)
+     {
+        printk(KERN_ALERT "Failed to create master device:");
+        return -ENODEV;
+     }
 
-   st7735_run_cfg_script(par);
+   //create slave device.
+   spi = spi_new_device(master, &spi_device_info);
+   if (!spi)
+     {
+        printk(KERN_ALERT "Failed to create slave device");
+        return -ENODEV;
+     }
 
-   return 0;
-}
+   spi->bits_per_word = 8;
 
-void st7735fb_fillrect(struct fb_info *info, const struct fb_fillrect *rect)
-{
-   struct st7735fb_par *par = info->par;
+   ret = spi_setup(spi);
 
-   sys_fillrect(info, rect);
+   if (ret)
+     {
+        printk(KERN_ALERT "Failed to setup slave device");
+        spi_unregister_device(spi);
+        return -ENODEV;
+     }
 
-   st7735fb_update_display(par);
-}
+   init_display();
+   fill_rec(10, 10, 100, 60, 255);
 
-void st7735fb_copyarea(struct fb_info *info, const struct fb_copyarea *area) 
-{
-   struct st7735fb_par *par = info->par;
 
-   sys_copyarea(info, area);
-
-   st7735fb_update_display(par);
-}
-
-void st7735fb_imageblit(struct fb_info *info, const struct fb_image *image) 
-{
-   struct st7735fb_par *par = info->par;
-
-   sys_imageblit(info, image);
-
-   st7735fb_update_display(par);
-}
-
-static ssize_t st7735fb_write(struct fb_info *info, const char __user *buf,
-                              size_t count, loff_t *ppos)
-{
-   struct st7735fb_par *par = info->par;
-   unsigned long p = *ppos;
-   void *dst;
-   int err = 0;
-   unsigned long total_size;
-
-   if (info->state != FBINFO_STATE_RUNNING)
-     return -EPERM;
-
-   total_size = info->fix.smem_len;
-
-   if (p > total_size)
-     return -EFBIG;
-
-   if (count > total_size) {
-        err = -EFBIG;
-        count = total_size;
-   }
-
-   if (count + p > total_size) {
-        if (!err)
-          err = -ENOSPC;
-
-        count = total_size - p;
-   }
-
-   dst = (void __force *) (info->screen_base + p);
-
-   if (copy_from_user(dst, buf, count))
-     err = -EFAULT;
-
-   if  (!err)
-     *ppos += count;
-
-   st7735fb_update_display(par);
-
-   return (err) ? err : count;
-}
-
-static struct fb_ops st7735fb_ops = {
-     .owner		= THIS_MODULE,
-     .fb_read	= fb_sys_read,
-     .fb_write	= st7735fb_write,
-     .fb_fillrect	= st7735fb_fillrect,
-     .fb_copyarea	= st7735fb_copyarea,
-     .fb_imageblit	= st7735fb_imageblit,
-};
-
-static struct fb_deferred_io st7735fb_defio = {
-     .delay		= HZ,
-     .deferred_io	= st7735fb_deferred_io,
-};
-
-static int  st7735fb_probe (struct spi_device *spi)
-{
-   int chip = spi_get_device_id(spi)->driver_data;
-   struct st7735fb_platform_data *pdata = spi->dev.platform_data;
-   int vmem_size = WIDTH*HEIGHT*BPP/8;
+   //! -- framebuffer init
+   struct fb_ops *fbops;
+   struct fb_deferred_io *fbdefio;
    u8 *vmem;
-   struct fb_info *info;
-   struct st7735fb_par *par;
-   int retval = -ENOMEM;
 
-   if (chip != ST7735_DISPLAY_AF_TFT18) {
-        pr_err("%s: only the %s device is supported\n", DRVNAME,
-               to_spi_driver(spi->dev.driver)->id_table->name);
-        return -EINVAL;
-   }
-
-   if (!pdata) {
-        pr_err("%s: platform data required for rst and dc info\n",
-               DRVNAME);
-        return -EINVAL;
-   }
-
-   vmem = vzalloc(vmem_size);
+   vmem = vzalloc(WIDTH * HEIGHT * 8/8);
    if (!vmem)
-     return retval;
+     {
+     }
+   fbops = devm_kzalloc(spi->dev, sizeof(struct fb_ops), GFP_KERNEL);
+   if (!fbops)
+     {
+     }
 
-   info = framebuffer_alloc(sizeof(struct st7735fb_par), &spi->dev);
-   if (!info)
-     goto fballoc_fail;
+   fbdefio = devm_kzalloc(spi->dev, sizeof(struct fb_deferred_io), GFP_KERNEL);
+   if (!fbdefio)
+     {
+     }
 
-   info->screen_base = (u8 __force __iomem *)vmem;
-   info->fbops = &st7735fb_ops;
-   info->fix = st7735fb_fix;
-   info->fix.smem_len = vmem_size;
-   info->var = st7735fb_var;
-   /* Choose any packed pixel format as long as it's RGB565 */
-   info->var.red.offset = 11;
-   info->var.red.length = 5;
-   info->var.green.offset = 5;
-   info->var.green.length = 6;
-   info->var.blue.offset = 0;
-   info->var.blue.length = 5;
-   info->var.transp.offset = 0;
-   info->var.transp.length = 0;
-   info->flags = FBINFO_FLAG_DEFAULT | FBINFO_VIRTFB;
-   info->fbdefio = &st7735fb_defio;
+   info = framebuffer_alloc(0, spi->dev);
+   if(!info)
+     {
+     }
+   info->screen_buffer = vmem;
+   info->fbops = fbops;
+   info->fbdefio = fbdefio;
+
+   fbops->fb_read      =      fb_sys_read;
+   fbops->fb_write     =      fbtft_fb_write;
+   fbops->fb_fillrect  =      fbtft_fb_fillrect;
+   fbops->fb_copyarea  =      fbtft_fb_copyarea;
+   fbops->fb_imageblit =      fbtft_fb_imageblit;
+   fbops->fb_setcolreg =      fbtft_fb_setcolreg;
+   fbops->fb_blank     =      fbtft_fb_blank;
+
+   fbdefio->delay =           HZ/50;
+   fbdefio->deferred_io =     fbtft_deferred_io;
    fb_deferred_io_init(info);
 
-   par = info->par;
-   par->info = info;
-   par->spi = spi;
-   par->rst = pdata->rst_gpio;
-   par->dc = pdata->dc_gpio;
+   info->var.xres = WIDTH;
+   info->var.yres = HEIGHT;
 
-#ifdef __LITTLE_ENDIAN
-   /* Allocate swapped shadow buffer */
-   vmem = vzalloc(vmem_size);
-   if (!vmem)
-     return retval;
-   par->ssbuf = vmem;
-#endif
+   info->var.bits_per_pixel = 8;
+   info->var.red.offset =     11;
+   info->var.red.length =     5;
+   info->var.green.offset =   5;
+   info->var.green.length =   6;
+   info->var.blue.offset =    0;
+   info->var.blue.length =    5;
 
-   retval = register_framebuffer(info);
-   if (retval < 0)
-     goto fbreg_fail;
-
-   spi_set_drvdata(spi, info);
-
-   retval = st7735fb_init_display(par);
-   if (retval < 0)
-     goto init_fail;
-
-   printk(KERN_INFO
-          "fb%d: %s frame buffer device,\n\tusing %d KiB of video memory\n",
-          info->node, info->fix.id, vmem_size);
-
-   return 0;
-
-
-   /* TODO: release gpios on fail */
-init_fail:
-   spi_set_drvdata(spi, NULL);
-
-fbreg_fail:
-   framebuffer_release(info);
-
-fballoc_fail:
-   vfree(vmem);
-
-   return retval;
-}
-
-static int st7735fb_remove(struct spi_device *spi)
-{
-   struct fb_info *info = spi_get_drvdata(spi);
-
-   spi_set_drvdata(spi, NULL);
-
-   if (info) {
-        unregister_framebuffer(info);
-        vfree(info->screen_base);	
-        framebuffer_release(info);
-   }
-
-   /* TODO: release gpios */
+   ret = register_framebuffer(info);
+   if (ret <0)
+     {
+        printk (KERN_ALERT "Failed to register framebuffer");
+        return -ENODEV;
+     }
 
    return 0;
 }
 
-static const struct spi_device_id st7735fb_ids[] = {
-       { "adafruit_tft18", ST7735_DISPLAY_AF_TFT18 },
-       { },
-};
-
-MODULE_DEVICE_TABLE(spi, st7735fb_ids);
-
-static struct spi_driver st7735fb_driver = {
-     .driver = {
-          .name   = "st7735fb",
-          .owner  = THIS_MODULE,
-     },
-     .id_table = st7735fb_ids,
-     .probe  = st7735fb_probe,
-     .remove = st7735fb_remove,
-};
-
-static int __init st7735fb_init(void)
+static void __exit
+_st7735r_exit(void)
 {
-   printk (KERN_ALERT "init driver");
-   return spi_register_driver(&st7735fb_driver);
+   fb_deferred_io_cleanup(info);
+   vfree(info->screen_buffer);
+   frame_release(info);
+
+   if (spi)
+     spi_unregister_device(spi);
+
+   gpio_free(RST);
+   gpio_free(DC);
 }
 
-static void __exit st7735fb_exit(void)
-{
-   spi_unregister_driver(&st7735fb_driver);
-}
+module_init(_st7735r_init);
+module_exit(_st7735r_exit);
 
-/* ------------------------------------------------------------------------- */
-
-module_init(st7735fb_init);
-module_exit(st7735fb_exit);
-
-MODULE_DESCRIPTION("FB driver for ST7735 display controller");
-MODULE_AUTHOR("Matt Porter");
+MODULE_AUTHOR("Amitesh Singh");
 MODULE_LICENSE("GPL");
+MODULE_DESCRIPTION("FB driver for st7735 1.8 chinese display");

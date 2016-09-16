@@ -1,4 +1,4 @@
-obj-m += st7735fb.o
+obj-m += st7735r.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
