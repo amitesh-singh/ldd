@@ -28,6 +28,14 @@
 #include <linux/uaccess.h>
 #include <linux/gpio.h>
 
+#define CS_HIGH gpio_set_value(25, 1)
+#define CS_LOW gpio_set_value(25, 0)
+
+#define DC_HIGH gpio_set_value(24, 1)
+#define DC_LOW gpio_set_value(24, 0)
+
+#define RST_HIGH gpio_set_value(25, 1)
+#define RST_LOW gpio_set_value(25, 0)
 /*****************************************************************************
           Command of LCD NOKIA6100(phillips chipset)
 *****************************************************************************/
@@ -67,7 +75,7 @@
 /* lcd resolution */
 #define X_RES 128
 #define Y_RES 160
-#define B_PP 16
+#define B_PP 8
 #define MEM_LEN X_RES*Y_RES*B_PP/8
 
 struct pcf8833 {
@@ -78,16 +86,18 @@ struct pcf8833 {
 
 static void spi_command(struct spi_device *spi, unsigned int c)
 {
-   unsigned int w = c & ~0x0100;
+   DC_LOW;
 
-   spi_write(spi, (u8 *)&w, 2);   
+   spi_write(spi, (u8 *)&c, 1);   
+   DC_HIGH;
 }
 
 static void spi_data(struct spi_device *spi, unsigned int d)
 {
-   unsigned int w = d | 0x0100;
+   DC_HIGH;
    
-   spi_write(spi, (u8 *)&w, 2);   
+   spi_write(spi, (u8 *)&d, 1);   
+   DC_LOW;
 }
 
 static struct fb_fix_screeninfo pcf8833_fix  = {
@@ -120,6 +130,13 @@ static struct fb_var_screeninfo pcf8833_var  = {
    .transp.length = 0,
 };
 
+void _writeWord(struct spi_device *spi, uint16_t word)
+{
+   spi_data(spi, (word >> 8));
+   spi_data(spi, (word & 0xFF));
+}
+
+
 static void pcf8833_gram_update(struct pcf8833 *par,
                                 unsigned int dx,
                                 unsigned int dy,
@@ -140,11 +157,11 @@ static void pcf8833_gram_update(struct pcf8833 *par,
           }
 
         spi_command(spi, ST7735_CASET);   // column start/end ram (x)
-        spi_data(spi, dx);            
-        spi_data(spi, dx+w-1);          
+        _writeWord(spi, dx);            
+        _writeWord(spi, dx+w-1);          
         spi_command(spi, ST7735_RASET);   // page start/end ram (y)
-        spi_data(spi, dy);               
-        spi_data(spi, dy+h-1); 
+        _writeWord(spi, dy);               
+        _writeWord(spi, dy+h-1); 
 
         spi_command(spi, ST7735_RAMWR);   // write some stuff
         spi_write(spi, (u8 *)scr, i*2);
@@ -261,15 +278,38 @@ static struct fb_ops pcf8833_ops = {
      .fb_imageblit    = pcf8833_imageblit,
 };
 
-#define CS_HIGH gpio_set_value(25, 1)
-#define CS_LOW gpio_set_value(25, 0)
 
-#define DC_HIGH gpio_set_value(24, 1)
-#define DC_LOW gpio_set_value(24, 0)
+void _setAddrWindow(struct spi_device *spi, uint8_t x0, uint8_t y0,
+                    uint8_t x1, uint8_t y1)
+{
+   spi_command(spi, ST7735_CASET);
+   _writeWord(spi, x0);
+   _writeWord(spi, x1);
 
-#define RST_HIGH gpio_set_value(25, 1)
-#define RST_LOW gpio_set_value(25, 0)
+   spi_command(spi, ST7735_RASET);
+   //TODO: may be word required?
+   _writeWord(spi, y0);
+   _writeWord(spi, y1);
 
+   spi_command(spi, ST7735_RAMWR);
+}
+
+void fillRec(struct spi_device *spi, uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color) {
+     unsigned int i = 0;
+
+     _setAddrWindow(spi, x, y, x + w - 1, y + h -1);
+
+     for (; i < (w * h); ++i)
+       {
+          _writeWord(spi, color);
+       }
+
+     spi_command(spi, ST7735_NOP);
+     //   CS_HIGH;
+}
+
+#define RST 25
+#define DC 24
 static int  pcf8833_probe(struct spi_device *spi)
 {
    struct fb_info *info;
@@ -277,13 +317,30 @@ static int  pcf8833_probe(struct spi_device *spi)
    int videomemorysize;
    unsigned char *videomemory;
    struct pcf8833 *par;
+   int status = 0;
 
    printk(KERN_ALERT "probe called...");
+   status = gpio_request(25, "sysfs");
+
+   if (status < 0)
+     {
+        printk (KERN_ALERT "Failed to export 25");
+     }
+   gpio_direction_output(RST, 1);
+   gpio_export(RST, false);
+   status = gpio_request(24, "sysfs");
+
+   if (status < 0)
+     {
+        printk (KERN_ALERT "Failed to export 24");
+     }
+   gpio_direction_output(DC, 1);
+   gpio_export(DC, false);
 
    spi->master->bus_num = 0;
    spi->chip_select = 0;
    /*   spi->max_speed_hz = 50 * 1000 * 1000; // ??  */
-   spi->max_speed_hz = 20 * 1000 * 1000;
+   //spi->max_speed_hz = 12 * 1000 * 1000;
 
    spi->mode = SPI_MODE_0;
    spi->bits_per_word = 8;
@@ -291,10 +348,6 @@ static int  pcf8833_probe(struct spi_device *spi)
    if (retval < 0)
      return retval;   
    /* Software Reset LCD */
-   gpio_request_one(25, GPIOF_OUT_INIT_HIGH,
-                    "ST7735 Reset Pin");
-   gpio_request_one(24, GPIOF_OUT_INIT_LOW,
-                    "ST7735 Data/Command Pin");
 
    RST_LOW;
    udelay(20);
@@ -312,7 +365,7 @@ static int  pcf8833_probe(struct spi_device *spi)
    // 011 --> 12 bits/pixel
    // 101 --> 16 bits/pixel
    // 110 --> 18 bits/pixel
-   spi_data(spi, 16);          // 16-bit color
+   spi_data(spi, 5);          // 16-bit color
 
    spi_command(spi, ST7735_FRMCTR1); // frame rate control
    spi_data(spi, 0x00);          // fastest refresh
@@ -322,20 +375,11 @@ static int  pcf8833_probe(struct spi_device *spi)
    spi_command(spi, ST7735_MADCTL);  // memory access control (directions)
 
 #define _BV(x) (1 << x)
-   // if (_isLandscape)
-   spi_data(spi, _BV(7)| _BV(5) | _BV(3));
-   // else
-   // _writeData( _BV(3));
+   spi_data( spi, _BV(3));
 
    spi_command(spi,ST7735_DISSET5); // display settings #5
    spi_data(spi,0x15);          // 1 clock cycle nonoverlap, 2 cycle gate rise, 3 cycle oscil. equalize
    spi_data(spi,0x02);          // fix on VTL
-
-   /*
-      _writeCmd(ST7735_INVCTR);  // display inversion control
-      _writeData(0x0);           // line inversion
-      ST7735_CS_HI;
-    */
 
 
    spi_command(spi,ST7735_PWCTR1);  // power control
@@ -387,10 +431,12 @@ static int  pcf8833_probe(struct spi_device *spi)
    spi_data(spi,0x24);
    spi_data(spi,0x2B);
    mdelay(120);
-   //spi_data(spi, 0x3f);
-   //mdelay(10);
+   spi_data(spi, 0x3f);
+   mdelay(10);
 
-   //spi_command(spi, DISPON);
+   spi_command(spi, ST7735_DISPON);
+   mdelay(120);
+   fillRec(spi, 10, 10, 100, 100, 255);
 
    retval = -ENOMEM;
    videomemorysize = MEM_LEN;
@@ -450,36 +496,29 @@ static int pcf8833_remove(struct spi_device *spi)
    return 0;
 }
 
+static const struct spi_device_id st7735fb_ids[] = {
+       { "pcf8833", 0 },
+       { },
+};
+
+MODULE_DEVICE_TABLE(spi, st7735fb_ids);
+
 static struct spi_driver pcf8833_driver = {
      .driver = {
           .name      = "pcf8833",
           //.bus      = &spi_bus_type,
           .owner      = THIS_MODULE,
      },
+     .id_table = st7735fb_ids,
      .probe      = pcf8833_probe,
      .remove      = (pcf8833_remove),
 };
 
-static void
-_platform_device_release(struct device *dev)
-{
-   printk(KERN_ALERT "device relase():");
-}
-
-static struct platform_device simple_device = {
-     .name = "pcf8833",
-     .id = -1,
-     .dev = {
-          .release = _platform_device_release
-     }
-};
-
-struct spi_device *spi_device;
+static struct spi_device *spi_device;
 static int __init pcf8833_init(void)
 {
    printk("pcf8833 spi fb driver\n");
    spi_register_driver(&pcf8833_driver);
-   platform_device_register(&simple_device);
 
    struct spi_master *spi_master;
    struct device *pdev;
@@ -487,7 +526,7 @@ static int __init pcf8833_init(void)
    spi_master = spi_busnum_to_master(0);
    spi_device = spi_alloc_device(spi_master);
    spi_device->chip_select = 0;
-   spi_device->max_speed_hz = 20 * 1000 * 1000;
+   //spi_device->max_speed_hz = 12 * 1000 * 1000;
    spi_device->mode = SPI_MODE_0;
    spi_device->bits_per_word = 8;
    spi_device->irq = -1;
@@ -507,9 +546,15 @@ static int __init pcf8833_init(void)
 static void __exit pcf8833_exit(void)
 {
    //spi_remove_device(spi_device);
-   platform_device_unregister(&simple_device);
+   if (spi_device)
+     spi_unregister_device(spi_device);
+   gpio_unexport(24);
+   gpio_unexport(25);
+   gpio_free(24);
+   gpio_free(25);
+   //gpio_unexport(19);
+
    spi_unregister_driver(&pcf8833_driver);
-   spi_unregister_device(spi_device);
 }
 
 module_init(pcf8833_init);
