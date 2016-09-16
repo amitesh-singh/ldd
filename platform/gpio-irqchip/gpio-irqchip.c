@@ -47,6 +47,8 @@ _gpio_set(struct gpio_chip *chip,
                    chip);
    sd->gpio_pin_val = value;
    printk(KERN_INFO "gpio_set(): %d", value);
+   if (value == 1)
+     generic_handle_irq(irq_find_mapping(chip->irqdomain, offset));
 }
 
 static int
@@ -58,6 +60,7 @@ _direction_output(struct gpio_chip *chip,
    return 0;
 }
 
+//This is not required whenever you use gpiochip_irqchip_add
 static int
 _to_irq(struct gpio_chip *chip,
         unsigned offset)
@@ -101,13 +104,14 @@ static struct irq_chip my_gpio_irq_chip = {
      .irq_request_resources = _irq_request_resources,
 };
 
+/*
 static irqreturn_t
 _irq_handler(int irq, void *dev_id)
 {
    printk(KERN_ALERT "........................ handled irq interrupt");
    return IRQ_HANDLED;
 }
-
+*/
 
 static void
 _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
@@ -135,6 +139,7 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
              sd->chip.label);
 
    int ret;
+   /*
    ret = devm_request_threaded_irq(&pdev->dev, 36,
                                    NULL, _irq_handler, IRQF_TRIGGER_HIGH,
                                    dev_name(&pdev->dev), &sd->chip);
@@ -142,6 +147,7 @@ _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
      {
         printk("Failed to request IRQ:\n");
      }
+     */
 
    ret = gpiochip_irqchip_add(&sd->chip,
                               sd->irqchip,
