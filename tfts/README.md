@@ -66,6 +66,24 @@ Tips on make usb drive faster by RASTER
 `sudo apt-get install -y fbi`  
 `sudo fbi -d /dev/fb1 -T 1 -noverbose -a ami.jpg`
 
+### run videos
+
+`sudo SDL_VIDEODRIVER=fbcon SDL_FBDEV=/dev/fb1 mplayer -vo sdl -framedrop test.mpg`
+
+#### Run videos FASTER
+sudo modprobe fbtft dma
+sudo modprobe fbtft_device name=sainsmart18 rotate=90 speed=62000000 fps=50
+
+#### Start fb copying process in the background
+`fbcp &`  
+
+Play video on /dev/fb0, which will also show up on /dev/fb1  
+
+`omxplayer test_480_320.mpg`  
+
+Stop framebuffer copy
+
+killall fbcp
 
 ### Speed
 

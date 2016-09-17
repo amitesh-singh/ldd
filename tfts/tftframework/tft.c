@@ -54,9 +54,10 @@ _update_display(struct fb_driver_data *sd)
         ssbuf[i] = (mem[i]);
      }
 
+   printk (KERN_ALERT "update display: length: %d", sd->info->fix.smem_len);
    sd->device_data->set_addr_window(sd->device_data, 0, 0,
 		   	   	   	   	   	   	    sd->info->var.xres - 1, sd->info->var.yres - 1);
-   sd->device_data->update_display(sd->device_data, mem, sd->info->fix.smem_len);
+   sd->device_data->update_display(sd->device_data, ssbuf, sd->info->fix.smem_len);
 }
 
 static ssize_t _write(struct fb_info *info, const char __user *buf,

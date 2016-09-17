@@ -99,7 +99,7 @@ static int _init_connection(struct tft_device_data *tdd)
 
    struct spi_board_info spi_device_info = {
         .modalias = "st7735",
-        .max_speed_hz = 10000000, //speed of your device splace can handle
+        .max_speed_hz = 62000000, //speed of your device splace can handle
         .bus_num = 0, //BUS number
         .chip_select = 0,
         .mode = SPI_MODE_0,  //SPI mode 3, 2 and 0 works
@@ -314,8 +314,8 @@ _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
    DC_HIGH;
    for (; i < size; i+=3)
      { 
-        uint8_t r = mem[i+2] & 0b00000011;
-        spi_write(spi, &r, 1); //r
+       // uint8_t r = mem[i+2] & 0b00000011;
+        spi_write(spi, &mem[i + 2], 1); //r
         spi_write(spi, &mem[i + 1], 1); //g 
         spi_write(spi, &mem[i], 1); // b
      }
