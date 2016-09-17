@@ -61,6 +61,12 @@ Tips on make usb drive faster by RASTER
 
 ~/.ccache to make i/o faster  
 
+### show photos
+
+`sudo apt-get install -y fbi`  
+`sudo fbi -d /dev/fb1 -T 1 -noverbose -a ami.jpg`
+
+
 ### Speed
 
 A monitor draws an image on the screen by using an electron beam (3 electron
