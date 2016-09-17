@@ -317,12 +317,6 @@ static struct fb_fix_screeninfo st7735_fix = {
      .accel = FB_ACCEL_NONE,
 };
 
-static inline u16 big_endian_swab16(u16 x)
-{
-   return  ((x & (u16)0x00ffU) >> 8) |
-      ((x & (u16)0xff00U) << 8);
-}
-
 
 static void
 _update_display(struct MyDevice *sd)
@@ -333,7 +327,7 @@ _update_display(struct MyDevice *sd)
    u16 *ssbuf = sd->ssbuf;
    for (i = 0; i < X_RES * Y_RES * BPP/8/2; ++i)
      {
-        ssbuf[i] = big_endian_swab16(vmem16[i]);
+        ssbuf[i] = swab16(vmem16[i]);
      }
 
 
