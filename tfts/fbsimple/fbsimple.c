@@ -69,7 +69,7 @@
 /* lcd resolution */
 #define X_RES 128
 #define Y_RES 160
-#define BPP 8
+#define BPP 16
 
 #define MEM_LEN X_RES*Y_RES*B_PP/8
 
@@ -418,7 +418,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
 
    info = framebuffer_alloc(sizeof(struct MyDevice), &pdev->dev);
 
-   info->screen_base = (u8 __force __iomem *)vmem;
+   info->screen_buffer = vmem;
    info->fbops = &st7735_ops;
    info->fix = st7735_fix;
    info->fix.smem_len = vmemsize;
