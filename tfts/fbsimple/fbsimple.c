@@ -223,6 +223,7 @@ static int  _init_display(void)
    spi_data(spi,0x15);          // 1 clock cycle nonoverlap, 2 cycle gate rise, 3 cycle oscil. equalize
    spi_data(spi,0x02);          // fix on VTL
 
+   spi_command(spi, ST7735_INVOFF);
 
    spi_command(spi,ST7735_PWCTR1);  // power control
    spi_data(spi,0x02);          // GVDD = 4.7V
@@ -330,13 +331,17 @@ _update_display(struct MyDevice *sd)
         ssbuf[i] = swab16(vmem16[i]);
      }
 
-
-
    _setAddrWindow(spi, 0, 0, X_RES - 1, Y_RES - 1);
    spi_command(spi, ST7735_RAMWR);
 
    DC_HIGH;
-   spi_write(spi, (u8 *)ssbuf, X_RES * Y_RES * BPP/8);
+   //for (i = 0; i < X_RES *  Y_RES * BPP/8/2; ++i)
+    // {
+
+        //spi_data(spi, (ssbuf[i] & 0xFF));
+        //spi_data(spi, (ssbuf[i] >> 8));
+    // }
+  spi_write(spi, (u8 *)ssbuf, X_RES * Y_RES * BPP/8);
    DC_LOW;
    /*
       for (i = 0; i < (X_RES*Y_RES*BPP/8); ++i)
@@ -542,9 +547,6 @@ _fb_init(void)
 {
    printk (KERN_ALERT "fb init");
 
-   //vmem = vzmalloc(vmemsize);
-
-   //   info = framebuffer_alloc(sizeof(struct MyDevice),
    platform_driver_register(&fb_platform_driver);
    platform_device_register(&fb_device);
 
