@@ -288,6 +288,7 @@ struct MyDevice
    struct fb_info  *info;
    //other datas
    u8 *vmem;
+   u16 *ssbuf;
 };
 
 static void
@@ -322,13 +323,28 @@ _update_display(struct MyDevice *sd)
 {
 	unsigned int i;
 	u8 *mem = sd->info->screen_base;
+   u16 *vmem16 = (u16 *) mem;
+   u16 *ssbuf = sd->ssbuf;
+   for (i = 0; i < X_RES * Y_RES * BPP/8/2; ++i)
+     {
+        ssbuf[i] = swab16(vmem16[i]);
+     }
+
+
 
 	_setAddrWindow(spi, 0, 0, X_RES - 1, Y_RES - 1);
 	spi_command(spi, ST7735_RAMWR);
+
+   DC_HIGH;
+   spi_write(spi, (u8 *)ssbuf,  X_RES * Y_RES * BPP/8);
+   DC_LOW;
+   /*
 	for (i = 0; i < (X_RES*Y_RES*BPP/8); ++i)
 	{
-		_writeWord(spi, mem[i]);
+		//_writeWord(spi, mem[i]);
+      spi_write(spi, mem[i], 1);
 	}
+   */
 }
 
 static ssize_t st7735_write(struct fb_info *info, const char __user *buf,
@@ -452,7 +468,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    sdGlobal = info->par;
    sdGlobal->info = info;
    sdGlobal->vmem = vmem;
-
+   sdGlobal->ssbuf = vmem;
 
    //spi init
    int ret;
@@ -494,10 +510,9 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    mdelay(1000);
    printk (KERN_ALERT "init dispaly");
    _init_display();
-   fillRec(0, 0, 128, 160, GOLD);
-   mdelay(1000);
-   fillRec(10, 100, 20, 10, GREEN);
-   printk (KERN_ALERT "done writing to display");
+   //fillRec(0, 0, 128, 160, GOLD);
+   //mdelay(1000);
+   //fillRec(10, 100, 20, 10, GREEN);
 
    return 0;
 }
