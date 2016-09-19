@@ -8,4 +8,4 @@
 6. Add a complete gpio expander firmware and corresponding GPIO linux kernel code.
 7. USB to SPI emulation - big work! 
 8. Make fbtft to work on this.
-9. Add usbhid basic example - skeleton
+9. ~~Add usbhid basic example - skeleton~~
