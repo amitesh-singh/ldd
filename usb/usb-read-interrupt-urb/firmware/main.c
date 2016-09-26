@@ -55,8 +55,10 @@ main(void)
         usbPoll();
         if (usbInterruptIsReady() && ack_remaining == 1)
           {
+             //urb complete function callback will 
+             // get the data urb->context or sd->int_in_buf
              buf[0] = 0x41;
-             // 0x41 is our ACK
+             // 0x45 is our ACK
              usbSetInterrupt(buf, 1);
              ack_remaining = 0;
           }
