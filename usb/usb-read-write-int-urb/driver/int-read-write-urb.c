@@ -5,6 +5,9 @@
 
 #include <linux/usb.h>
 #include <linux/slab.h>
+#include <linux/platform_device.h>
+#include <linux/device.h>
+
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Amitesh Singh");
@@ -52,6 +55,51 @@ out_cb(struct urb *urb)
 
    printk(KERN_ALERT "sent data: %s", sd->int_out_buf);
 }
+
+static unsigned long old_value;
+
+static ssize_t
+get_value(struct device *dev,
+          struct device_attribute *attr,
+          char *buf)
+{
+   return sprintf(buf, "%ld", old_value);
+}
+
+static ssize_t
+set_value(struct device *dev,
+          struct device_attribute *attr,
+          const char *buf, size_t count)
+{
+   struct my_usb *sd = dev_get_drvdata(dev);
+   long new_value = 0;
+   int ret;
+
+   if (kstrtol(buf, 10, &new_value))
+     {
+        return -EINVAL;
+     }
+   old_value = new_value;
+
+   //set up our IN endpoint before sending OUT endpoint data 
+   ret = usb_submit_urb(sd->int_in_urb, GFP_KERNEL);
+   if (ret)
+     {
+        printk(KERN_ALERT "Failed to submit out urb");
+     }
+
+   sd->int_out_buf[0] = new_value;
+
+   ret = usb_submit_urb(sd->int_out_urb, GFP_KERNEL);
+   if (ret)
+     {
+        printk(KERN_ALERT "Failed to submit out urb");
+     }
+
+   return count;
+}
+
+static DEVICE_ATTR(value, 0660, get_value, set_value);
 
 //called when a usb device is connected to PC
 static int
@@ -135,19 +183,17 @@ my_usb_probe(struct usb_interface *interface,
 
    printk(KERN_INFO "usb device is connected");
 
-   i = usb_submit_urb(data->int_in_urb, GFP_KERNEL);
-   if (i)
+   //its better to use udev->dev though
+   //location of 'value' file will be changed a bit
+   i = device_create_file(&interface->dev, &dev_attr_value);
+   if (i < 0)
      {
-        printk(KERN_ALERT "Failed to submit in urb");
+        printk(KERN_ALERT "Failed to create device attrib value");
      }
 
-   //usbFunctionWriteOut() gets these messages
-   //in case of sending, here we send it
-   i = usb_submit_urb(data->int_out_urb, GFP_KERNEL);
-   if (i)
-     {
-        printk(KERN_ALERT "Failed to submit out urb");
-     }
+   //uncomment below line in case you use udev->dev
+   // for creating sysfs file.
+   //dev_set_drvdata(&udev->dev, data);
 
    return 0;
 }
@@ -175,6 +221,10 @@ my_usb_disconnect(struct usb_interface *interface)
    usb_free_urb(data->int_in_urb);
    kfree(data->int_out_buf);
    kfree(data->int_in_buf);
+
+   //its better to use udev->dev though
+   //location of 'value' file will be changed a bit
+   device_remove_file(&interface->dev, &dev_attr_value);
 
    //deref the count
    usb_put_dev(data->udev);
