@@ -55,7 +55,7 @@ PROGMEM const char configDescr[] = {    /* USB configuration descriptor */
 #if USB_CFG_HAVE_INTRIN_ENDPOINT3
     7,
     USBDESCR_ENDPOINT,
-    0x81 | USB_CFG_EP3_NUMBER,
+    0x80 | USB_CFG_EP3_NUMBER,
     0x03,
     8, 0,
     USB_CFG_INTR_POLL_INTERVAL,
