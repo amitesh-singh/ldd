@@ -26,6 +26,9 @@ use `rpi-update` (do update it)
 
 http://www.howtogeek.com/howto/ubuntu/how-to-customize-your-ubuntu-kernel/  
 
+`make menuconfig` - arrow keys were not working. the issue was with bash.
+to make it work, issue `sh` command and then `make menuconfig` should work.  
+
 `sudo apt-get install libqt4-dev`  
 `#cd linux-xxx/`  
 `#cp /boot/config-`uname -r` .config`  
