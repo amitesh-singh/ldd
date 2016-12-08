@@ -423,6 +423,13 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    info->fix = st7735_fix;
    info->fix.smem_len = vmemsize;
    info->var = st7735_var;
+   info->var.xres = X_RES;
+   info->var.yres = Y_RES;
+   info->var.xres_virtual =   info->var.xres;
+      info->var.yres_virtual =   info->var.yres;
+      info->var.bits_per_pixel = BPP;
+        info->var.nonstd =         1;
+
    info->var.red.offset = 11;
    info->var.red.length = 5;
    info->var.green.offset = 5;
