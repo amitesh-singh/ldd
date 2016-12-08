@@ -321,8 +321,8 @@ static struct fb_fix_screeninfo st7735_fix = {
 static void
 _update_display(struct MyDevice *sd)
 {
-	unsigned int i;
-	u8 *mem = sd->info->screen_base;
+   unsigned int i;
+   u8 *mem = sd->info->screen_base;
    u16 *vmem16 = (u16 *) mem;
    u16 *ssbuf = sd->ssbuf;
    for (i = 0; i < X_RES * Y_RES * BPP/8/2; ++i)
@@ -332,62 +332,62 @@ _update_display(struct MyDevice *sd)
 
 
 
-	_setAddrWindow(spi, 0, 0, X_RES - 1, Y_RES - 1);
-	spi_command(spi, ST7735_RAMWR);
+   _setAddrWindow(spi, 0, 0, X_RES - 1, Y_RES - 1);
+   spi_command(spi, ST7735_RAMWR);
 
    DC_HIGH;
-   spi_write(spi, (u8 *)ssbuf,  X_RES * Y_RES * BPP/8);
+   spi_write(spi, (u8 *)ssbuf, X_RES * Y_RES * BPP/8);
    DC_LOW;
    /*
-	for (i = 0; i < (X_RES*Y_RES*BPP/8); ++i)
-	{
-		//_writeWord(spi, mem[i]);
-      spi_write(spi, mem[i], 1);
-	}
-   */
+      for (i = 0; i < (X_RES*Y_RES*BPP/8); ++i)
+      {
+   //_writeWord(spi, mem[i]);
+   spi_write(spi, mem[i], 1);
+   }
+    */
 }
 
 static ssize_t st7735_write(struct fb_info *info, const char __user *buf,
-      size_t count, loff_t *ppos)
+                            size_t count, loff_t *ppos)
 {
-	struct MyDevice *sd = info->par;
-	ssize_t res;
+   struct MyDevice *sd = info->par;
+   ssize_t res;
 
-	res = fb_sys_write(info, buf, count, ppos);
+   res = fb_sys_write(info, buf, count, ppos);
 
-//	_update_display(sd);
+   //_update_display(sd);
     schedule_delayed_work(&info->deferred_work, HZ/30);
 
-	return res;
+   return res;
 }
 
 void st7735_fillrect(struct fb_info *info, const struct fb_fillrect *rect)
 {
-	struct MyDevice *sd = info->par;
+   struct MyDevice *sd = info->par;
 
    sys_fillrect(info, rect);
-//	_update_display(sd);
+   //_update_display(sd);
    schedule_delayed_work(&info->deferred_work, HZ/30);
 
 }
 
 void st7735_copyarea(struct fb_info *info, const struct fb_copyarea *area)
 {
-	struct MyDevice *sd = info->par;
+   struct MyDevice *sd = info->par;
 
-	sys_copyarea(info, area);
-	//_update_display(sd);
-    schedule_delayed_work(&info->deferred_work, HZ/30);
+   sys_copyarea(info, area);
+   //_update_display(sd);
+   schedule_delayed_work(&info->deferred_work, HZ/30);
 
 }
 
 void st7735_imageblit(struct fb_info *info, const struct fb_image *image)
 {
-	struct MyDevice *sd = info->par;
+   struct MyDevice *sd = info->par;
 
-	sys_imageblit(info, image);
-	//_update_display(sd);
-    schedule_delayed_work(&info->deferred_work, HZ/30);
+   sys_imageblit(info, image);
+   //_update_display(sd);
+   schedule_delayed_work(&info->deferred_work, HZ/30);
 }
 
 static struct fb_ops st7735_ops = {
@@ -403,22 +403,17 @@ static struct fb_var_screeninfo st7735_var;
 struct MyDevice *sdGlobal;
 
 static void st7735_deferred_io(struct fb_info *info,
-                         struct list_head *pagelist)
+                               struct list_head *pagelist)
 {
-	struct MyDevice *sd = info->par;
-   //TODO:
-   //update the display
-	_update_display(sd);
+   struct MyDevice *sd = info->par;
+   _update_display(sd);
 }
 
 
 static struct fb_deferred_io st7735_defio = {
-   .delay      = HZ/30,
-   .deferred_io   = st7735_deferred_io,
+     .delay      = HZ/30,
+     .deferred_io   = st7735_deferred_io,
 };
-
-
-
 
 static int _fb_platform_driver_probe(struct platform_device *pdev)
 {
@@ -442,9 +437,9 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    info->var.xres = X_RES;
    info->var.yres = Y_RES;
    info->var.xres_virtual =   info->var.xres;
-      info->var.yres_virtual =   info->var.yres;
-      info->var.bits_per_pixel = BPP;
-        info->var.nonstd =         1;
+   info->var.yres_virtual =   info->var.yres;
+   info->var.bits_per_pixel = BPP;
+   info->var.nonstd =         1;
 
    info->var.red.offset = 11;
    info->var.red.length = 5;
@@ -468,7 +463,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    sdGlobal = info->par;
    sdGlobal->info = info;
    sdGlobal->vmem = vmem;
-   sdGlobal->ssbuf = vmem;
+   sdGlobal->ssbuf = vzalloc(vmemsize);
 
    //spi init
    int ret;
@@ -478,7 +473,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
         .max_speed_hz = 32000000, //speed of your device splace can handle
         .bus_num = 0, //BUS number
         .chip_select = 0,
-        .mode = SPI_MODE_2,  //SPI mode 3, 2 and 0 works
+        .mode = SPI_MODE_0,  //SPI mode 3, 2 and 0 works
    };
 
    printk(KERN_INFO "spi basic driver init");
@@ -519,15 +514,16 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
 
 static int _fb_platform_driver_remove(struct platform_device *pdev)
 {
+   vfree(sdGlobal->vmem);
+   vfree(sdGlobal->ssbuf);
    unregister_framebuffer(sdGlobal->info);
-   vfree(sdGlobal);
    framebuffer_release(sdGlobal->info);
    if (spi)
-   	{
-   		spi_unregister_device(spi);
-   	}
-   	 gpio_free(24);
-   	 gpio_free(25);
+     {
+        spi_unregister_device(spi);
+     }
+   gpio_free(24);
+   gpio_free(25);
 
    return 0;
 }
