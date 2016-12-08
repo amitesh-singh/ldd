@@ -316,6 +316,7 @@ static struct fb_fix_screeninfo st7735_fix = {
      .accel = FB_ACCEL_NONE,
 };
 
+
 static void
 _update_display(struct MyDevice *sd)
 {
@@ -338,7 +339,8 @@ static ssize_t st7735_write(struct fb_info *info, const char __user *buf,
 
 	res = fb_sys_write(info, buf, count, ppos);
 
-	_update_display(sd);
+//	_update_display(sd);
+    schedule_delayed_work(&info->deferred_work, HZ/30);
 
 	return res;
 }
@@ -348,7 +350,8 @@ void st7735_fillrect(struct fb_info *info, const struct fb_fillrect *rect)
 	struct MyDevice *sd = info->par;
 
    sys_fillrect(info, rect);
-	_update_display(sd);
+//	_update_display(sd);
+   schedule_delayed_work(&info->deferred_work, HZ/30);
 
 }
 
@@ -357,7 +360,8 @@ void st7735_copyarea(struct fb_info *info, const struct fb_copyarea *area)
 	struct MyDevice *sd = info->par;
 
 	sys_copyarea(info, area);
-	_update_display(sd);
+	//_update_display(sd);
+    schedule_delayed_work(&info->deferred_work, HZ/30);
 
 }
 
@@ -366,7 +370,9 @@ void st7735_imageblit(struct fb_info *info, const struct fb_image *image)
 	struct MyDevice *sd = info->par;
 
 	sys_imageblit(info, image);
-	_update_display(sd);
+	//_update_display(sd);
+    schedule_delayed_work(&info->deferred_work, HZ/30);
+
 }
 
 static struct fb_ops st7735_ops = {
@@ -395,6 +401,7 @@ static struct fb_deferred_io st7735_defio = {
    .delay      = HZ/30,
    .deferred_io   = st7735_deferred_io,
 };
+
 
 
 
