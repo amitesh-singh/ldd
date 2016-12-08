@@ -514,9 +514,11 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
 
 static int _fb_platform_driver_remove(struct platform_device *pdev)
 {
+
+   unregister_framebuffer(sdGlobal->info);
+   fb_deferred_io_cleanup(sdGlobal->info);
    vfree(sdGlobal->vmem);
    vfree(sdGlobal->ssbuf);
-   unregister_framebuffer(sdGlobal->info);
    framebuffer_release(sdGlobal->info);
    if (spi)
      {
