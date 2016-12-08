@@ -372,7 +372,6 @@ void st7735_imageblit(struct fb_info *info, const struct fb_image *image)
 	sys_imageblit(info, image);
 	//_update_display(sd);
     schedule_delayed_work(&info->deferred_work, HZ/30);
-
 }
 
 static struct fb_ops st7735_ops = {
@@ -385,7 +384,7 @@ static struct fb_ops st7735_ops = {
 };
 
 static struct fb_var_screeninfo st7735_var;
-struct MyDevice *sd;
+struct MyDevice *sdGlobal;
 
 static void st7735_deferred_io(struct fb_info *info,
                          struct list_head *pagelist)
@@ -410,7 +409,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    int vmemsize;
    int retval = 0;
    struct fb_info *info;
-   struct MyDevice *sd;
+   //struct MyDevice *sd;
    u8 *vmem;
 
    vmemsize = X_RES * Y_RES * BPP / 8;
@@ -443,9 +442,9 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
         return -ENODEV;
      }
 
-   sd = info->par;
-   sd->info = info;
-   sd->vmem = vmem;
+   sdGlobal = info->par;
+   sdGlobal->info = info;
+   sdGlobal->vmem = vmem;
 
 
    //spi init
@@ -453,7 +452,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    struct spi_master *master;
    struct spi_board_info spi_device_info = {
         .modalias = "st7735",
-        .max_speed_hz = 60000000, //speed of your device splace can handle
+        .max_speed_hz = 10000000, //speed of your device splace can handle
         .bus_num = 0, //BUS number
         .chip_select = 0,
         .mode = SPI_MODE_2,  //SPI mode 3, 2 and 0 works
@@ -498,16 +497,15 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
 
 static int _fb_platform_driver_remove(struct platform_device *pdev)
 {
-	if (spi)
-	{
-		spi_unregister_device(spi);
-	}
-	 gpio_free(24);
-	 gpio_free(25);
-
-   unregister_framebuffer(sd->info);
-   vfree(sd->vmem);
-   framebuffer_release(sd->info);
+   unregister_framebuffer(sdGlobal->info);
+   vfree(sdGlobal);
+   framebuffer_release(sdGlobal->info);
+   if (spi)
+   	{
+   		spi_unregister_device(spi);
+   	}
+   	 gpio_free(24);
+   	 gpio_free(25);
 
    return 0;
 }
