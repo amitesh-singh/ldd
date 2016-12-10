@@ -66,34 +66,23 @@
 #define ST7735_GMCTRP1     (0xE0)
 #define ST7735_GMCTRN1     (0xE1)
 
-/* lcd resolution */
 #define X_RES 128
 #define Y_RES 160
 #define BPP 16
 
-#define MEM_LEN X_RES*Y_RES*B_PP/8
+#define MEM_LEN X_RES*Y_RES*BPP/8
 
+#define RST 25
+#define DC 24
 
 #define CS_HIGH gpio_set_value(25, 1)
 #define CS_LOW gpio_set_value(25, 0)
 
-#define DC_HIGH gpio_set_value(24, 1)
-#define DC_LOW gpio_set_value(24, 0)
+#define DC_HIGH gpio_set_value(DC, 1)
+#define DC_LOW gpio_set_value(DC, 0)
 
-#define RST_HIGH gpio_set_value(25, 1)
-#define RST_LOW gpio_set_value(25, 0)
-
-
-struct FbDeviceData
-{
-   uint8_t width;
-   uint8_t height;
-   uint8_t bpp;
-
-   void (*init_display)(struct FbDeviceData *devData, struct platform_device *pdev);
-   void (*off_display)(struct FbDeviceData *devData, struct platform_device *pdev);
-
-};
+#define RST_HIGH gpio_set_value(RST, 1)
+#define RST_LOW gpio_set_value(RST, 0)
 
 
 static void spi_command(struct spi_device *spi, unsigned int c)
@@ -147,9 +136,6 @@ static void init_gpio(uint8_t gpio)
    //The below api will make gpio chip to seen in sysfs /sys/class/gpio/gpio25
    //gpio_export(gpio);
 }
-#define RST 25
-#define DC 24
-
 
 static struct spi_device *spi;
 
@@ -169,8 +155,6 @@ void fillRec(uint8_t x, uint8_t y, uint8_t w, uint8_t h, uint16_t color)
    spi_command(spi, ST7735_NOP);
    //   CS_HIGH;
 }
-
-
 
 static int  _init_display(void)
 {
@@ -283,7 +267,6 @@ static int  _init_display(void)
    return 0;
 }
 
-
 struct MyDevice
 {
    struct fb_info  *info;
@@ -306,7 +289,6 @@ static struct platform_device fb_device = {
      .dev.release = _fb_device_release
 };
 
-
 static struct fb_fix_screeninfo st7735_fix = {
      .id = "st7735r",
      .type = FB_TYPE_PACKED_PIXELS,
@@ -318,7 +300,6 @@ static struct fb_fix_screeninfo st7735_fix = {
      .accel = FB_ACCEL_NONE,
 };
 
-
 static void
 _update_display(struct MyDevice *sd)
 {
@@ -326,7 +307,7 @@ _update_display(struct MyDevice *sd)
    u8 *mem = sd->info->screen_base;
    u16 *vmem16 = (u16 *) mem;
    u16 *ssbuf = sd->ssbuf;
-   for (i = 0; i < X_RES * Y_RES * BPP/8/2; ++i)
+   for (i = 0; i < MEM_LEN/2; ++i)
      {
         ssbuf[i] = swab16(vmem16[i]);
      }
@@ -341,15 +322,8 @@ _update_display(struct MyDevice *sd)
         //spi_data(spi, (ssbuf[i] & 0xFF));
         //spi_data(spi, (ssbuf[i] >> 8));
     // }
-  spi_write(spi, (u8 *)ssbuf, X_RES * Y_RES * BPP/8);
+  spi_write(spi, (u8 *)ssbuf, MEM_LEN);
    DC_LOW;
-   /*
-      for (i = 0; i < (X_RES*Y_RES*BPP/8); ++i)
-      {
-   //_writeWord(spi, mem[i]);
-   spi_write(spi, mem[i], 1);
-   }
-    */
 }
 
 static ssize_t st7735_write(struct fb_info *info, const char __user *buf,
@@ -428,7 +402,7 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    //struct MyDevice *sd;
    u8 *vmem;
 
-   vmemsize = X_RES * Y_RES * BPP / 8;
+   vmemsize = MEM_LEN;
 
    vmem = vzalloc(vmemsize);
 
