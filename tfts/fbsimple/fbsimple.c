@@ -177,92 +177,102 @@ static int  _init_display(void)
    RST_LOW;
    udelay(20);
    RST_HIGH;
-   mdelay(120);
    spi_command(spi, ST7735_SWRESET); // software reset
    mdelay(150);
 
-   //CS_HIGH; //not using CS
-
    spi_command(spi, ST7735_SLPOUT);  // out of sleep mode
    //CS_HIGH;
-   mdelay(120);
+   mdelay(500);
 
-   spi_command(spi, ST7735_COLMOD);  // set color mode
-   // 011 --> 12 bits/pixel
-   // 101 --> 16 bits/pixel
-   // 110 --> 18 bits/pixel
-   spi_data(spi, 0x05);          // 16-bit color
+   spi_command(spi, 0xB1);
+   spi_data(spi, 0x01);
+   spi_data(spi, 0x2C);
+   spi_data(spi, 0x2D);
 
-   spi_command(spi, ST7735_FRMCTR1); // frame rate control
-   spi_data(spi, 0x00);          // fastest refresh
-   spi_data(spi, 0x06);          // 6 lines front porch
-   spi_data(spi, 0x03);          // 3 lines backporch
+   spi_command(spi, 0xB2);
+   spi_data(spi, 0x01);
+   spi_data(spi, 0x2C);
+   spi_data(spi, 0x2D);
 
-   spi_command(spi, ST7735_MADCTL);
+   spi_command(spi, 0xB3);
+   spi_data(spi, 0x01);
+   spi_data(spi, 0x2C);
+   spi_data(spi, 0x2D);
+   spi_data(spi, 0x01);
+   spi_data(spi, 0x2C);
+   spi_data(spi, 0x2D);
 
-#define _BV(x) (1 << x)
-   spi_data( spi, _BV(3));
+   spi_command(spi, 0xB4);
+   spi_data(spi, 0x07);
 
-   spi_command(spi,ST7735_DISSET5); // display settings #5
-   spi_data(spi,0x15);          // 1 clock cycle nonoverlap, 2 cycle gate rise, 3 cycle oscil. equalize
-   spi_data(spi,0x02);          // fix on VTL
+   spi_command(spi, 0xC0);
+   spi_data(spi, 0xA2);
+   spi_data(spi, 0x02);
+   spi_data(spi, 0x84);
 
-   spi_command(spi, ST7735_INVOFF);
+   spi_command(spi, 0xC1);
+   spi_data(spi, 0xC5);
 
-   spi_command(spi,ST7735_PWCTR1);  // power control
-   spi_data(spi,0x02);          // GVDD = 4.7V
-   spi_data(spi,0x70);          // 1.0uA
+   spi_command(spi, 0xC2);
+   spi_data(spi, 0x0A);
+   spi_data(spi, 0x00);
 
-   spi_command(spi,ST7735_PWCTR2);  // power control
-   spi_data(spi,0x05);          // VGH = 14.7V, VGL = -7.35V
-   spi_data(spi,ST7735_PWCTR3);  // power control
-   spi_data(spi,0x01);          // Opamp current small
-   spi_data(spi,0x02);          // Boost frequency
+   spi_command(spi, 0xC3);
+   spi_data(spi, 0x8A);
+   spi_data(spi, 0x2A);
 
-   spi_command(spi,ST7735_VMCTR1);  // power control
-   spi_data(spi,0x3C);          // VCOMH = 4V
-   spi_data(spi,0x38);          // VCOML = -1.1V
+   spi_command(spi, 0xC4);
+   spi_data(spi, 0x8A);
+   spi_data(spi, 0xEE);
 
-   spi_command(spi,ST7735_PWCTR6);  // power control
-   spi_data(spi,0x11);
-   spi_data(spi,0x15);
+   spi_command(spi, 0xC5);
+   spi_data(spi, 0x0E);
 
-   spi_command(spi,ST7735_GMCTRP1);
+   spi_command(spi, 0x3A);
+   spi_data(spi, 0x05);
 
-   spi_data(spi,0x09);
-   spi_data(spi,0x16);
-   spi_data(spi,0x09);
-   spi_data(spi,0x20);
-   spi_data(spi,0x21);
-   spi_data(spi,0x1B);
-   spi_data(spi,0x13);
-   spi_data(spi,0x19);
-   spi_data(spi,0x17);
-   spi_data(spi,0x15);
-   spi_data(spi,0x1E);
-   spi_data(spi,0x2B);
-   spi_data(spi,0x04);
-   spi_data(spi,0x05);
-   spi_data(spi,0x02);
-   spi_data(spi,0x0E);
-   spi_command(spi,ST7735_GMCTRN1);
-   spi_data(spi,0x0B);
-   spi_data(spi,0x14);
-   spi_data(spi,0x08);
-   spi_data(spi,0x1E);
-   spi_data(spi,0x22);
-   spi_data(spi,0x1D);
-   spi_data(spi,0x18);
-   spi_data(spi,0x1E);
-   spi_data(spi,0x1B);
-   spi_data(spi,0x1A);
-   spi_data(spi,0x24);
-   spi_data(spi,0x2B);
-   mdelay(120);
-   spi_data(spi, 0x3f);
+   //GAMMA correction 1
+   spi_command(spi, 0xE0);
+   spi_data(spi, 0x0F);
+   spi_data(spi, 0x1A);
+   spi_data(spi, 0x0F);
+   spi_data(spi, 0x18);
+   spi_data(spi, 0x2F);
+   spi_data(spi, 0x28);
+   spi_data(spi, 0x20);
+   spi_data(spi, 0x22);
+   spi_data(spi, 0x1F);
+   spi_data(spi, 0x1B);
+   spi_data(spi, 0x23);
+   spi_data(spi, 0x37);
+   spi_data(spi, 0x00);
+   spi_data(spi, 0x07);
+   spi_data(spi, 0x02);
+   spi_data(spi, 0x10);
+
+   spi_command(spi, 0xE1);
+   spi_data(spi, 0x0F);
+   spi_data(spi, 0x1B);
+   spi_data(spi, 0x0F);
+   spi_data(spi, 0x17);
+   spi_data(spi, 0x33);
+   spi_data(spi, 0x2C);
+   spi_data(spi, 0x29);
+   spi_data(spi, 0x2E);
+   spi_data(spi, 0x30);
+   spi_data(spi, 0x30);
+   spi_data(spi, 0x39);
+   spi_data(spi, 0x3F);
+   spi_data(spi, 0x00);
+   spi_data(spi, 0x07);
+   spi_data(spi, 0x03);
+   spi_data(spi, 0x10);
+
+   //Display
+   spi_command(spi, 0x29);
+   mdelay(100);
+   spi_command(spi, 0x13);
    mdelay(10);
-   spi_command(spi, ST7735_DISPON);
-   mdelay(120);
 
    return 0;
 }
