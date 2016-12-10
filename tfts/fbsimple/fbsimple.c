@@ -1,17 +1,12 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/errno.h>
-#include <linux/string.h>
-#include <linux/mm.h>
 #include <linux/slab.h>
-#include <linux/vmalloc.h>
 #include <linux/delay.h>
-#include <linux/interrupt.h>
 #include <linux/fb.h>
 #include <linux/init.h>
 #include <linux/platform_device.h>
 #include <linux/spi/spi.h>
-#include <linux/uaccess.h>
 #include <linux/gpio.h>
 
 #include <linux/platform_device.h>
@@ -339,21 +334,15 @@ _update_display(struct MyDevice *sd)
 static ssize_t st7735_write(struct fb_info *info, const char __user *buf,
                             size_t count, loff_t *ppos)
 {
-   struct MyDevice *sd = info->par;
    ssize_t res;
-
    res = fb_sys_write(info, buf, count, ppos);
-
    //_update_display(sd);
     schedule_delayed_work(&info->deferred_work, HZ/30);
-
    return res;
 }
 
 void st7735_fillrect(struct fb_info *info, const struct fb_fillrect *rect)
 {
-   struct MyDevice *sd = info->par;
-
    sys_fillrect(info, rect);
    //_update_display(sd);
    schedule_delayed_work(&info->deferred_work, HZ/30);
@@ -362,8 +351,6 @@ void st7735_fillrect(struct fb_info *info, const struct fb_fillrect *rect)
 
 void st7735_copyarea(struct fb_info *info, const struct fb_copyarea *area)
 {
-   struct MyDevice *sd = info->par;
-
    sys_copyarea(info, area);
    //_update_display(sd);
    schedule_delayed_work(&info->deferred_work, HZ/30);
@@ -372,20 +359,18 @@ void st7735_copyarea(struct fb_info *info, const struct fb_copyarea *area)
 
 void st7735_imageblit(struct fb_info *info, const struct fb_image *image)
 {
-   struct MyDevice *sd = info->par;
-
    sys_imageblit(info, image);
    //_update_display(sd);
    schedule_delayed_work(&info->deferred_work, HZ/30);
 }
 
 static struct fb_ops st7735_ops = {
-     .owner		= THIS_MODULE,
-     .fb_read	= fb_sys_read,
-     .fb_write	= st7735_write,
-     .fb_fillrect	= st7735_fillrect,
-     .fb_copyarea	= st7735_copyarea,
-     .fb_imageblit	= st7735_imageblit,
+     .owner		    = THIS_MODULE,
+     .fb_read	    = fb_sys_read,
+     .fb_write	    = st7735_write,
+     .fb_fillrect	 = st7735_fillrect,
+     .fb_copyarea	 = st7735_copyarea,
+     .fb_imageblit = st7735_imageblit,
 };
 
 static struct fb_var_screeninfo st7735_var;
@@ -406,6 +391,7 @@ static struct fb_deferred_io st7735_defio = {
 
 static int _fb_platform_driver_probe(struct platform_device *pdev)
 {
+   int ret;
    int vmemsize;
    int retval = 0;
    struct fb_info *info;
@@ -455,11 +441,10 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
    sdGlobal->ssbuf = vzalloc(vmemsize);
 
    //spi init
-   int ret;
    struct spi_master *master;
    struct spi_board_info spi_device_info = {
         .modalias = "st7735",
-        .max_speed_hz = 32000000, //speed of your device splace can handle
+        .max_speed_hz = 62000000, //speed of your device splace can handle
         .bus_num = 0, //BUS number
         .chip_select = 0,
         .mode = SPI_MODE_0,  //SPI mode 3, 2 and 0 works
