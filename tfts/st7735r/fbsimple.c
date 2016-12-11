@@ -488,7 +488,6 @@ static int _fb_platform_driver_probe(struct platform_device *pdev)
 
 static int _fb_platform_driver_remove(struct platform_device *pdev)
 {
-
    unregister_framebuffer(sdGlobal->info);
    fb_deferred_io_cleanup(sdGlobal->info);
    vfree(sdGlobal->vmem);
@@ -498,8 +497,9 @@ static int _fb_platform_driver_remove(struct platform_device *pdev)
      {
         spi_unregister_device(spi);
      }
-   gpio_free(24);
-   gpio_free(25);
+
+   gpio_free(RST);
+   gpio_free(DC);
 
    return 0;
 }
