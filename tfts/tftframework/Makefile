@@ -1,4 +1,4 @@
-obj-m += tftframework.o
+obj-m += st7735r.o tft.o
 
 all:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules
