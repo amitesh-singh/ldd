@@ -300,9 +300,14 @@ static void
 _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
 {
    struct spi_device *spi = ((struct st7735r_info *)(tdd->info))->spi;
+   unsigned i = 0;
 
    DC_HIGH;
-   spi_write(spi, (u8 *)mem, size);
+   for (; i < size; i+=2)
+     {
+        spi_write(spi, &mem[i+1], 1);
+        spi_write(spi, &mem[i], 1);
+     }
    DC_LOW;
 }
 

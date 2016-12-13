@@ -26,7 +26,7 @@ struct fb_driver_data
 {
    struct fb_info *info;
    u8 *vmem;
-   u16 *ssbuf;
+   u8 *ssbuf;
    struct tft_device_data *device_data;
 };
 
@@ -47,17 +47,16 @@ _update_display(struct fb_driver_data *sd)
    unsigned int i;
 
    u8 *mem = sd->info->screen_base;
-   u16 *vmem16 = (u16 *) mem;
-   u16 *ssbuf = sd->ssbuf;
+   u8 *ssbuf = sd->ssbuf;
 
-   for (i = 0; i < sd->info->fix.smem_len/2; ++i)
+   for (i = 0; i < sd->info->fix.smem_len; ++i)
      {
-        ssbuf[i] = swab16(vmem16[i]);
+        ssbuf[i] = (mem[i]);
      }
 
    sd->device_data->set_addr_window(sd->device_data, 0, 0,
 		   	   	   	   	   	   	    sd->info->var.xres - 1, sd->info->var.yres - 1);
-   sd->device_data->update_display(sd->device_data, (u8 *)ssbuf, sd->info->fix.smem_len);
+   sd->device_data->update_display(sd->device_data, mem, sd->info->fix.smem_len);
 }
 
 static ssize_t _write(struct fb_info *info, const char __user *buf,
