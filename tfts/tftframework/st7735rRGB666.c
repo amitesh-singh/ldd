@@ -311,10 +311,12 @@ _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
 
    //X only supports 24 bit depth mode, so lets run X on 24 bit depth
    // but do the drawing on tft in 18 bit since this is the only mode supported
+   // the bits order for the rgb666 color
+   // - - r r r r r r - - g g g g g g - - b b b b b b [LSB]
+   // TFT accepts the colors in RGB format.. first R, then G followed by B
    DC_HIGH;
    for (; i < size; i+=3)
      { 
-       // uint8_t r = mem[i+2] & 0b00000011;
         spi_write(spi, &mem[i + 2], 1); //r
         spi_write(spi, &mem[i + 1], 1); //g 
         spi_write(spi, &mem[i], 1); // b

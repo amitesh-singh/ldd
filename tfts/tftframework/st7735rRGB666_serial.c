@@ -311,23 +311,14 @@ _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
 
    //X only supports 24 bit depth mode, so lets run X on 24 bit depth
    // but do the drawing on tft in 18 bit since this is the only mode supported
+   // the bits order for the rgb666 color
+   // - - r r r r r r - - g g g g g g - - b b b b b b [LSB]
    DC_HIGH;
-   //this is for the display which accepts the rgb in following order.
-   //------ r r r r r r g g g g g g b b b b b b [LSB]
-   uint8_t r, g, b;
    for (; i < size; i+=3)
-     {
-        r = mem[i + 2];
-        g = mem[ i + 1];
-        b = mem[i]; 
-        //b = (b >> 2) | (r & 0b00000011);
-        tdd->send_data(tdd, r >> 2); //r 
-        tdd->send_data(tdd, (g >> 2) | (r & 0b00000011)); // g
-        //tdd->send_data(tdd, mem[i + 0]); // b
-        tdd->send_data(tdd, (b >> 2) | (g & 0b00000011)); // b
-        //spi_write(spi, &mem[i + 2], 1); //r
-        //spi_write(spi, &mem[i + 1], 1); //g 
-        //spi_write(spi, &mem[i], 1); // b
+     { 
+        spi_write(spi, &mem[i], 1); //r
+        spi_write(spi, &mem[i + 1], 1); //g 
+        spi_write(spi, &mem[i + 2], 1); // b
      }
    DC_LOW;
 }
@@ -339,12 +330,12 @@ static struct tft_device_data st7735r_device =
    .framerate = HZ/30, //30 Frame/s
    .bpp = 24,
    .info = &info,
-   .red_offset = 16,
+   .red_offset = 0,
    .red_length = 8,
    .green_offset = 8,
    .green_length = 8,
-   .blue_offset = 0,
-   .blue_length = 8,
+   .blue_offset = 16,
+   .blue_length = 8,  // blue is MSB here
    .init_connection = _init_connection,
    .send_command = _send_command,
    .send_data = _send_data,
