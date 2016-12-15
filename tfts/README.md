@@ -46,6 +46,10 @@ Add to file /etc/modules-load.d/fbtft.conf
 
    `options fbtft_device name=sainsmart18`  
 
+### issue when GL is enabled.
+
+   I noticed X won't start if i enable experimental GL on raspberry pi. don't know why.
+
 ### Run EFL App on fb
 
 `ELM_DISPLAY=fb`  
