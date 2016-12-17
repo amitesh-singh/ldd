@@ -20,21 +20,30 @@
 
 #include "common.h"
 
-#define RS 23
-#define DC 23
-#define CS 24
-#define WR 10
+#define RS 10
+#define DC 10
 
-#define RST 9
+#define CS 9
+#define WR 23
+#define RST 24
 //data pins for parallel bus
-#define D0 4
-#define D1 14
-#define D2 3
-#define D3 15
-#define D4 17
-#define D5 18
-#define D6 27
-#define D7 22
+//#define D0 4
+#define D0 14
+//#define D1 14
+#define D1 4
+//#define D2 3
+#define D2 15
+//#define D3 15
+#define D3 3
+//#define D4 17
+#define D4 18
+//#define D5 18
+#define D5 17
+
+//#define D6 27
+#define D6 22
+//#define D7 22
+#define D7 27
 
 #define RS_LOW  gpio_set_value(RS, 0)
 #define RS_HIGH gpio_set_value(RS, 1)
@@ -64,7 +73,7 @@ static void init_gpio(uint8_t gpio)
    status = gpio_request(gpio, "sysfs");
    if (status < 0)
      {
-        printk (KERN_ALERT "Failed in gpio request");
+        printk (KERN_ALERT "Failed in gpio request %d", gpio);
      }
    gpio_direction_output(gpio, 1);
 }
@@ -221,6 +230,7 @@ _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
         tdd->send_data(tdd, mem[i + 1]);
         tdd->send_data(tdd, mem[i]);
      }
+   printk("update display\n");
 }
 
 static struct tft_device_data tft4d_device =
