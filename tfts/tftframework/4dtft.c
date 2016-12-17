@@ -96,25 +96,25 @@ static void _shutdown_connection(struct tft_device_data *tdd)
      gpio_free(info.gpio[i]);
 }
 
-static void write_data(uint8_t data)
+static void write_bus(uint8_t data)
 {
    uint8_t i = 0;
 
+   WR_LOW;
    for (; i < 8; ++i)
      {
         gpio_set_value(info.gpio[i], data & 0x01);
         data >>= 1;
      }
+   WR_HIGH;
 }
 
 static void _send_command(struct tft_device_data *tdd, uint16_t command)
 {
    RS_LOW;
 
-   write_data(command);
+   write_bus(command);
 
-   WR_LOW;
-   WR_HIGH;
    RS_HIGH;
 }
 
@@ -122,11 +122,15 @@ static void _send_data(struct tft_device_data *tdd, uint16_t data)
 {
    RS_HIGH;
 
-   write_data(data);
+   write_bus(data);
 
-   WR_LOW;
-   WR_HIGH;
    RS_LOW;
+}
+
+static void write_word(struct tft_device_data *tdd, uint16_t word)
+{
+   tdd->send_data(tdd, (word >> 8));
+   tdd->send_data(tdd, (word & 0xFF));
 }
 
 static void  _init_display(struct tft_device_data *tdd)
@@ -185,17 +189,14 @@ static void  _init_display(struct tft_device_data *tdd)
    tdd->send_data(tdd, 0x0C);
    tdd->send_data(tdd, 0x00);
 
+   tdd->send_command(tdd,  0x36);
+   tdd->send_data(tdd, 0x0A);
+
    mdelay(120);
    // disp on
    tdd->send_command(tdd,  0x29);
 
-   CS_HIGH;
-}
-
-static void write_word(struct tft_device_data *tdd, uint16_t word)
-{
-   tdd->send_data(tdd, (word >> 8));
-   tdd->send_data(tdd, (word & 0xFF));
+   mdelay(100);
 }
 
 static void _set_addr_window(struct tft_device_data *tdd, uint16_t x0, uint16_t y0,
@@ -215,13 +216,16 @@ static void _set_addr_window(struct tft_device_data *tdd, uint16_t x0, uint16_t 
 static void
 _update_display(struct tft_device_data *tdd, uint8_t *mem, ssize_t size)
 {
+   uint16_t *mem16;
    unsigned i = 0;
+
+   RS_HIGH;
    for (; i < size; i+=2)
      {
-        tdd->send_data(tdd, mem[i + 1]);
-        tdd->send_data(tdd, mem[i]);
+        mem16 = (uint16_t *)&mem[i];
+        write_word(tdd, *mem16);
      }
-   printk("update display\n");
+   RS_LOW;
 }
 
 static struct tft_device_data tft4d_device =
