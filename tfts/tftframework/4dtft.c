@@ -20,29 +20,20 @@
 
 #include "common.h"
 
-#define RS 10
-#define DC 10
+#define RS 22
+#define DC 22
 
-#define CS 9
-#define WR 23
-#define RST 24
+#define CS 23
+#define WR 24
+#define RST 10
 //data pins for parallel bus
-//#define D0 4
-#define D0 14
-//#define D1 14
-#define D1 4
-//#define D2 3
-#define D2 15
-//#define D3 15
-#define D3 3
-//#define D4 17
-#define D4 18
-//#define D5 18
+#define D0 2
+#define D1 3
+#define D2 4
+#define D3 14
+#define D4 15
 #define D5 17
-
-//#define D6 27
-#define D6 22
-//#define D7 22
+#define D6 18
 #define D7 27
 
 #define RS_LOW  gpio_set_value(RS, 0)
@@ -195,6 +186,7 @@ static void  _init_display(struct tft_device_data *tdd)
    tdd->send_data(tdd, 0x0C);
    tdd->send_data(tdd, 0x00);
 
+   mdelay(120);
    // disp on
    tdd->send_command(tdd,  0x29);
 
