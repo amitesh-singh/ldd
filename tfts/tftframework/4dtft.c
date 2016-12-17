@@ -87,10 +87,13 @@ static int _init_connection(struct tft_device_data *tdd)
 
 static void _shutdown_connection(struct tft_device_data *tdd)
 {
+   uint8_t i = 0;
    gpio_free(WR);
    gpio_free(CS);
    gpio_free(RST);
    gpio_free(DC);
+   for (; i < 8; ++i)
+     gpio_free(info.gpio[i]);
 }
 
 static void write_data(uint8_t data)
