@@ -109,12 +109,11 @@ static void write_data(uint8_t data)
 
 static void _send_command(struct tft_device_data *tdd, uint16_t command)
 {
-
    RS_LOW;
-   WR_LOW;
 
    write_data(command);
 
+   WR_LOW;
    WR_HIGH;
    RS_HIGH;
 }
@@ -122,10 +121,10 @@ static void _send_command(struct tft_device_data *tdd, uint16_t command)
 static void _send_data(struct tft_device_data *tdd, uint16_t data)
 {
    RS_HIGH;
-   WR_LOW;
 
    write_data(data);
 
+   WR_LOW;
    WR_HIGH;
    RS_LOW;
 }
