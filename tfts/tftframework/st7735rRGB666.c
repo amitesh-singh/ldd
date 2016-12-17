@@ -277,8 +277,8 @@ static void write_word(struct tft_device_data *tdd, uint16_t word)
    tdd->send_data(tdd, (word & 0xFF));
 }
 
-static void _set_addr_window(struct tft_device_data *tdd, uint8_t x0, uint8_t y0,
-                             uint8_t x1, uint8_t y1)
+static void _set_addr_window(struct tft_device_data *tdd, uint16_t x0, uint16_t y0,
+							 uint16_t x1, uint16_t y1)
 {
    //struct spi_device *spi = ((struct st7735r_info *)(tdd->info))->spi;
    tdd->send_command(tdd, ST7735_CASET);
