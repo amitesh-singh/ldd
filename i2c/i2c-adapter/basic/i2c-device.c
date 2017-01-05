@@ -31,6 +31,7 @@ static int __init
 _i2c_module_init(void)
 {
    platform_device_register(&i2c_platform_device);
+
    return 0;
 }
 
@@ -45,5 +46,3 @@ module_exit(_i2c_module_exit);
 MODULE_LICENSE("GPL v2");
 MODULE_AUTHOR("Amitesh Singh <singh.amitesh@gmail.com>");
 MODULE_DESCRIPTION("a sample platform driver for i2c protocol.");
-
-
