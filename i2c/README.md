@@ -5,3 +5,5 @@
 - how to write i2c chip or client drivers 
    https://www.kernel.org/doc/Documentation/i2c/writing-clients
    http://www.linuxjournal.com/article/7252
+- best one: http://opensourceforu.com/2015/01/writing-i2c-clients-in-linux/
+
