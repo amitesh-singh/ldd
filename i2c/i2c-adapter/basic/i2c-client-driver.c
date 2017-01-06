@@ -68,9 +68,11 @@ static int __init
 _i2c_client_driver_init(void)
 {
    i2c_add_driver(&_i2c_driver);
+   printk(KERN_ALERT "i2c lcient driver init");
+
+   //adapter = _i2c_driver.adapter;
 
    adapter =  i2c_get_adapter(8);
-
    if (!adapter)
      {
         printk(KERN_ALERT "Failed to add adapter.");
