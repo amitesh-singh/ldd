@@ -141,3 +141,10 @@ in your module Makefile
 ### Linux interrupts
 
 1. http://www.slideshare.net/kerneltlv/linux-interrupts-63978201?qid=aba0244c-f180-42f6-a9ad-e5791dda14db&v=&b=&from_search=5
+
+### how to setup 2nd monitor on ubuntu
+ami@ami-desktop:~$ cvt 1920 1080
+# 1920x1080 59.96 Hz (CVT 2.07M9) hsync: 67.16 kHz; pclk: 173.00 MHz
+Modeline "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+ami@ami-desktop:~$ xrandr --newmode "1920x1080_60.00"  173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+ami@ami-desktop:~$ xrandr --addmode VGA1 1920x1080_60.00
