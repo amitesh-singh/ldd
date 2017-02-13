@@ -53,6 +53,23 @@ PROGMEM const char configDescr[] = {    /* USB configuration descriptor */
      0x03,       /* attrib: Interrupt endpoint - 0b0...11 or 0x03 */  // for bulk - its 0x02
      8, 0,       /* maximum packet size */
      USB_CFG_INTR_POLL_INTERVAL, /* in ms */
+
+    #if USB_CFG_HAVE_INTRIN_ENDPOINT    /* endpoint descriptor for endpoint 1 */
+    7,          /* sizeof(usbDescrEndpoint) */
+    USBDESCR_ENDPOINT,  /* descriptor type = endpoint */
+    (char)0x81, /* IN endpoint number 1 */
+    0x03,       /* attrib: Interrupt endpoint */
+    8, 0,       /* maximum packet size */
+    USB_CFG_INTR_POLL_INTERVAL, /* in ms */
+#endif
+#if USB_CFG_HAVE_INTRIN_ENDPOINT3
+    7,
+    USBDESCR_ENDPOINT,
+    0x80 | USB_CFG_EP3_NUMBER,
+    0x03,
+    8, 0,
+    USB_CFG_INTR_POLL_INTERVAL,
+#endif
 };
 
 
