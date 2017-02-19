@@ -144,3 +144,4 @@ in your module Makefile
 
 ### Device Tree
 - https://events.linuxfoundation.org/sites/events/files/slides/petazzoni-device-tree-dummies.pdf
+- install sudo apt install device-tree-compiler @ dtc  
