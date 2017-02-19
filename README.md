@@ -142,3 +142,5 @@ in your module Makefile
 
 1. http://www.slideshare.net/kerneltlv/linux-interrupts-63978201?qid=aba0244c-f180-42f6-a9ad-e5791dda14db&v=&b=&from_search=5
 
+### Device Tree
+- https://events.linuxfoundation.org/sites/events/files/slides/petazzoni-device-tree-dummies.pdf
