@@ -20,6 +20,13 @@ struct xboard_pwm_chip {
   struct pwm_chip chip;
 };
 
+/*
+static struct pwm_lookup xboard_pwm_lookup[] = {
+     PWM_LOOKUP("xboard-pwm", 0, "pwm-xboard", NULL,
+                36296, PWM_POLARITY_NORMAL),
+};
+*/
+
 static int xboard_pwm_config(struct pwm_chip *chip, struct pwm_device *pwm,
                              int duty_ns, int period_ns)
 {
@@ -48,6 +55,10 @@ static int _xboard_pwm_probe(struct platform_device *pdev)
 {
   struct xboard_pwm_chip *xpwm;
   int err;
+
+  //this is not exposed to be used in kernel module,
+  // only work with static compilation :/
+  //pwm_add_table(xboard_pwm_lookup, ARRAY_SIZE(xboard_pwm_lookup));
 
 /*
 devm_kzalloc() is resource-managed kzalloc(). The memory allocated with resource-managed functions
@@ -78,6 +89,7 @@ static int _xboard_pwm_remove(struct platform_device *pdev)
   struct xboard_pwm_chip *xpwm = platform_get_drvdata(pdev);
   int err;
 
+  if (!xpwm) return 0;
   err = pwmchip_remove(&xpwm->chip);
   if (err < 0) return err;
 
