@@ -26,6 +26,7 @@ _i2c_client_driver_init(void)
      }
    i2c_put_adapter(adapter);
    i2c_device = i2c_new_device(adapter, ds3231_rtc);
+   printk(KERN_ALERT "Add new i2c new device");
 
    return 0;
 }

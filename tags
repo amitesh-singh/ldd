@@ -1,0 +1,1526 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+AVRDUDE	usb/usb-blink-led/firmware/Makefile	/^AVRDUDE = avrdude -c usbasp  -p $(DEVICE)$/;"	m
+AVRDUDE	usb/usb-leds-class/firmware/Makefile	/^AVRDUDE = avrdude -c usbasp  -p $(DEVICE)$/;"	m
+BITORDER	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^enum BITORDER$/;"	g	file:
+CFLAGS	usb/usb-blink-led/firmware/Makefile	/^CFLAGS  = -Iusbdrv -I. -DDEBUG_LEVEL=0$/;"	m
+CFLAGS	usb/usb-leds-class/firmware/Makefile	/^CFLAGS  = -Iusbdrv -I. -DDEBUG_LEVEL=0$/;"	m
+COMPILE	usb/usb-blink-led/firmware/Makefile	/^COMPILE = avr-gcc -Wall -Os -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)$/;"	m
+COMPILE	usb/usb-leds-class/firmware/Makefile	/^COMPILE = avr-gcc -Wall -Os -DF_CPU=$(F_CPU) $(CFLAGS) -mmcu=$(DEVICE)$/;"	m
+CONFIG_MODULE_SIG	platform/simple/Makefile	/^CONFIG_MODULE_SIG=n$/;"	m
+DBG1	usb/usb-blink-led/firmware/usbdrv/oddebug.h	49;"	d
+DBG1	usb/usb-blink-led/firmware/usbdrv/oddebug.h	51;"	d
+DBG1	usb/usb-leds-class/firmware/usbdrv/oddebug.h	49;"	d
+DBG1	usb/usb-leds-class/firmware/usbdrv/oddebug.h	51;"	d
+DBG2	usb/usb-blink-led/firmware/usbdrv/oddebug.h	55;"	d
+DBG2	usb/usb-blink-led/firmware/usbdrv/oddebug.h	57;"	d
+DBG2	usb/usb-leds-class/firmware/usbdrv/oddebug.h	55;"	d
+DBG2	usb/usb-leds-class/firmware/usbdrv/oddebug.h	57;"	d
+DEBUG_LEVEL	usb/usb-blink-led/firmware/usbdrv/oddebug.h	39;"	d
+DEBUG_LEVEL	usb/usb-blink-led/firmware/usbdrv/oddebug.h	43;"	d
+DEBUG_LEVEL	usb/usb-leds-class/firmware/usbdrv/oddebug.h	39;"	d
+DEBUG_LEVEL	usb/usb-leds-class/firmware/usbdrv/oddebug.h	43;"	d
+DEVICE	usb/usb-blink-led/firmware/Makefile	/^DEVICE=atmega16a$/;"	m
+DEVICE	usb/usb-leds-class/firmware/Makefile	/^DEVICE=atmega16a$/;"	m
+DEVICE_CLASS	char/copytouser/echo.c	12;"	d	file:
+DEVICE_CLASS	char/mynull/mynull.c	9;"	d	file:
+DEVICE_CLASS	char/reversestring/reversestring.c	12;"	d	file:
+DEVICE_NAME	char/copytouser/echo.c	11;"	d	file:
+DEVICE_NAME	char/copytouser/userspace.c	6;"	d	file:
+DEVICE_NAME	char/misc/simple/userspace.c	6;"	d	file:
+DEVICE_NAME	char/misc/userspace.c	6;"	d	file:
+DEVICE_NAME	char/mynull/mynull.c	8;"	d	file:
+DEVICE_NAME	char/mynull/userspace.c	7;"	d	file:
+DEVICE_NAME	char/reversestring/reversestring.c	11;"	d	file:
+DEVICE_NAME	char/reversestring/userspace.c	6;"	d	file:
+DRIVER_AUTHOR	usb/usb-sysfs/usb-template.c	/^MODULE_AUTHOR(DRIVER_AUTHOR);$/;"	v
+DRIVER_AUTHOR	usb/usb-sysfs/usb-template.c	30;"	d	file:
+DRIVER_DESC	usb/usb-sysfs/usb-template.c	/^MODULE_DESCRIPTION(DRIVER_DESC);$/;"	v
+DRIVER_DESC	usb/usb-sysfs/usb-template.c	31;"	d	file:
+DRIVER_NAME	platform/gpio-irqchip/gpio-irqchip.c	14;"	d	file:
+DRIVER_NAME	platform/simple/common.h	1;"	d
+DRIVER_NAME	spi/bitbang/tight/my_bitbang.c	1;"	d	file:
+DRIVER_NAME	spi/bitbang/tight/spi-gpio.c	76;"	d	file:
+DRIVER_VERSION	usb/usb-sysfs/usb-template.c	29;"	d	file:
+ENABLE_BIT_DEFINITIONS	usb/usb-blink-led/firmware/usbdrv/usbportability.h	33;"	d
+ENABLE_BIT_DEFINITIONS	usb/usb-leds-class/firmware/usbdrv/usbportability.h	33;"	d
+FUSE_H	usb/usb-blink-led/firmware/Makefile	/^FUSE_H  = 0xDD$/;"	m
+FUSE_H	usb/usb-leds-class/firmware/Makefile	/^FUSE_H  = 0xDD$/;"	m
+FUSE_L	usb/usb-blink-led/firmware/Makefile	/^FUSE_L  = 0xE1$/;"	m
+FUSE_L	usb/usb-leds-class/firmware/Makefile	/^FUSE_L  = 0xE1$/;"	m
+F_CPU	usb/usb-blink-led/firmware/Makefile	/^F_CPU   = 16000000    # in Hz$/;"	m
+F_CPU	usb/usb-blink-led/firmware/usbdrv/oddebug.h	27;"	d
+F_CPU	usb/usb-leds-class/firmware/Makefile	/^F_CPU   = 16000000    # in Hz$/;"	m
+F_CPU	usb/usb-leds-class/firmware/usbdrv/oddebug.h	27;"	d
+GENERIC_BITBANG	spi/bitbang/tight/spi-gpio.c	78;"	d	file:
+GET_DESCRIPTOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	294;"	d	file:
+GET_DESCRIPTOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	294;"	d	file:
+LSB	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   LSB = 0,$/;"	e	enum:BITORDER	file:
+LSB_ORDER	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	18;"	d	file:
+MAX_SUPPORTED_CHAR	spi/shift_reg/shift_reg_spi.c	13;"	d	file:
+MISO_PIN	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	15;"	d	file:
+MOSI	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^enum { MOSI = 0,$/;"	e	enum:__anon1	file:
+MOSI_PIN	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	14;"	d	file:
+MSB	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   MSB$/;"	e	enum:BITORDER	file:
+MY_USB_PRODUCT_ID	leds/class/simple/leds.c	26;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-blink-led/driver/blink-led.c	26;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-endpoints/usb-endpoints.c	13;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-gpio/usb-gpio.c	27;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-gpio2/usb-gpio2.c	27;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-led/usb-led.c	26;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-leds-class/driver/leds-class.c	26;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-ledtrigg/driver/ledtrigg.c	25;"	d	file:
+MY_USB_PRODUCT_ID	usb/usb-template/usb-template.c	13;"	d	file:
+MY_USB_VENDOR_ID	leds/class/simple/leds.c	25;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-blink-led/driver/blink-led.c	25;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-endpoints/usb-endpoints.c	14;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-gpio/usb-gpio.c	26;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-gpio2/usb-gpio2.c	26;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-led/usb-led.c	25;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-leds-class/driver/leds-class.c	25;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-ledtrigg/driver/ledtrigg.c	24;"	d	file:
+MY_USB_VENDOR_ID	usb/usb-template/usb-template.c	14;"	d	file:
+OBJECTS	usb/usb-blink-led/firmware/Makefile	/^OBJECTS = usbdrv\/usbdrv.o usbdrv\/usbdrvasm.o usbdrv\/oddebug.o main.o$/;"	m
+OBJECTS	usb/usb-leds-class/firmware/Makefile	/^OBJECTS = usbdrv\/usbdrv.o usbdrv\/usbdrvasm.o usbdrv\/oddebug.o main.o$/;"	m
+ODDBG_TXEN	usb/usb-blink-led/firmware/usbdrv/oddebug.h	86;"	d
+ODDBG_TXEN	usb/usb-blink-led/firmware/usbdrv/oddebug.h	88;"	d
+ODDBG_TXEN	usb/usb-leds-class/firmware/usbdrv/oddebug.h	86;"	d
+ODDBG_TXEN	usb/usb-leds-class/firmware/usbdrv/oddebug.h	88;"	d
+ODDBG_UBRR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	68;"	d
+ODDBG_UBRR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	70;"	d
+ODDBG_UBRR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	72;"	d
+ODDBG_UBRR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	74;"	d
+ODDBG_UBRR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	68;"	d
+ODDBG_UBRR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	70;"	d
+ODDBG_UBRR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	72;"	d
+ODDBG_UBRR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	74;"	d
+ODDBG_UCR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	78;"	d
+ODDBG_UCR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	80;"	d
+ODDBG_UCR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	82;"	d
+ODDBG_UCR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	78;"	d
+ODDBG_UCR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	80;"	d
+ODDBG_UCR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	82;"	d
+ODDBG_UDR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	106;"	d
+ODDBG_UDR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	108;"	d
+ODDBG_UDR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	106;"	d
+ODDBG_UDR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	108;"	d
+ODDBG_UDRE	usb/usb-blink-led/firmware/usbdrv/oddebug.h	100;"	d
+ODDBG_UDRE	usb/usb-blink-led/firmware/usbdrv/oddebug.h	102;"	d
+ODDBG_UDRE	usb/usb-leds-class/firmware/usbdrv/oddebug.h	100;"	d
+ODDBG_UDRE	usb/usb-leds-class/firmware/usbdrv/oddebug.h	102;"	d
+ODDBG_USR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	92;"	d
+ODDBG_USR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	94;"	d
+ODDBG_USR	usb/usb-blink-led/firmware/usbdrv/oddebug.h	96;"	d
+ODDBG_USR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	92;"	d
+ODDBG_USR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	94;"	d
+ODDBG_USR	usb/usb-leds-class/firmware/usbdrv/oddebug.h	96;"	d
+PRG_RDB	usb/usb-blink-led/firmware/usbdrv/usbportability.h	141;"	d
+PRG_RDB	usb/usb-leds-class/firmware/usbdrv/usbportability.h	141;"	d
+PROGMEM	usb/usb-blink-led/firmware/usbdrv/usbportability.h	49;"	d
+PROGMEM	usb/usb-blink-led/firmware/usbdrv/usbportability.h	51;"	d
+PROGMEM	usb/usb-blink-led/firmware/usbdrv/usbportability.h	95;"	d
+PROGMEM	usb/usb-leds-class/firmware/usbdrv/usbportability.h	49;"	d
+PROGMEM	usb/usb-leds-class/firmware/usbdrv/usbportability.h	51;"	d
+PROGMEM	usb/usb-leds-class/firmware/usbdrv/usbportability.h	95;"	d
+RST	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^     RST,$/;"	e	enum:__anon1	file:
+RST_PIN	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	16;"	d	file:
+RTMODEL	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^RTMODEL "__rt_version", "3"$/;"	l
+RTMODEL	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^RTMODEL "__rt_version", "3"$/;"	l
+SCK	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^     SCK,$/;"	e	enum:__anon1	file:
+SCK_PIN	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	17;"	d	file:
+SPI_MISO_GPIO	spi/bitbang/tight/my_bitbang.c	2;"	d	file:
+SPI_MISO_GPIO	spi/bitbang/tight/spi-gpio.c	81;"	d	file:
+SPI_MOSI_GPIO	spi/bitbang/tight/my_bitbang.c	3;"	d	file:
+SPI_MOSI_GPIO	spi/bitbang/tight/spi-gpio.c	82;"	d	file:
+SPI_N_CHIPSEL	spi/bitbang/tight/my_bitbang.c	5;"	d	file:
+SPI_N_CHIPSEL	spi/bitbang/tight/spi-gpio.c	85;"	d	file:
+SPI_SCK_GPIO	spi/bitbang/tight/my_bitbang.c	4;"	d	file:
+SPI_SCK_GPIO	spi/bitbang/tight/spi-gpio.c	83;"	d	file:
+SWITCH_CASE	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	266;"	d	file:
+SWITCH_CASE	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	273;"	d	file:
+SWITCH_CASE	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	266;"	d	file:
+SWITCH_CASE	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	273;"	d	file:
+SWITCH_CASE2	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	267;"	d	file:
+SWITCH_CASE2	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	274;"	d	file:
+SWITCH_CASE2	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	267;"	d	file:
+SWITCH_CASE2	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	274;"	d	file:
+SWITCH_CASE3	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	268;"	d	file:
+SWITCH_CASE3	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	275;"	d	file:
+SWITCH_CASE3	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	268;"	d	file:
+SWITCH_CASE3	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	275;"	d	file:
+SWITCH_DEFAULT	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	269;"	d	file:
+SWITCH_DEFAULT	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	276;"	d	file:
+SWITCH_DEFAULT	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	269;"	d	file:
+SWITCH_DEFAULT	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	276;"	d	file:
+SWITCH_END	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	270;"	d	file:
+SWITCH_END	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	277;"	d	file:
+SWITCH_END	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	270;"	d	file:
+SWITCH_END	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	277;"	d	file:
+SWITCH_START	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	265;"	d	file:
+SWITCH_START	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	272;"	d	file:
+SWITCH_START	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	265;"	d	file:
+SWITCH_START	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	272;"	d	file:
+ShiftReg_exit	spi/shift_reg/shift_reg_spi.c	/^module_exit(ShiftReg_exit);$/;"	v
+ShiftReg_exit	spi/shift_reg/shift_reg_spi.c	/^static void __exit ShiftReg_exit(void)$/;"	f	file:
+ShiftReg_init	spi/shift_reg/shift_reg_spi.c	/^module_init(ShiftReg_init);$/;"	v
+ShiftReg_init	spi/shift_reg/shift_reg_spi.c	/^static int __init ShiftReg_init(void)$/;"	f	file:
+TRANCEVIBRATOR_PRODUCT_ID	usb/usb-sysfs/usb-template.c	34;"	d	file:
+TRANCEVIBRATOR_VENDOR_ID	usb/usb-sysfs/usb-template.c	33;"	d	file:
+USBATTR_BUSPOWER	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	747;"	d
+USBATTR_BUSPOWER	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	747;"	d
+USBATTR_REMOTEWAKE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	749;"	d
+USBATTR_REMOTEWAKE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	749;"	d
+USBATTR_SELFPOWER	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	748;"	d
+USBATTR_SELFPOWER	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	748;"	d
+USBDDR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	568;"	d
+USBDDR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	568;"	d
+USBDESCR_CONFIG	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	738;"	d
+USBDESCR_CONFIG	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	738;"	d
+USBDESCR_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	737;"	d
+USBDESCR_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	737;"	d
+USBDESCR_ENDPOINT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	741;"	d
+USBDESCR_ENDPOINT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	741;"	d
+USBDESCR_HID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	742;"	d
+USBDESCR_HID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	742;"	d
+USBDESCR_HID_PHYS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	744;"	d
+USBDESCR_HID_PHYS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	744;"	d
+USBDESCR_HID_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	743;"	d
+USBDESCR_HID_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	743;"	d
+USBDESCR_INTERFACE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	740;"	d
+USBDESCR_INTERFACE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	740;"	d
+USBDESCR_STRING	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	739;"	d
+USBDESCR_STRING	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	739;"	d
+USBDRV_VERSION	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	139;"	d
+USBDRV_VERSION	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	139;"	d
+USBIDLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	573;"	d
+USBIDLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	573;"	d
+USBIN	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	567;"	d
+USBIN	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	567;"	d
+USBMASK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	574;"	d
+USBMASK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	574;"	d
+USBMINUS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	571;"	d
+USBMINUS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	571;"	d
+USBOUT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	565;"	d
+USBOUT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	565;"	d
+USBPID_ACK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	662;"	d
+USBPID_ACK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	662;"	d
+USBPID_DATA0	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	659;"	d
+USBPID_DATA0	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	659;"	d
+USBPID_DATA1	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	660;"	d
+USBPID_DATA1	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	660;"	d
+USBPID_IN	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	658;"	d
+USBPID_IN	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	658;"	d
+USBPID_NAK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	663;"	d
+USBPID_NAK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	663;"	d
+USBPID_OUT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	657;"	d
+USBPID_OUT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	657;"	d
+USBPID_SETUP	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	656;"	d
+USBPID_SETUP	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	656;"	d
+USBPID_STALL	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	664;"	d
+USBPID_STALL	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	664;"	d
+USBPLUS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	572;"	d
+USBPLUS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	572;"	d
+USBRQ_CLEAR_FEATURE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	725;"	d
+USBRQ_CLEAR_FEATURE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	725;"	d
+USBRQ_DIR_DEVICE_TO_HOST	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	721;"	d
+USBRQ_DIR_DEVICE_TO_HOST	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	721;"	d
+USBRQ_DIR_HOST_TO_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	720;"	d
+USBRQ_DIR_HOST_TO_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	720;"	d
+USBRQ_DIR_MASK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	719;"	d
+USBRQ_DIR_MASK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	719;"	d
+USBRQ_GET_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	730;"	d
+USBRQ_GET_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	730;"	d
+USBRQ_GET_DESCRIPTOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	728;"	d
+USBRQ_GET_DESCRIPTOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	728;"	d
+USBRQ_GET_INTERFACE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	732;"	d
+USBRQ_GET_INTERFACE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	732;"	d
+USBRQ_GET_STATUS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	724;"	d
+USBRQ_GET_STATUS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	724;"	d
+USBRQ_HID_GET_IDLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	753;"	d
+USBRQ_HID_GET_IDLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	753;"	d
+USBRQ_HID_GET_PROTOCOL	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	754;"	d
+USBRQ_HID_GET_PROTOCOL	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	754;"	d
+USBRQ_HID_GET_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	752;"	d
+USBRQ_HID_GET_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	752;"	d
+USBRQ_HID_SET_IDLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	756;"	d
+USBRQ_HID_SET_IDLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	756;"	d
+USBRQ_HID_SET_PROTOCOL	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	757;"	d
+USBRQ_HID_SET_PROTOCOL	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	757;"	d
+USBRQ_HID_SET_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	755;"	d
+USBRQ_HID_SET_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	755;"	d
+USBRQ_RCPT_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	708;"	d
+USBRQ_RCPT_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	708;"	d
+USBRQ_RCPT_ENDPOINT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	710;"	d
+USBRQ_RCPT_ENDPOINT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	710;"	d
+USBRQ_RCPT_INTERFACE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	709;"	d
+USBRQ_RCPT_INTERFACE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	709;"	d
+USBRQ_RCPT_MASK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	707;"	d
+USBRQ_RCPT_MASK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	707;"	d
+USBRQ_SET_ADDRESS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	727;"	d
+USBRQ_SET_ADDRESS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	727;"	d
+USBRQ_SET_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	731;"	d
+USBRQ_SET_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	731;"	d
+USBRQ_SET_DESCRIPTOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	729;"	d
+USBRQ_SET_DESCRIPTOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	729;"	d
+USBRQ_SET_FEATURE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	726;"	d
+USBRQ_SET_FEATURE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	726;"	d
+USBRQ_SET_INTERFACE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	733;"	d
+USBRQ_SET_INTERFACE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	733;"	d
+USBRQ_SYNCH_FRAME	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	734;"	d
+USBRQ_SYNCH_FRAME	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	734;"	d
+USBRQ_TYPE_CLASS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	715;"	d
+USBRQ_TYPE_CLASS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	715;"	d
+USBRQ_TYPE_MASK	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	713;"	d
+USBRQ_TYPE_MASK	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	713;"	d
+USBRQ_TYPE_STANDARD	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	714;"	d
+USBRQ_TYPE_STANDARD	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	714;"	d
+USBRQ_TYPE_VENDOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	716;"	d
+USBRQ_TYPE_VENDOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	716;"	d
+USB_BUFSIZE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	590;"	d
+USB_BUFSIZE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	590;"	d
+USB_CFG_CHECK_CRC	usb/usb-blink-led/firmware/usbconfig.h	52;"	d
+USB_CFG_CHECK_CRC	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	54;"	d
+USB_CFG_CHECK_CRC	usb/usb-leds-class/firmware/usbconfig.h	52;"	d
+USB_CFG_CHECK_CRC	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	54;"	d
+USB_CFG_CHECK_DATA_TOGGLING	usb/usb-blink-led/firmware/usbconfig.h	200;"	d
+USB_CFG_CHECK_DATA_TOGGLING	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	198;"	d
+USB_CFG_CHECK_DATA_TOGGLING	usb/usb-leds-class/firmware/usbconfig.h	200;"	d
+USB_CFG_CHECK_DATA_TOGGLING	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	198;"	d
+USB_CFG_CLOCK_KHZ	usb/usb-blink-led/firmware/usbconfig.h	43;"	d
+USB_CFG_CLOCK_KHZ	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	45;"	d
+USB_CFG_CLOCK_KHZ	usb/usb-leds-class/firmware/usbconfig.h	43;"	d
+USB_CFG_CLOCK_KHZ	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	45;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-blink-led/firmware/usbconfig.h	351;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	348;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	138;"	d	file:
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	139;"	d	file:
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	439;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-leds-class/firmware/usbconfig.h	351;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	348;"	d
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	138;"	d	file:
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	139;"	d	file:
+USB_CFG_DESCR_PROPS_CONFIGURATION	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	439;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-blink-led/firmware/usbconfig.h	350;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	347;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	107;"	d	file:
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	108;"	d	file:
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	436;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-leds-class/firmware/usbconfig.h	350;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	347;"	d
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	107;"	d	file:
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	108;"	d	file:
+USB_CFG_DESCR_PROPS_DEVICE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	436;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-blink-led/firmware/usbconfig.h	357;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	354;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	133;"	d	file:
+USB_CFG_DESCR_PROPS_HID	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	134;"	d	file:
+USB_CFG_DESCR_PROPS_HID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	457;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-leds-class/firmware/usbconfig.h	357;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	354;"	d
+USB_CFG_DESCR_PROPS_HID	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	133;"	d	file:
+USB_CFG_DESCR_PROPS_HID	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	134;"	d	file:
+USB_CFG_DESCR_PROPS_HID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	457;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-blink-led/firmware/usbconfig.h	358;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	355;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	460;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	462;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	464;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-leds-class/firmware/usbconfig.h	358;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	355;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	460;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	462;"	d
+USB_CFG_DESCR_PROPS_HID_REPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	464;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-blink-led/firmware/usbconfig.h	352;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	349;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	442;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-leds-class/firmware/usbconfig.h	352;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	349;"	d
+USB_CFG_DESCR_PROPS_STRINGS	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	442;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-blink-led/firmware/usbconfig.h	353;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	350;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	66;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	67;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	445;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-leds-class/firmware/usbconfig.h	353;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	350;"	d
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	66;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	67;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_0	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	445;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-blink-led/firmware/usbconfig.h	355;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	352;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	85;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	86;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	451;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-leds-class/firmware/usbconfig.h	355;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	352;"	d
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	85;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	86;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_PRODUCT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	451;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-blink-led/firmware/usbconfig.h	356;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	353;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	94;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	95;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	454;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-leds-class/firmware/usbconfig.h	356;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	353;"	d
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	94;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	95;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_SERIAL_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	454;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-blink-led/firmware/usbconfig.h	354;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	351;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	76;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	77;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	448;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-leds-class/firmware/usbconfig.h	354;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	351;"	d
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	76;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	77;"	d	file:
+USB_CFG_DESCR_PROPS_STRING_VENDOR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	448;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-blink-led/firmware/usbconfig.h	359;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	356;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	468;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-leds-class/firmware/usbconfig.h	359;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	356;"	d
+USB_CFG_DESCR_PROPS_UNKNOWN	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	468;"	d
+USB_CFG_DEVICE_CLASS	usb/usb-blink-led/firmware/usbconfig.h	271;"	d
+USB_CFG_DEVICE_CLASS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	269;"	d
+USB_CFG_DEVICE_CLASS	usb/usb-leds-class/firmware/usbconfig.h	271;"	d
+USB_CFG_DEVICE_CLASS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	269;"	d
+USB_CFG_DEVICE_ID	usb/usb-blink-led/firmware/usbconfig.h	232;"	d
+USB_CFG_DEVICE_ID	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	230;"	d
+USB_CFG_DEVICE_ID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	552;"	d
+USB_CFG_DEVICE_ID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	554;"	d
+USB_CFG_DEVICE_ID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	556;"	d
+USB_CFG_DEVICE_ID	usb/usb-leds-class/firmware/usbconfig.h	232;"	d
+USB_CFG_DEVICE_ID	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	230;"	d
+USB_CFG_DEVICE_ID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	552;"	d
+USB_CFG_DEVICE_ID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	554;"	d
+USB_CFG_DEVICE_ID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	556;"	d
+USB_CFG_DEVICE_NAME	usb/usb-blink-led/firmware/usbconfig.h	256;"	d
+USB_CFG_DEVICE_NAME	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	254;"	d
+USB_CFG_DEVICE_NAME	usb/usb-leds-class/firmware/usbconfig.h	256;"	d
+USB_CFG_DEVICE_NAME	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	254;"	d
+USB_CFG_DEVICE_NAME_LEN	usb/usb-blink-led/firmware/usbconfig.h	257;"	d
+USB_CFG_DEVICE_NAME_LEN	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	255;"	d
+USB_CFG_DEVICE_NAME_LEN	usb/usb-leds-class/firmware/usbconfig.h	257;"	d
+USB_CFG_DEVICE_NAME_LEN	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	255;"	d
+USB_CFG_DEVICE_SUBCLASS	usb/usb-blink-led/firmware/usbconfig.h	272;"	d
+USB_CFG_DEVICE_SUBCLASS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	270;"	d
+USB_CFG_DEVICE_SUBCLASS	usb/usb-leds-class/firmware/usbconfig.h	272;"	d
+USB_CFG_DEVICE_SUBCLASS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	270;"	d
+USB_CFG_DEVICE_VERSION	usb/usb-blink-led/firmware/usbconfig.h	243;"	d
+USB_CFG_DEVICE_VERSION	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	241;"	d
+USB_CFG_DEVICE_VERSION	usb/usb-leds-class/firmware/usbconfig.h	243;"	d
+USB_CFG_DEVICE_VERSION	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	241;"	d
+USB_CFG_DMINUS_BIT	usb/usb-blink-led/firmware/usbconfig.h	30;"	d
+USB_CFG_DMINUS_BIT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	32;"	d
+USB_CFG_DMINUS_BIT	usb/usb-leds-class/firmware/usbconfig.h	30;"	d
+USB_CFG_DMINUS_BIT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	32;"	d
+USB_CFG_DPLUS_BIT	usb/usb-blink-led/firmware/usbconfig.h	34;"	d
+USB_CFG_DPLUS_BIT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	36;"	d
+USB_CFG_DPLUS_BIT	usb/usb-leds-class/firmware/usbconfig.h	34;"	d
+USB_CFG_DPLUS_BIT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	36;"	d
+USB_CFG_DRIVER_FLASH_PAGE	usb/usb-blink-led/firmware/usbconfig.h	150;"	d
+USB_CFG_DRIVER_FLASH_PAGE	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	148;"	d
+USB_CFG_DRIVER_FLASH_PAGE	usb/usb-leds-class/firmware/usbconfig.h	150;"	d
+USB_CFG_DRIVER_FLASH_PAGE	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	148;"	d
+USB_CFG_EP3_NUMBER	usb/usb-blink-led/firmware/usbconfig.h	90;"	d
+USB_CFG_EP3_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	88;"	d
+USB_CFG_EP3_NUMBER	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	583;"	d
+USB_CFG_EP3_NUMBER	usb/usb-leds-class/firmware/usbconfig.h	90;"	d
+USB_CFG_EP3_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	88;"	d
+USB_CFG_EP3_NUMBER	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	583;"	d
+USB_CFG_HAVE_FLOWCONTROL	usb/usb-blink-led/firmware/usbconfig.h	145;"	d
+USB_CFG_HAVE_FLOWCONTROL	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	143;"	d
+USB_CFG_HAVE_FLOWCONTROL	usb/usb-leds-class/firmware/usbconfig.h	145;"	d
+USB_CFG_HAVE_FLOWCONTROL	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	143;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT	usb/usb-blink-led/firmware/usbconfig.h	79;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	77;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT	usb/usb-leds-class/firmware/usbconfig.h	79;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	77;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-blink-led/firmware/usbconfig.h	84;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	82;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	587;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-leds-class/firmware/usbconfig.h	84;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	82;"	d
+USB_CFG_HAVE_INTRIN_ENDPOINT3	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	587;"	d
+USB_CFG_HAVE_MEASURE_FRAME_LENGTH	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	206;"	d
+USB_CFG_HAVE_MEASURE_FRAME_LENGTH	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	206;"	d
+USB_CFG_IMPLEMENT_FN_READ	usb/usb-blink-led/firmware/usbconfig.h	133;"	d
+USB_CFG_IMPLEMENT_FN_READ	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	131;"	d
+USB_CFG_IMPLEMENT_FN_READ	usb/usb-leds-class/firmware/usbconfig.h	133;"	d
+USB_CFG_IMPLEMENT_FN_READ	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	131;"	d
+USB_CFG_IMPLEMENT_FN_WRITE	usb/usb-blink-led/firmware/usbconfig.h	128;"	d
+USB_CFG_IMPLEMENT_FN_WRITE	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	126;"	d
+USB_CFG_IMPLEMENT_FN_WRITE	usb/usb-leds-class/firmware/usbconfig.h	128;"	d
+USB_CFG_IMPLEMENT_FN_WRITE	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	126;"	d
+USB_CFG_IMPLEMENT_FN_WRITEOUT	usb/usb-blink-led/firmware/usbconfig.h	139;"	d
+USB_CFG_IMPLEMENT_FN_WRITEOUT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	137;"	d
+USB_CFG_IMPLEMENT_FN_WRITEOUT	usb/usb-leds-class/firmware/usbconfig.h	139;"	d
+USB_CFG_IMPLEMENT_FN_WRITEOUT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	137;"	d
+USB_CFG_IMPLEMENT_HALT	usb/usb-blink-led/firmware/usbconfig.h	100;"	d
+USB_CFG_IMPLEMENT_HALT	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	98;"	d
+USB_CFG_IMPLEMENT_HALT	usb/usb-leds-class/firmware/usbconfig.h	100;"	d
+USB_CFG_IMPLEMENT_HALT	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	98;"	d
+USB_CFG_INTERFACE_CLASS	usb/usb-blink-led/firmware/usbconfig.h	276;"	d
+USB_CFG_INTERFACE_CLASS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	274;"	d
+USB_CFG_INTERFACE_CLASS	usb/usb-leds-class/firmware/usbconfig.h	276;"	d
+USB_CFG_INTERFACE_CLASS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	274;"	d
+USB_CFG_INTERFACE_PROTOCOL	usb/usb-blink-led/firmware/usbconfig.h	278;"	d
+USB_CFG_INTERFACE_PROTOCOL	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	276;"	d
+USB_CFG_INTERFACE_PROTOCOL	usb/usb-leds-class/firmware/usbconfig.h	278;"	d
+USB_CFG_INTERFACE_PROTOCOL	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	276;"	d
+USB_CFG_INTERFACE_SUBCLASS	usb/usb-blink-led/firmware/usbconfig.h	277;"	d
+USB_CFG_INTERFACE_SUBCLASS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	275;"	d
+USB_CFG_INTERFACE_SUBCLASS	usb/usb-leds-class/firmware/usbconfig.h	277;"	d
+USB_CFG_INTERFACE_SUBCLASS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	275;"	d
+USB_CFG_INTR_POLL_INTERVAL	usb/usb-blink-led/firmware/usbconfig.h	114;"	d
+USB_CFG_INTR_POLL_INTERVAL	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	112;"	d
+USB_CFG_INTR_POLL_INTERVAL	usb/usb-leds-class/firmware/usbconfig.h	114;"	d
+USB_CFG_INTR_POLL_INTERVAL	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	112;"	d
+USB_CFG_IOPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	577;"	d
+USB_CFG_IOPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	577;"	d
+USB_CFG_IOPORTNAME	usb/usb-blink-led/firmware/usbconfig.h	26;"	d
+USB_CFG_IOPORTNAME	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	28;"	d
+USB_CFG_IOPORTNAME	usb/usb-leds-class/firmware/usbconfig.h	26;"	d
+USB_CFG_IOPORTNAME	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	28;"	d
+USB_CFG_IS_SELF_POWERED	usb/usb-blink-led/firmware/usbconfig.h	119;"	d
+USB_CFG_IS_SELF_POWERED	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	117;"	d
+USB_CFG_IS_SELF_POWERED	usb/usb-leds-class/firmware/usbconfig.h	119;"	d
+USB_CFG_IS_SELF_POWERED	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	117;"	d
+USB_CFG_LONG_TRANSFERS	usb/usb-blink-led/firmware/usbconfig.h	155;"	d
+USB_CFG_LONG_TRANSFERS	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	153;"	d
+USB_CFG_LONG_TRANSFERS	usb/usb-leds-class/firmware/usbconfig.h	155;"	d
+USB_CFG_LONG_TRANSFERS	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	153;"	d
+USB_CFG_MAX_BUS_POWER	usb/usb-blink-led/firmware/usbconfig.h	123;"	d
+USB_CFG_MAX_BUS_POWER	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	121;"	d
+USB_CFG_MAX_BUS_POWER	usb/usb-leds-class/firmware/usbconfig.h	123;"	d
+USB_CFG_MAX_BUS_POWER	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	121;"	d
+USB_CFG_PULLUP_IOPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	579;"	d
+USB_CFG_PULLUP_IOPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	579;"	d
+USB_CFG_SUPPRESS_INTR_CODE	usb/usb-blink-led/firmware/usbconfig.h	106;"	d
+USB_CFG_SUPPRESS_INTR_CODE	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	104;"	d
+USB_CFG_SUPPRESS_INTR_CODE	usb/usb-leds-class/firmware/usbconfig.h	106;"	d
+USB_CFG_SUPPRESS_INTR_CODE	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	104;"	d
+USB_CFG_USE_SWITCH_STATEMENT	usb/usb-blink-led/firmware/usbdrv/usbportability.h	110;"	d
+USB_CFG_USE_SWITCH_STATEMENT	usb/usb-leds-class/firmware/usbdrv/usbportability.h	110;"	d
+USB_CFG_VENDOR_ID	usb/usb-blink-led/firmware/usbconfig.h	223;"	d
+USB_CFG_VENDOR_ID	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	221;"	d
+USB_CFG_VENDOR_ID	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	547;"	d
+USB_CFG_VENDOR_ID	usb/usb-leds-class/firmware/usbconfig.h	223;"	d
+USB_CFG_VENDOR_ID	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	221;"	d
+USB_CFG_VENDOR_ID	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	547;"	d
+USB_CFG_VENDOR_NAME	usb/usb-blink-led/firmware/usbconfig.h	246;"	d
+USB_CFG_VENDOR_NAME	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	244;"	d
+USB_CFG_VENDOR_NAME	usb/usb-leds-class/firmware/usbconfig.h	246;"	d
+USB_CFG_VENDOR_NAME	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	244;"	d
+USB_CFG_VENDOR_NAME_LEN	usb/usb-blink-led/firmware/usbconfig.h	247;"	d
+USB_CFG_VENDOR_NAME_LEN	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	245;"	d
+USB_CFG_VENDOR_NAME_LEN	usb/usb-leds-class/firmware/usbconfig.h	247;"	d
+USB_CFG_VENDOR_NAME_LEN	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	245;"	d
+USB_CONCAT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	524;"	d
+USB_CONCAT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	524;"	d
+USB_CONCAT_EXPANDED	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	525;"	d
+USB_CONCAT_EXPANDED	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	525;"	d
+USB_COUNT_SOF	usb/usb-blink-led/firmware/usbconfig.h	176;"	d
+USB_COUNT_SOF	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	174;"	d
+USB_COUNT_SOF	usb/usb-leds-class/firmware/usbconfig.h	176;"	d
+USB_COUNT_SOF	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	174;"	d
+USB_DDRPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	529;"	d
+USB_DDRPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	529;"	d
+USB_FLG_MSGPTR_IS_ROM	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	50;"	d	file:
+USB_FLG_MSGPTR_IS_ROM	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	50;"	d	file:
+USB_FLG_USE_USER_RW	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	51;"	d	file:
+USB_FLG_USE_USER_RW	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	51;"	d	file:
+USB_INITIAL_DATATOKEN	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	667;"	d
+USB_INITIAL_DATATOKEN	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	667;"	d
+USB_INPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	528;"	d
+USB_INPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	528;"	d
+USB_INTR_CFG	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	596;"	d
+USB_INTR_CFG	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	598;"	d
+USB_INTR_CFG	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	596;"	d
+USB_INTR_CFG	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	598;"	d
+USB_INTR_CFG_CLR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	612;"	d
+USB_INTR_CFG_CLR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	612;"	d
+USB_INTR_CFG_SET	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	603;"	d
+USB_INTR_CFG_SET	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	608;"	d
+USB_INTR_CFG_SET	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	603;"	d
+USB_INTR_CFG_SET	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	608;"	d
+USB_INTR_ENABLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	617;"	d
+USB_INTR_ENABLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	619;"	d
+USB_INTR_ENABLE	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	621;"	d
+USB_INTR_ENABLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	617;"	d
+USB_INTR_ENABLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	619;"	d
+USB_INTR_ENABLE	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	621;"	d
+USB_INTR_ENABLE_BIT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	625;"	d
+USB_INTR_ENABLE_BIT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	625;"	d
+USB_INTR_PENDING	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	630;"	d
+USB_INTR_PENDING	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	632;"	d
+USB_INTR_PENDING	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	630;"	d
+USB_INTR_PENDING	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	632;"	d
+USB_INTR_PENDING_BIT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	636;"	d
+USB_INTR_PENDING_BIT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	636;"	d
+USB_LED_OFF	usb/usb-blink-led/firmware/main.c	21;"	d	file:
+USB_LED_OFF	usb/usb-leds-class/firmware/main.c	21;"	d	file:
+USB_LED_ON	usb/usb-blink-led/firmware/main.c	20;"	d	file:
+USB_LED_ON	usb/usb-leds-class/firmware/main.c	20;"	d	file:
+USB_NO_MSG	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	178;"	d
+USB_NO_MSG	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	178;"	d
+USB_OUTPORT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	527;"	d
+USB_OUTPORT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	527;"	d
+USB_PROP_IS_DYNAMIC	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	418;"	d
+USB_PROP_IS_DYNAMIC	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	418;"	d
+USB_PROP_IS_RAM	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	424;"	d
+USB_PROP_IS_RAM	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	424;"	d
+USB_PROP_LENGTH	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	429;"	d
+USB_PROP_LENGTH	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	429;"	d
+USB_PUBLIC	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	149;"	d
+USB_PUBLIC	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	149;"	d
+USB_PULLUP_DDR	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	569;"	d
+USB_PULLUP_DDR	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	569;"	d
+USB_PULLUP_OUT	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	566;"	d
+USB_PULLUP_OUT	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	566;"	d
+USB_READ_FLASH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	128;"	d
+USB_READ_FLASH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	130;"	d
+USB_READ_FLASH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	54;"	d
+USB_READ_FLASH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	96;"	d
+USB_READ_FLASH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	128;"	d
+USB_READ_FLASH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	130;"	d
+USB_READ_FLASH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	54;"	d
+USB_READ_FLASH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	96;"	d
+USB_RX_USER_HOOK	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	281;"	d	file:
+USB_RX_USER_HOOK	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	281;"	d	file:
+USB_SET_ADDRESS_HOOK	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	284;"	d	file:
+USB_SET_ADDRESS_HOOK	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	284;"	d	file:
+USB_SET_DATATOKEN1	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	400;"	d
+USB_SET_DATATOKEN1	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	400;"	d
+USB_SET_DATATOKEN3	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	401;"	d
+USB_SET_DATATOKEN3	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	401;"	d
+USB_STRING_DESCRIPTOR_HEADER	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	378;"	d
+USB_STRING_DESCRIPTOR_HEADER	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	378;"	d
+USB_USE_FAST_CRC	usb/usb-blink-led/firmware/usbconfig.h	212;"	d
+USB_USE_FAST_CRC	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	210;"	d
+USB_USE_FAST_CRC	usb/usb-leds-class/firmware/usbconfig.h	212;"	d
+USB_USE_FAST_CRC	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	210;"	d
+XH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	67;"	d
+XH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	67;"	d
+XL	usb/usb-blink-led/firmware/usbdrv/usbportability.h	66;"	d
+XL	usb/usb-leds-class/firmware/usbdrv/usbportability.h	66;"	d
+YH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	69;"	d
+YH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	69;"	d
+YL	usb/usb-blink-led/firmware/usbdrv/usbportability.h	68;"	d
+YL	usb/usb-leds-class/firmware/usbdrv/usbportability.h	68;"	d
+ZH	usb/usb-blink-led/firmware/usbdrv/usbportability.h	71;"	d
+ZH	usb/usb-leds-class/firmware/usbdrv/usbportability.h	71;"	d
+ZL	usb/usb-blink-led/firmware/usbdrv/usbportability.h	70;"	d
+ZL	usb/usb-leds-class/firmware/usbdrv/usbportability.h	70;"	d
+_BV	usb/usb-blink-led/firmware/usbdrv/usbportability.h	109;"	d
+_BV	usb/usb-blink-led/firmware/usbdrv/usbportability.h	62;"	d
+_BV	usb/usb-leds-class/firmware/usbdrv/usbportability.h	109;"	d
+_BV	usb/usb-leds-class/firmware/usbdrv/usbportability.h	62;"	d
+_VECTOR	usb/usb-blink-led/firmware/usbdrv/usbportability.h	122;"	d
+_VECTOR	usb/usb-leds-class/firmware/usbdrv/usbportability.h	122;"	d
+__ASSEMBLER__	usb/usb-blink-led/firmware/usbdrv/usbportability.h	45;"	d
+__ASSEMBLER__	usb/usb-leds-class/firmware/usbdrv/usbportability.h	45;"	d
+__LEDS_H_INCLUDED	leds/trigger/heartbeat/leds.h	14;"	d
+__SFR_OFFSET	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define __SFR_OFFSET 0      \/* used by avr-libc's register definitions *\/$/;"	d
+__SFR_OFFSET	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define __SFR_OFFSET 0      \/* used by avr-libc's register definitions *\/$/;"	d
+__attribute__	usb/usb-blink-led/firmware/usbdrv/usbportability.h	42;"	d
+__attribute__	usb/usb-blink-led/firmware/usbdrv/usbportability.h	93;"	d
+__attribute__	usb/usb-leds-class/firmware/usbdrv/usbportability.h	42;"	d
+__attribute__	usb/usb-leds-class/firmware/usbdrv/usbportability.h	93;"	d
+__oddebug_h_included__	usb/usb-blink-led/firmware/usbdrv/oddebug.h	11;"	d
+__oddebug_h_included__	usb/usb-leds-class/firmware/usbdrv/oddebug.h	11;"	d
+__this_module	char/copytouser/echo.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	char/misc/simple/simple_misc.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	char/misc/sysfs/misc-sysfs.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	char/mynull/mynull.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	char/reversestring/reversestring.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	generic/hello/hello-1.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	input/virtual_mouse/vmd.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	input/virtual_mouse/vms.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	kthread/bind/bind.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	kthread/create/kthread.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	kthread/run/run.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	kthread/signal/signal.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	leds/trigger/create-sysfs/ledtrig-echo.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	leds/trigger/heartbeat/ledtrig-heartbeat.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	lock/mutex/mutex.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/access-gpio-legacy/access-gpio.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/access-gpio-modern/access-gpio.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/custom/custom.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/gpio-irqchip/gpio-irqchip.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/platform-gpio/platform-gpio.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/simple/platform_device.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	platform/simple/platform_driver.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	spi/basic/spi.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	spi/bitbang/generic/gpio-spi-data.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	spi/bitbang/own/gpio-spi-bitbang/gpio-spi-bitbang.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	spi/shift_reg/shift_reg_spi.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	timer/simple/timer.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-blink-led/driver/blink-led.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-gpio2/usb-gpio2.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-led/usb-led.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-leds-class/driver/leds-class.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-ledtrigg/driver/ledtrigg.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__this_module	usb/usb-sysfs/usb-template.mod.c	/^__visible struct module __this_module$/;"	v	typeref:struct:module
+__usbconfig_h_included__	usb/usb-blink-led/firmware/usbconfig.h	12;"	d
+__usbconfig_h_included__	usb/usb-blink-led/firmware/usbdrv/usbconfig-prototype.h	11;"	d
+__usbconfig_h_included__	usb/usb-leds-class/firmware/usbconfig.h	12;"	d
+__usbconfig_h_included__	usb/usb-leds-class/firmware/usbdrv/usbconfig-prototype.h	11;"	d
+__usbdrv_h_included__	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	11;"	d
+__usbdrv_h_included__	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	11;"	d
+__usbportability_h_INCLUDED__	usb/usb-blink-led/firmware/usbdrv/usbportability.h	24;"	d
+__usbportability_h_INCLUDED__	usb/usb-leds-class/firmware/usbdrv/usbportability.h	24;"	d
+__used	char/copytouser/echo.mod.c	/^__used$/;"	v	file:
+__used	char/copytouser/echo.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	char/misc/simple/simple_misc.mod.c	/^__used$/;"	v	file:
+__used	char/misc/simple/simple_misc.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	char/misc/sysfs/misc-sysfs.mod.c	/^__used$/;"	v	file:
+__used	char/misc/sysfs/misc-sysfs.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	char/mynull/mynull.mod.c	/^__used$/;"	v	file:
+__used	char/mynull/mynull.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	char/reversestring/reversestring.mod.c	/^__used$/;"	v	file:
+__used	char/reversestring/reversestring.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	generic/hello/hello-1.mod.c	/^__used$/;"	v	file:
+__used	generic/hello/hello-1.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	input/virtual_mouse/vmd.mod.c	/^__used$/;"	v	file:
+__used	input/virtual_mouse/vmd.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	input/virtual_mouse/vms.mod.c	/^__used$/;"	v	file:
+__used	input/virtual_mouse/vms.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	kthread/bind/bind.mod.c	/^__used$/;"	v	file:
+__used	kthread/bind/bind.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	kthread/create/kthread.mod.c	/^__used$/;"	v	file:
+__used	kthread/create/kthread.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	kthread/run/run.mod.c	/^__used$/;"	v	file:
+__used	kthread/run/run.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	kthread/signal/signal.mod.c	/^__used$/;"	v	file:
+__used	kthread/signal/signal.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	leds/trigger/create-sysfs/ledtrig-echo.mod.c	/^__used$/;"	v	file:
+__used	leds/trigger/create-sysfs/ledtrig-echo.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	leds/trigger/heartbeat/ledtrig-heartbeat.mod.c	/^__used$/;"	v	file:
+__used	leds/trigger/heartbeat/ledtrig-heartbeat.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	lock/mutex/mutex.mod.c	/^__used$/;"	v	file:
+__used	lock/mutex/mutex.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/access-gpio-legacy/access-gpio.mod.c	/^__used$/;"	v	file:
+__used	platform/access-gpio-legacy/access-gpio.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/access-gpio-modern/access-gpio.mod.c	/^__used$/;"	v	file:
+__used	platform/access-gpio-modern/access-gpio.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/custom/custom.mod.c	/^__used$/;"	v	file:
+__used	platform/custom/custom.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/gpio-irqchip/gpio-irqchip.mod.c	/^__used$/;"	v	file:
+__used	platform/gpio-irqchip/gpio-irqchip.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/platform-gpio/platform-gpio.mod.c	/^__used$/;"	v	file:
+__used	platform/platform-gpio/platform-gpio.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/simple/platform_device.mod.c	/^__used$/;"	v	file:
+__used	platform/simple/platform_device.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	platform/simple/platform_driver.mod.c	/^__used$/;"	v	file:
+__used	platform/simple/platform_driver.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	spi/basic/spi.mod.c	/^__used$/;"	v	file:
+__used	spi/basic/spi.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	spi/bitbang/generic/gpio-spi-data.mod.c	/^__used$/;"	v	file:
+__used	spi/bitbang/generic/gpio-spi-data.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	spi/bitbang/own/gpio-spi-bitbang/gpio-spi-bitbang.mod.c	/^__used$/;"	v	file:
+__used	spi/bitbang/own/gpio-spi-bitbang/gpio-spi-bitbang.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	spi/shift_reg/shift_reg_spi.mod.c	/^__used$/;"	v	file:
+__used	spi/shift_reg/shift_reg_spi.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	timer/simple/timer.mod.c	/^__used$/;"	v	file:
+__used	timer/simple/timer.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-blink-led/driver/blink-led.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-blink-led/driver/blink-led.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-gpio2/usb-gpio2.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-gpio2/usb-gpio2.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-led/usb-led.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-led/usb-led.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-leds-class/driver/leds-class.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-leds-class/driver/leds-class.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-ledtrigg/driver/ledtrigg.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-ledtrigg/driver/ledtrigg.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+__used	usb/usb-sysfs/usb-template.mod.c	/^__used$/;"	v	file:
+__used	usb/usb-sysfs/usb-template.mod.c	/^__used$/;"	v	typeref:struct:____versions	file:
+_attr_show	leds/trigger/create-sysfs/ledtrig-echo.c	/^_attr_show(struct device *dev,$/;"	f	file:
+_attr_store	leds/trigger/create-sysfs/ledtrig-echo.c	/^_attr_store(struct device *dev,$/;"	f	file:
+_delay_ms	usb/usb-blink-led/firmware/usbdrv/usbportability.h	108;"	d
+_delay_ms	usb/usb-leds-class/firmware/usbdrv/usbportability.h	108;"	d
+_device_release	platform/gpio-irqchip/gpio-irqchip.c	/^_device_release(struct device *pdev)$/;"	f	file:
+_device_release	platform/platform-gpio/platform-gpio.c	/^_device_release(struct device *pdev)$/;"	f	file:
+_device_release	spi/bitbang/generic/gpio-spi-data.c	/^_device_release(struct device *pdev)$/;"	f	file:
+_direction_input	usb/usb-gpio2/usb-gpio2.c	/^_direction_input(struct gpio_chip *chip,$/;"	f	file:
+_direction_output	platform/gpio-irqchip/gpio-irqchip.c	/^_direction_output(struct gpio_chip *chip,$/;"	f	file:
+_direction_output	platform/platform-gpio/platform-gpio.c	/^_direction_output(struct gpio_chip *chip,$/;"	f	file:
+_direction_output	usb/usb-gpio/usb-gpio.c	/^_direction_output(struct gpio_chip *chip,$/;"	f	file:
+_direction_output	usb/usb-gpio2/usb-gpio2.c	/^_direction_output(struct gpio_chip *chip,$/;"	f	file:
+_gpio_access_exit	platform/access-gpio-legacy/access-gpio.c	/^_gpio_access_exit(void)$/;"	f	file:
+_gpio_access_exit	platform/access-gpio-legacy/access-gpio.c	/^module_exit(_gpio_access_exit);$/;"	v
+_gpio_access_exit	platform/access-gpio-modern/access-gpio.c	/^_gpio_access_exit(void)$/;"	f	file:
+_gpio_access_exit	platform/access-gpio-modern/access-gpio.c	/^module_exit(_gpio_access_exit);$/;"	v
+_gpio_access_init	platform/access-gpio-legacy/access-gpio.c	/^_gpio_access_init(void)$/;"	f	file:
+_gpio_access_init	platform/access-gpio-legacy/access-gpio.c	/^module_init(_gpio_access_init);$/;"	v
+_gpio_access_init	platform/access-gpio-modern/access-gpio.c	/^_gpio_access_init(void)$/;"	f	file:
+_gpio_access_init	platform/access-gpio-modern/access-gpio.c	/^module_init(_gpio_access_init);$/;"	v
+_gpio_create	platform/gpio-irqchip/gpio-irqchip.c	/^_gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_gpio_create	platform/platform-gpio/platform-gpio.c	/^_gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_gpio_get	platform/gpio-irqchip/gpio-irqchip.c	/^_gpio_get(struct gpio_chip *chip,$/;"	f	file:
+_gpio_get	platform/platform-gpio/platform-gpio.c	/^_gpio_get(struct gpio_chip *chip,$/;"	f	file:
+_gpio_remove	platform/gpio-irqchip/gpio-irqchip.c	/^_gpio_remove(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_gpio_remove	platform/platform-gpio/platform-gpio.c	/^_gpio_remove(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_gpio_set	platform/gpio-irqchip/gpio-irqchip.c	/^_gpio_set(struct gpio_chip *chip,$/;"	f	file:
+_gpio_set	platform/platform-gpio/platform-gpio.c	/^_gpio_set(struct gpio_chip *chip,$/;"	f	file:
+_gpio_work_job	usb/usb-gpio/usb-gpio.c	/^_gpio_work_job(struct work_struct *work)$/;"	f	file:
+_gpio_work_job	usb/usb-gpio2/usb-gpio2.c	/^_gpio_work_job(struct work_struct *work)$/;"	f	file:
+_gpioa_get	usb/usb-gpio/usb-gpio.c	/^_gpioa_get(struct gpio_chip *chip,$/;"	f	file:
+_gpioa_get	usb/usb-gpio2/usb-gpio2.c	/^_gpioa_get(struct gpio_chip *chip,$/;"	f	file:
+_gpioa_set	usb/usb-gpio/usb-gpio.c	/^_gpioa_set(struct gpio_chip *chip,$/;"	f	file:
+_gpioa_set	usb/usb-gpio2/usb-gpio2.c	/^_gpioa_set(struct gpio_chip *chip,$/;"	f	file:
+_irq_handler	platform/access-gpio-legacy/access-gpio.c	/^_irq_handler(unsigned irq, void *dev_id,$/;"	f	file:
+_irq_handler	platform/access-gpio-modern/access-gpio.c	/^_irq_handler(unsigned irq, void *dev_id)$/;"	f	file:
+_irq_mask	platform/gpio-irqchip/gpio-irqchip.c	/^_irq_mask(struct irq_data *d)$/;"	f	file:
+_irq_request_resources	platform/gpio-irqchip/gpio-irqchip.c	/^_irq_request_resources(struct irq_data *d)$/;"	f	file:
+_irq_set_type	platform/gpio-irqchip/gpio-irqchip.c	/^_irq_set_type(struct irq_data *d, unsigned type)$/;"	f	file:
+_irq_unmask	platform/gpio-irqchip/gpio-irqchip.c	/^_irq_unmask(struct irq_data *d)$/;"	f	file:
+_platform_device_exit	platform/simple/platform_device.c	/^_platform_device_exit(void)$/;"	f	file:
+_platform_device_exit	platform/simple/platform_device.c	/^module_exit(_platform_device_exit);$/;"	v
+_platform_device_exit	spi/bitbang/generic/gpio-spi-data.c	/^_platform_device_exit(void)$/;"	f	file:
+_platform_device_exit	spi/bitbang/generic/gpio-spi-data.c	/^module_exit(_platform_device_exit);$/;"	v
+_platform_device_init	platform/simple/platform_device.c	/^_platform_device_init(void)$/;"	f	file:
+_platform_device_init	platform/simple/platform_device.c	/^module_init(_platform_device_init);$/;"	v
+_platform_device_init	spi/bitbang/generic/gpio-spi-data.c	/^_platform_device_init(void)$/;"	f	file:
+_platform_device_init	spi/bitbang/generic/gpio-spi-data.c	/^module_init(_platform_device_init);$/;"	v
+_platform_device_release	platform/simple/platform_device.c	/^_platform_device_release(struct device *dev)$/;"	f	file:
+_platform_driver_exit	platform/custom/custom.c	/^_platform_driver_exit(void)$/;"	f	file:
+_platform_driver_exit	platform/custom/custom.c	/^module_exit(_platform_driver_exit);$/;"	v
+_platform_driver_exit	platform/gpio-irqchip/gpio-irqchip.c	/^_platform_driver_exit(void)$/;"	f	file:
+_platform_driver_exit	platform/gpio-irqchip/gpio-irqchip.c	/^module_exit(_platform_driver_exit);$/;"	v
+_platform_driver_exit	platform/platform-gpio/platform-gpio.c	/^_platform_driver_exit(void)$/;"	f	file:
+_platform_driver_exit	platform/platform-gpio/platform-gpio.c	/^module_exit(_platform_driver_exit);$/;"	v
+_platform_driver_exit	platform/platform-sysfs/sysfs-create.c	/^_platform_driver_exit(void)$/;"	f	file:
+_platform_driver_exit	platform/platform-sysfs/sysfs-create.c	/^module_exit(_platform_driver_exit);$/;"	v
+_platform_driver_exit	platform/simple/platform_driver.c	/^_platform_driver_exit(void)$/;"	f	file:
+_platform_driver_exit	platform/simple/platform_driver.c	/^module_exit(_platform_driver_exit);$/;"	v
+_platform_driver_init	platform/custom/custom.c	/^_platform_driver_init(void)$/;"	f	file:
+_platform_driver_init	platform/custom/custom.c	/^module_init(_platform_driver_init);$/;"	v
+_platform_driver_init	platform/gpio-irqchip/gpio-irqchip.c	/^_platform_driver_init(void)$/;"	f	file:
+_platform_driver_init	platform/gpio-irqchip/gpio-irqchip.c	/^module_init(_platform_driver_init);$/;"	v
+_platform_driver_init	platform/platform-gpio/platform-gpio.c	/^_platform_driver_init(void)$/;"	f	file:
+_platform_driver_init	platform/platform-gpio/platform-gpio.c	/^module_init(_platform_driver_init);$/;"	v
+_platform_driver_init	platform/platform-sysfs/sysfs-create.c	/^_platform_driver_init(void)$/;"	f	file:
+_platform_driver_init	platform/platform-sysfs/sysfs-create.c	/^module_init(_platform_driver_init);$/;"	v
+_platform_driver_init	platform/simple/platform_driver.c	/^_platform_driver_init(void)$/;"	f	file:
+_platform_driver_init	platform/simple/platform_driver.c	/^module_init(_platform_driver_init);$/;"	v
+_power_off	platform/custom/custom.c	/^_power_off(struct my_device_platform_data *sd)$/;"	f	file:
+_power_off	platform/platform-sysfs/sysfs-create.c	/^_power_off(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_power_off	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_power_off(struct spi_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_power_on	platform/custom/custom.c	/^_power_on(struct my_device_platform_data *sd)$/;"	f	file:
+_power_on	platform/platform-sysfs/sysfs-create.c	/^_power_on(struct my_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_power_on	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_power_on(struct spi_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_release	platform/custom/custom.c	/^_release(struct device *dev)$/;"	f	file:
+_release	platform/platform-sysfs/sysfs-create.c	/^_release(struct device *dev)$/;"	f	file:
+_release	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_release(struct device *dev)$/;"	f	file:
+_reset	platform/custom/custom.c	/^_reset(struct my_device_platform_data *sd)$/;"	f	file:
+_reset	platform/platform-sysfs/sysfs-create.c	/^_reset(struct my_device_platform_data *sd)$/;"	f	file:
+_reset	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_reset(struct spi_device_platform_data *sd, struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_probe	platform/custom/custom.c	/^_sample_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_probe	platform/gpio-irqchip/gpio-irqchip.c	/^_sample_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_probe	platform/platform-gpio/platform-gpio.c	/^_sample_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_probe	platform/platform-sysfs/sysfs-create.c	/^_sample_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_probe	platform/simple/platform_driver.c	/^_sample_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_remove	platform/custom/custom.c	/^_sample_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_remove	platform/gpio-irqchip/gpio-irqchip.c	/^_sample_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_remove	platform/platform-gpio/platform-gpio.c	/^_sample_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_remove	platform/platform-sysfs/sysfs-create.c	/^_sample_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_sample_platform_driver_remove	platform/simple/platform_driver.c	/^_sample_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_spi_driver_exit	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_spi_driver_exit(void)$/;"	f	file:
+_spi_driver_exit	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^module_exit(_spi_driver_exit);$/;"	v
+_spi_driver_init	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_spi_driver_init(void)$/;"	f	file:
+_spi_driver_init	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^module_init(_spi_driver_init);$/;"	v
+_spi_exit	spi/basic/spi.c	/^_spi_exit(void)$/;"	f	file:
+_spi_exit	spi/basic/spi.c	/^module_exit(_spi_exit);$/;"	v
+_spi_init	spi/basic/spi.c	/^_spi_init(void)$/;"	f	file:
+_spi_init	spi/basic/spi.c	/^module_init(_spi_init);$/;"	v
+_spi_platform_driver_probe	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_spi_platform_driver_probe(struct platform_device *pdev)$/;"	f	file:
+_spi_platform_driver_remove	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_spi_platform_driver_remove(struct platform_device *pdev)$/;"	f	file:
+_timer_exit	timer/simple/timer.c	/^_timer_exit(void)$/;"	f	file:
+_timer_exit	timer/simple/timer.c	/^module_exit(_timer_exit);$/;"	v
+_timer_init	timer/simple/timer.c	/^_timer_init(void)$/;"	f	file:
+_timer_init	timer/simple/timer.c	/^module_init(_timer_init);$/;"	v
+_to_irq	platform/gpio-irqchip/gpio-irqchip.c	/^_to_irq(struct gpio_chip *chip,$/;"	f	file:
+_to_irq	platform/platform-gpio/platform-gpio.c	/^_to_irq(struct gpio_chip *chip,$/;"	f	file:
+_to_irq	usb/usb-gpio2/usb-gpio2.c	/^_to_irq(struct gpio_chip *chip,$/;"	f	file:
+_tx	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^_tx(struct spi_device_platform_data *sd, struct platform_device *pdev, uint8_t val)$/;"	f	file:
+_usb_exit	leds/class/simple/leds.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	leds/class/simple/leds.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-blink-led/driver/blink-led.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-blink-led/driver/blink-led.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-endpoints/usb-endpoints.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-endpoints/usb-endpoints.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-gpio/usb-gpio.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-gpio/usb-gpio.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-gpio2/usb-gpio2.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-gpio2/usb-gpio2.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-led/usb-led.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-led/usb-led.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-leds-class/driver/leds-class.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-leds-class/driver/leds-class.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-ledtrigg/driver/ledtrigg.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-ledtrigg/driver/ledtrigg.c	/^module_exit(_usb_exit);$/;"	v
+_usb_exit	usb/usb-template/usb-template.c	/^_usb_exit(void)$/;"	f	file:
+_usb_exit	usb/usb-template/usb-template.c	/^module_exit(_usb_exit);$/;"	v
+_usb_init	leds/class/simple/leds.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	leds/class/simple/leds.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-blink-led/driver/blink-led.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-blink-led/driver/blink-led.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-endpoints/usb-endpoints.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-endpoints/usb-endpoints.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-gpio/usb-gpio.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-gpio/usb-gpio.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-gpio2/usb-gpio2.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-gpio2/usb-gpio2.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-led/usb-led.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-led/usb-led.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-leds-class/driver/leds-class.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-leds-class/driver/leds-class.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-ledtrigg/driver/ledtrigg.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-ledtrigg/driver/ledtrigg.c	/^module_init(_usb_init);$/;"	v
+_usb_init	usb/usb-template/usb-template.c	/^_usb_init(void)$/;"	f	file:
+_usb_init	usb/usb-template/usb-template.c	/^module_init(_usb_init);$/;"	v
+_vms_exit	input/virtual_mouse/vmd.c	/^_vms_exit(void)$/;"	f	file:
+_vms_exit	input/virtual_mouse/vmd.c	/^module_exit(_vms_exit);$/;"	v
+_vms_init	input/virtual_mouse/vmd.c	/^_vms_init(void)$/;"	f	file:
+_vms_init	input/virtual_mouse/vmd.c	/^module_init(_vms_init);$/;"	v
+a	generic/container_of.c	/^ int a;$/;"	m	struct:test1	file:
+advance	timer/simple/timer.c	/^static unsigned advance = 100;$/;"	v	file:
+asm_exit	asm/simple/main.asm	/^asm_exit:$/;"	l
+asm_init	asm/simple/main.asm	/^asm_init:$/;"	l
+b	generic/container_of.c	/^ int b;$/;"	m	struct:test2	file:
+bRequest	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    uchar       bRequest;$/;"	m	struct:usbRequest
+bRequest	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    uchar       bRequest;$/;"	m	struct:usbRequest
+bit_order	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   enum BITORDER bit_order;$/;"	m	struct:spi_device_platform_data	typeref:enum:spi_device_platform_data::BITORDER	file:
+bitbang	spi/bitbang/tight/spi-gpio.c	/^	struct spi_bitbang		bitbang;$/;"	m	struct:spi_gpio	typeref:struct:spi_gpio::spi_bitbang	file:
+bitbang_txrx_be_cpha0	spi/bitbang/tight/spi-bitbang-txrx.h	/^bitbang_txrx_be_cpha0(struct spi_device *spi,$/;"	f
+bitbang_txrx_be_cpha1	spi/bitbang/tight/spi-bitbang-txrx.h	/^bitbang_txrx_be_cpha1(struct spi_device *spi,$/;"	f
+bitcnt	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define bitcnt  x5$/;"	d
+bitcnt	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define bitcnt  x5$/;"	d
+blink_led_func	usb/usb-blink-led/driver/blink-led.c	/^blink_led_func(void *data)$/;"	f	file:
+bmRequestType	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    uchar       bmRequestType;$/;"	m	struct:usbRequest
+bmRequestType	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    uchar       bmRequestType;$/;"	m	struct:usbRequest
+buf	char/copytouser/echo.c	/^     char buf[100];$/;"	m	struct:dup_data	file:
+buf	char/reversestring/reversestring.c	/^     char buf[100];$/;"	m	struct:dup_data	file:
+buffer	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    uchar   buffer[USB_BUFSIZE];$/;"	m	struct:usbTxStatus
+buffer	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    uchar   buffer[USB_BUFSIZE];$/;"	m	struct:usbTxStatus
+bytes	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    uchar       bytes[2];$/;"	m	union:usbWord
+bytes	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    uchar       bytes[2];$/;"	m	union:usbWord
+c	generic/container_of.c	/^ int c;$/;"	m	struct:test2	file:
+chip	platform/gpio-irqchip/gpio-irqchip.c	/^   struct gpio_chip chip;$/;"	m	struct:my_device_platform_data	typeref:struct:my_device_platform_data::gpio_chip	file:
+chip	platform/platform-gpio/platform-gpio.c	/^   struct gpio_chip chip;$/;"	m	struct:my_device_platform_data	typeref:struct:my_device_platform_data::gpio_chip	file:
+chip	usb/usb-gpio/usb-gpio.c	/^     struct gpio_chip chip; \/\/this is our GPIO chip$/;"	m	struct:my_usb	typeref:struct:my_usb::gpio_chip	file:
+chip	usb/usb-gpio2/usb-gpio2.c	/^     struct gpio_chip chip; \/\/this is our GPIO chip$/;"	m	struct:my_usb	typeref:struct:my_usb::gpio_chip	file:
+cli	usb/usb-blink-led/firmware/usbdrv/usbportability.h	/^static inline void  cli(void)$/;"	f
+cli	usb/usb-blink-led/firmware/usbdrv/usbportability.h	59;"	d
+cli	usb/usb-leds-class/firmware/usbdrv/usbportability.h	/^static inline void  cli(void)$/;"	f
+cli	usb/usb-leds-class/firmware/usbdrv/usbportability.h	59;"	d
+clkPin	spi/shift_reg/shift_reg_spi.c	/^static const int clkPin = 25;$/;"	v	file:
+cnt	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define cnt     r19$/;"	d
+cnt	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define cnt     r19$/;"	d
+container_of	generic/container_of.c	6;"	d	file:
+cpu	kthread/bind/bind.c	/^static int cpu;$/;"	v	file:
+cs_gpios	spi/bitbang/tight/spi-gpio.c	/^	unsigned long			cs_gpios[0];$/;"	m	struct:spi_gpio	file:
+dataPin	spi/shift_reg/shift_reg_spi.c	/^static const int dataPin = 9;$/;"	v	file:
+dd	char/copytouser/echo.c	/^static struct dup_data *dd = 0;$/;"	v	typeref:struct:dup_data	file:
+dd	char/reversestring/reversestring.c	/^static struct dup_data *dd = 0;$/;"	v	typeref:struct:dup_data	file:
+desc	platform/access-gpio-modern/access-gpio.c	/^struct gpio_desc *desc;$/;"	v	typeref:struct:gpio_desc
+desc	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   struct gpio_desc *desc[3]; \/\/ MOSI (data), SCK(clock), RST (latch)?$/;"	m	struct:spi_device_platform_data	typeref:struct:spi_device_platform_data::gpio_desc	file:
+dev_attr_fun	leds/trigger/create-sysfs/ledtrig-echo.c	/^static struct device_attribute dev_attr_fun = {$/;"	v	typeref:struct:device_attribute	file:
+dev_open	char/copytouser/echo.c	/^dev_open(struct inode *in, struct file *fl)$/;"	f	file:
+dev_open	char/misc/simple/simple_misc.c	/^dev_open(struct inode *in, struct file *fl)$/;"	f	file:
+dev_open	char/misc/sysfs/misc-sysfs.c	/^dev_open(struct inode *in, struct file *fl)$/;"	f	file:
+dev_open	char/mynull/mynull.c	/^dev_open(struct inode *in, struct file *fl)$/;"	f	file:
+dev_open	char/reversestring/reversestring.c	/^dev_open(struct inode *in, struct file *fl)$/;"	f	file:
+dev_read	char/copytouser/echo.c	/^dev_read(struct file *f, char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_read	char/misc/simple/simple_misc.c	/^dev_read(struct file *f, char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_read	char/misc/sysfs/misc-sysfs.c	/^dev_read(struct file *f, char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_read	char/mynull/mynull.c	/^dev_read(struct file *f, char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_read	char/reversestring/reversestring.c	/^dev_read(struct file *f, char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_release	char/copytouser/echo.c	/^dev_release(struct inode *in, struct file *fl)$/;"	f	file:
+dev_release	char/misc/simple/simple_misc.c	/^dev_release(struct inode *in, struct file *fl)$/;"	f	file:
+dev_release	char/misc/sysfs/misc-sysfs.c	/^dev_release(struct inode *in, struct file *fl)$/;"	f	file:
+dev_release	char/mynull/mynull.c	/^dev_release(struct inode *in, struct file *fl)$/;"	f	file:
+dev_release	char/reversestring/reversestring.c	/^dev_release(struct inode *in, struct file *fl)$/;"	f	file:
+dev_write	char/copytouser/echo.c	/^dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_write	char/misc/simple/simple_misc.c	/^dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_write	char/misc/sysfs/misc-sysfs.c	/^dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_write	char/mynull/mynull.c	/^dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)$/;"	f	file:
+dev_write	char/reversestring/reversestring.c	/^dev_write(struct file *f, const char *buf, size_t len, loff_t *offset)$/;"	f	file:
+device	usb/usb-endpoints/usb-endpoints.c	/^static struct usb_device *device;$/;"	v	typeref:struct:usb_device	file:
+dup_data	char/copytouser/echo.c	/^struct dup_data {$/;"	s	file:
+dup_data	char/reversestring/reversestring.c	/^struct dup_data {$/;"	s	file:
+end	char/copytouser/echo.c	/^     int end;$/;"	m	struct:dup_data	file:
+end	char/reversestring/reversestring.c	/^     int end;$/;"	m	struct:dup_data	file:
+endm	usb/usb-blink-led/firmware/usbdrv/usbportability.h	113;"	d
+endm	usb/usb-blink-led/firmware/usbdrv/usbportability.h	134;"	d
+endm	usb/usb-leds-class/firmware/usbdrv/usbportability.h	113;"	d
+endm	usb/usb-leds-class/firmware/usbdrv/usbportability.h	134;"	d
+fops	char/copytouser/echo.c	/^static struct file_operations fops =$/;"	v	typeref:struct:file_operations	file:
+fops	char/misc/simple/simple_misc.c	/^static struct file_operations fops =$/;"	v	typeref:struct:file_operations	file:
+fops	char/misc/sysfs/misc-sysfs.c	/^static struct file_operations fops =$/;"	v	typeref:struct:file_operations	file:
+fops	char/mynull/mynull.c	/^static struct file_operations fops =$/;"	v	typeref:struct:file_operations	file:
+fops	char/reversestring/reversestring.c	/^static struct file_operations fops =$/;"	v	typeref:struct:file_operations	file:
+get_value	char/misc/sysfs/misc-sysfs.c	/^static ssize_t get_value(struct device *dev,$/;"	f	file:
+get_value	input/virtual_mouse/vmd.c	/^static ssize_t get_value(struct device *dev,$/;"	f	file:
+get_value	platform/platform-sysfs/sysfs-create.c	/^static ssize_t get_value(struct device *dev,$/;"	f	file:
+get_value	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static ssize_t get_value(struct device *dev,$/;"	f	file:
+get_value_callback	spi/shift_reg/shift_reg_spi.c	/^static ssize_t get_value_callback(struct device *dev,$/;"	f	file:
+getmiso	spi/bitbang/tight/spi-gpio.c	/^static inline int getmiso(const struct spi_device *spi)$/;"	f	file:
+global	asm/simple/main.asm	/^global asm_exit$/;"	l
+global	asm/simple/main.asm	/^global asm_init$/;"	l
+gpio_create	platform/gpio-irqchip/gpio-irqchip.c	/^   void (*gpio_create)(struct my_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+gpio_create	platform/platform-gpio/platform-gpio.c	/^   void (*gpio_create)(struct my_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+gpio_no	platform/access-gpio-legacy/access-gpio.c	/^static long gpio_no = 435;$/;"	v	file:
+gpio_no	platform/access-gpio-modern/access-gpio.c	/^static long gpio_no = 432;$/;"	v	file:
+gpio_pin_val	platform/gpio-irqchip/gpio-irqchip.c	/^   int gpio_pin_val; \/\/ only 1 pin we have, for simplicity$/;"	m	struct:my_device_platform_data	file:
+gpio_pin_val	platform/platform-gpio/platform-gpio.c	/^   int gpio_pin_val; \/\/ only 1 pin we have, for simplicity$/;"	m	struct:my_device_platform_data	file:
+gpio_remove	platform/gpio-irqchip/gpio-irqchip.c	/^   void (*gpio_remove)(struct my_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+gpio_remove	platform/platform-gpio/platform-gpio.c	/^   void (*gpio_remove)(struct my_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+gpio_val	usb/usb-gpio/usb-gpio.c	/^static uint8_t gpio_val = 0;$/;"	v	file:
+gpio_val	usb/usb-gpio2/usb-gpio2.c	/^static uint8_t gpio_val = 0;$/;"	v	file:
+heartbeat_led_trigger	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static struct led_trigger heartbeat_led_trigger = {$/;"	v	typeref:struct:led_trigger	file:
+heartbeat_panic_nb	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static struct notifier_block heartbeat_panic_nb = {$/;"	v	typeref:struct:notifier_block	file:
+heartbeat_panic_notifier	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static int heartbeat_panic_notifier(struct notifier_block *nb,$/;"	f	file:
+heartbeat_reboot_nb	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static struct notifier_block heartbeat_reboot_nb = {$/;"	v	typeref:struct:notifier_block	file:
+heartbeat_reboot_notifier	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static int heartbeat_reboot_notifier(struct notifier_block *nb,$/;"	f	file:
+heartbeat_trig_activate	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static void heartbeat_trig_activate(struct led_classdev *led_cdev)$/;"	f	file:
+heartbeat_trig_data	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^struct heartbeat_trig_data {$/;"	s	file:
+heartbeat_trig_deactivate	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static void heartbeat_trig_deactivate(struct led_classdev *led_cdev)$/;"	f	file:
+heartbeat_trig_exit	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^module_exit(heartbeat_trig_exit);$/;"	v
+heartbeat_trig_exit	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static void __exit heartbeat_trig_exit(void)$/;"	f	file:
+heartbeat_trig_init	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^module_init(heartbeat_trig_init);$/;"	v
+heartbeat_trig_init	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static int __init heartbeat_trig_init(void)$/;"	f	file:
+hello_exit	generic/hello/hello-1.c	/^module_exit(hello_exit);$/;"	v
+hello_exit	generic/hello/hello-1.c	/^static void hello_exit(void) {$/;"	f	file:
+hello_exit	generic/modern_hello/hello-1.c	/^module_exit(hello_exit);$/;"	v
+hello_exit	generic/modern_hello/hello-1.c	/^static void __exit hello_exit(void) {$/;"	f	file:
+hello_exit	lock/mutex/mutex.c	/^hello_exit(void)$/;"	f	file:
+hello_exit	lock/mutex/mutex.c	/^module_exit(hello_exit);$/;"	v
+hello_exit	lock/spin/spin.c	/^hello_exit(void)$/;"	f	file:
+hello_exit	lock/spin/spin.c	/^module_exit(hello_exit);$/;"	v
+hello_init	generic/hello/hello-1.c	/^module_init(hello_init);$/;"	v
+hello_init	generic/hello/hello-1.c	/^static int hello_init(void) {$/;"	f	file:
+hello_init	generic/modern_hello/hello-1.c	/^module_init(hello_init);$/;"	v
+hello_init	generic/modern_hello/hello-1.c	/^static int __init hello_init(void) {$/;"	f	file:
+hello_init	lock/mutex/mutex.c	/^hello_init(void)$/;"	f	file:
+hello_init	lock/mutex/mutex.c	/^module_init(hello_init);$/;"	v
+hello_init	lock/spin/spin.c	/^hello_init(void)$/;"	f	file:
+hello_init	lock/spin/spin.c	/^module_init(hello_init);$/;"	v
+hexAscii	usb/usb-blink-led/firmware/usbdrv/oddebug.c	/^static uchar    hexAscii(uchar h)$/;"	f	file:
+hexAscii	usb/usb-leds-class/firmware/usbdrv/oddebug.c	/^static uchar    hexAscii(uchar h)$/;"	f	file:
+hi8	usb/usb-blink-led/firmware/usbdrv/usbportability.h	73;"	d
+hi8	usb/usb-leds-class/firmware/usbdrv/usbportability.h	73;"	d
+id_table	usb/usb-sysfs/usb-template.c	/^static const struct usb_device_id id_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+idev	input/virtual_mouse/vmd.c	/^static struct input_dev *idev;$/;"	v	typeref:struct:input_dev	file:
+invert	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^	unsigned int invert;$/;"	m	struct:heartbeat_trig_data	file:
+irq_no	platform/access-gpio-legacy/access-gpio.c	/^static unsigned irq_no;$/;"	v	file:
+irq_no	platform/access-gpio-modern/access-gpio.c	/^static unsigned irq_no;$/;"	v	file:
+irqchip	platform/gpio-irqchip/gpio-irqchip.c	/^   struct irq_chip *irqchip;$/;"	m	struct:my_device_platform_data	typeref:struct:my_device_platform_data::irq_chip	file:
+kernel_exit	kthread/bind/bind.c	/^kernel_exit(void)$/;"	f	file:
+kernel_exit	kthread/bind/bind.c	/^module_exit(kernel_exit);$/;"	v
+kernel_exit	kthread/create/kthread.c	/^kernel_exit(void)$/;"	f	file:
+kernel_exit	kthread/create/kthread.c	/^module_exit(kernel_exit);$/;"	v
+kernel_exit	kthread/run/run.c	/^kernel_exit(void)$/;"	f	file:
+kernel_exit	kthread/run/run.c	/^module_exit(kernel_exit);$/;"	v
+kernel_exit	kthread/signal/signal.c	/^kernel_exit(void)$/;"	f	file:
+kernel_exit	kthread/signal/signal.c	/^module_exit(kernel_exit);$/;"	v
+kernel_init	kthread/bind/bind.c	/^kernel_init(void)$/;"	f	file:
+kernel_init	kthread/bind/bind.c	/^module_init(kernel_init);$/;"	v
+kernel_init	kthread/create/kthread.c	/^kernel_init(void)$/;"	f	file:
+kernel_init	kthread/create/kthread.c	/^module_init(kernel_init);$/;"	v
+kernel_init	kthread/run/run.c	/^kernel_init(void)$/;"	f	file:
+kernel_init	kthread/run/run.c	/^module_init(kernel_init);$/;"	v
+kernel_init	kthread/signal/signal.c	/^kernel_init(void)$/;"	f	file:
+kernel_init	kthread/signal/signal.c	/^module_init(kernel_init);$/;"	v
+latchPin	spi/shift_reg/shift_reg_spi.c	/^static const int latchPin = 11;$/;"	v	file:
+latch_clk	spi/shift_reg/shift_reg_spi.c	/^void latch_clk(void)$/;"	f
+leap	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define leap    x4$/;"	d
+leap	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define leap    x4$/;"	d
+led	leds/class/simple/leds.c	/^     struct led_classdev led;$/;"	m	struct:my_usb	typeref:struct:my_usb::led_classdev	file:
+led	usb/usb-leds-class/driver/leds-class.c	/^     struct led_classdev led;$/;"	m	struct:my_usb	typeref:struct:my_usb::led_classdev	file:
+led_classvar	usb/usb-ledtrigg/driver/ledtrigg.c	/^static struct led_classdev led_classvar =$/;"	v	typeref:struct:led_classdev	file:
+led_get_brightness	leds/trigger/heartbeat/leds.h	/^static inline int led_get_brightness(struct led_classdev *led_cdev)$/;"	f
+led_heartbeat_function	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static void led_heartbeat_function(unsigned long data)$/;"	f	file:
+led_invert_show	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static ssize_t led_invert_show(struct device *dev,$/;"	f	file:
+led_invert_store	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static ssize_t led_invert_store(struct device *dev,$/;"	f	file:
+led_set_brightness_async	leds/trigger/heartbeat/leds.h	/^static inline void led_set_brightness_async(struct led_classdev *led_cdev,$/;"	f
+led_set_brightness_sync	leds/trigger/heartbeat/leds.h	/^static inline int led_set_brightness_sync(struct led_classdev *led_cdev,$/;"	f
+len	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    volatile uchar   len;$/;"	m	struct:usbTxStatus
+len	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    volatile uchar   len;$/;"	m	struct:usbTxStatus
+lo8	usb/usb-blink-led/firmware/usbdrv/usbportability.h	72;"	d
+lo8	usb/usb-leds-class/firmware/usbdrv/usbportability.h	72;"	d
+macro	usb/usb-blink-led/firmware/usbdrv/usbportability.h	112;"	d
+macro	usb/usb-blink-led/firmware/usbdrv/usbportability.h	133;"	d
+macro	usb/usb-leds-class/firmware/usbdrv/usbportability.h	112;"	d
+macro	usb/usb-leds-class/firmware/usbdrv/usbportability.h	133;"	d
+main	char/copytouser/userspace.c	/^int main()$/;"	f
+main	char/misc/simple/userspace.c	/^int main()$/;"	f
+main	char/misc/userspace.c	/^int main()$/;"	f
+main	char/mynull/userspace.c	/^int main()$/;"	f
+main	char/reversestring/userspace.c	/^int main()$/;"	f
+main	generic/container_of.c	/^int main()$/;"	f
+main	input/virtual_mouse/move_mouse.c	/^int main()$/;"	f
+main	usb/usb-blink-led/firmware/main.c	/^main(void)$/;"	f
+main	usb/usb-leds-class/firmware/main.c	/^main(void)$/;"	f
+main_exit	asm/simple/module.c	/^module_exit(main_exit);$/;"	v
+main_exit	asm/simple/module.c	/^void main_exit(void)$/;"	f	file:
+main_init	asm/simple/module.c	/^int main_init(void)$/;"	f	file:
+main_init	asm/simple/module.c	/^module_init(main_init);$/;"	v
+major_num	char/copytouser/echo.c	/^static int major_num;$/;"	v	file:
+major_num	char/mynull/mynull.c	/^static int major_num;$/;"	v	file:
+major_num	char/reversestring/reversestring.c	/^static int major_num;$/;"	v	file:
+misc_exit	char/misc/simple/simple_misc.c	/^misc_exit(void)$/;"	f	file:
+misc_exit	char/misc/simple/simple_misc.c	/^module_exit(misc_exit);$/;"	v
+misc_exit	char/misc/sysfs/misc-sysfs.c	/^misc_exit(void)$/;"	f	file:
+misc_exit	char/misc/sysfs/misc-sysfs.c	/^module_exit(misc_exit);$/;"	v
+misc_init	char/misc/simple/simple_misc.c	/^misc_init(void)$/;"	f	file:
+misc_init	char/misc/simple/simple_misc.c	/^module_init(misc_init);$/;"	v
+misc_init	char/misc/sysfs/misc-sysfs.c	/^misc_init(void)$/;"	f	file:
+misc_init	char/misc/sysfs/misc-sysfs.c	/^module_init(misc_init);$/;"	v
+miso	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   unsigned mosi, miso, sck, rst;$/;"	m	struct:spi_device_platform_data	file:
+mosi	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   unsigned mosi, miso, sck, rst;$/;"	m	struct:spi_device_platform_data	file:
+my_device	platform/custom/custom.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device	platform/gpio-irqchip/gpio-irqchip.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device	platform/platform-gpio/platform-gpio.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device	platform/platform-sysfs/sysfs-create.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device	spi/bitbang/generic/gpio-spi-data.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static struct platform_device my_device = {$/;"	v	typeref:struct:platform_device	file:
+my_device_data	platform/custom/custom.c	/^static struct my_device_platform_data my_device_data = {$/;"	v	typeref:struct:my_device_platform_data	file:
+my_device_data	platform/gpio-irqchip/gpio-irqchip.c	/^static struct my_device_platform_data my_device_data = {$/;"	v	typeref:struct:my_device_platform_data	file:
+my_device_data	platform/platform-gpio/platform-gpio.c	/^static struct my_device_platform_data my_device_data = {$/;"	v	typeref:struct:my_device_platform_data	file:
+my_device_data	platform/platform-sysfs/sysfs-create.c	/^static struct my_device_platform_data my_device_data = {$/;"	v	typeref:struct:my_device_platform_data	file:
+my_device_data	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static struct spi_device_platform_data my_device_data = {$/;"	v	typeref:struct:spi_device_platform_data	file:
+my_device_platform_data	platform/custom/custom.c	/^struct my_device_platform_data$/;"	s	file:
+my_device_platform_data	platform/gpio-irqchip/gpio-irqchip.c	/^struct my_device_platform_data$/;"	s	file:
+my_device_platform_data	platform/platform-gpio/platform-gpio.c	/^struct my_device_platform_data$/;"	s	file:
+my_device_platform_data	platform/platform-sysfs/sysfs-create.c	/^struct my_device_platform_data$/;"	s	file:
+my_gpio_irq_chip	platform/gpio-irqchip/gpio-irqchip.c	/^static struct irq_chip my_gpio_irq_chip = {$/;"	v	typeref:struct:irq_chip	file:
+my_ledtrigg	usb/usb-ledtrigg/driver/ledtrigg.c	/^static struct led_trigger my_ledtrigg = {$/;"	v	typeref:struct:led_trigger	file:
+my_ledtrigg_activate	usb/usb-ledtrigg/driver/ledtrigg.c	/^my_ledtrigg_activate(struct led_classdev *led)$/;"	f	file:
+my_misc_device	char/misc/simple/simple_misc.c	/^static struct miscdevice my_misc_device = {$/;"	v	typeref:struct:miscdevice	file:
+my_misc_device	char/misc/sysfs/misc-sysfs.c	/^static struct miscdevice my_misc_device = {$/;"	v	typeref:struct:miscdevice	file:
+my_usb	leds/class/simple/leds.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-blink-led/driver/blink-led.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-endpoints/usb-endpoints.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-gpio/usb-gpio.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-gpio2/usb-gpio2.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-led/usb-led.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-leds-class/driver/leds-class.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-ledtrigg/driver/ledtrigg.c	/^struct my_usb {$/;"	s	file:
+my_usb	usb/usb-template/usb-template.c	/^struct my_usb {$/;"	s	file:
+my_usb_disconnect	leds/class/simple/leds.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-blink-led/driver/blink-led.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-endpoints/usb-endpoints.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-gpio/usb-gpio.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-gpio2/usb-gpio2.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-led/usb-led.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-leds-class/driver/leds-class.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-ledtrigg/driver/ledtrigg.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_disconnect	usb/usb-template/usb-template.c	/^my_usb_disconnect(struct usb_interface *interface)$/;"	f	file:
+my_usb_driver	leds/class/simple/leds.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-blink-led/driver/blink-led.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-endpoints/usb-endpoints.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-gpio/usb-gpio.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-gpio2/usb-gpio2.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-led/usb-led.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-leds-class/driver/leds-class.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-ledtrigg/driver/ledtrigg.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_driver	usb/usb-template/usb-template.c	/^static struct usb_driver my_usb_driver = {$/;"	v	typeref:struct:usb_driver	file:
+my_usb_probe	leds/class/simple/leds.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-blink-led/driver/blink-led.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-endpoints/usb-endpoints.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-gpio/usb-gpio.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-gpio2/usb-gpio2.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-led/usb-led.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-leds-class/driver/leds-class.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-ledtrigg/driver/ledtrigg.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_probe	usb/usb-template/usb-template.c	/^my_usb_probe(struct usb_interface *interface,$/;"	f	file:
+my_usb_table	leds/class/simple/leds.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-blink-led/driver/blink-led.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-endpoints/usb-endpoints.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-gpio/usb-gpio.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-gpio2/usb-gpio2.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-led/usb-led.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-leds-class/driver/leds-class.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-ledtrigg/driver/ledtrigg.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_table	usb/usb-template/usb-template.c	/^static struct usb_device_id my_usb_table[] = {$/;"	v	typeref:struct:usb_device_id	file:
+my_usb_work_func	usb/usb-led/usb-led.c	/^my_usb_work_func(struct work_struct *work)$/;"	f	file:
+mylock	char/copytouser/echo.c	/^static spinlock_t mylock;$/;"	v	file:
+mylock	char/reversestring/reversestring.c	/^static spinlock_t mylock;$/;"	v	file:
+mylock	lock/spin/spin.c	/^static spinlock_t mylock; \/\/ = SPIN_LOCK_UNLOCKED;$/;"	v	file:
+mymutexlock	lock/mutex/mutex.c	/^static struct mutex mymutexlock;$/;"	v	typeref:struct:mutex	file:
+mynull_exit	char/copytouser/echo.c	/^module_exit(mynull_exit);$/;"	v
+mynull_exit	char/copytouser/echo.c	/^mynull_exit(void)$/;"	f	file:
+mynull_exit	char/mynull/mynull.c	/^module_exit(mynull_exit);$/;"	v
+mynull_exit	char/mynull/mynull.c	/^mynull_exit(void)$/;"	f	file:
+mynull_exit	char/reversestring/reversestring.c	/^module_exit(mynull_exit);$/;"	v
+mynull_exit	char/reversestring/reversestring.c	/^mynull_exit(void)$/;"	f	file:
+mynull_init	char/copytouser/echo.c	/^module_init(mynull_init);$/;"	v
+mynull_init	char/copytouser/echo.c	/^mynull_init(void)$/;"	f	file:
+mynull_init	char/mynull/mynull.c	/^module_init(mynull_init);$/;"	v
+mynull_init	char/mynull/mynull.c	/^mynull_init(void)$/;"	f	file:
+mynull_init	char/reversestring/reversestring.c	/^module_init(mynull_init);$/;"	v
+mynull_init	char/reversestring/reversestring.c	/^mynull_init(void)$/;"	f	file:
+mytrig_crfs	leds/trigger/create-sysfs/ledtrig-echo.c	/^static struct led_trigger mytrig_crfs = {$/;"	v	typeref:struct:led_trigger	file:
+mytrig_crfs_activate	leds/trigger/create-sysfs/ledtrig-echo.c	/^mytrig_crfs_activate(struct led_classdev *ldev)$/;"	f	file:
+mytrig_crfs_deactivate	leds/trigger/create-sysfs/ledtrig-echo.c	/^mytrig_crfs_deactivate(struct led_classdev *ldev)$/;"	f	file:
+mytrig_exit	leds/trigger/create-sysfs/ledtrig-echo.c	/^module_exit(mytrig_exit);$/;"	v
+mytrig_exit	leds/trigger/create-sysfs/ledtrig-echo.c	/^mytrig_exit(void)$/;"	f	file:
+mytrig_init	leds/trigger/create-sysfs/ledtrig-echo.c	/^module_init(mytrig_init);$/;"	v
+mytrig_init	leds/trigger/create-sysfs/ledtrig-echo.c	/^mytrig_init(void)$/;"	f	file:
+name	char/mynull/mynull.c	/^static char *name = "null";$/;"	v	file:
+name	generic/modern_hello/hello-1.c	/^static char *name = "ami";$/;"	v	file:
+nop2	usb/usb-blink-led/firmware/usbdrv/usbportability.h	114;"	d
+nop2	usb/usb-blink-led/firmware/usbdrv/usbportability.h	135;"	d
+nop2	usb/usb-blink-led/firmware/usbdrv/usbportability.h	65;"	d
+nop2	usb/usb-leds-class/firmware/usbdrv/usbportability.h	114;"	d
+nop2	usb/usb-leds-class/firmware/usbdrv/usbportability.h	135;"	d
+nop2	usb/usb-leds-class/firmware/usbdrv/usbportability.h	65;"	d
+nullClass	char/copytouser/echo.c	/^static struct class *nullClass = NULL;$/;"	v	typeref:struct:class	file:
+nullClass	char/mynull/mynull.c	/^static struct class *nullClass = NULL;$/;"	v	typeref:struct:class	file:
+nullClass	char/reversestring/reversestring.c	/^static struct class *nullClass = NULL;$/;"	v	typeref:struct:class	file:
+nullDevice	char/copytouser/echo.c	/^static struct device *nullDevice = NULL;$/;"	v	typeref:struct:device	file:
+nullDevice	char/mynull/mynull.c	/^static struct device *nullDevice = NULL;$/;"	v	typeref:struct:device	file:
+nullDevice	char/reversestring/reversestring.c	/^static struct device *nullDevice = NULL;$/;"	v	typeref:struct:device	file:
+odDebug	usb/usb-blink-led/firmware/usbdrv/oddebug.c	/^void    odDebug(uchar prefix, uchar *data, uchar len)$/;"	f
+odDebug	usb/usb-leds-class/firmware/usbdrv/oddebug.c	/^void    odDebug(uchar prefix, uchar *data, uchar len)$/;"	f
+odDebugInit	usb/usb-blink-led/firmware/usbdrv/oddebug.h	/^static inline void  odDebugInit(void)$/;"	f
+odDebugInit	usb/usb-blink-led/firmware/usbdrv/oddebug.h	117;"	d
+odDebugInit	usb/usb-leds-class/firmware/usbdrv/oddebug.h	/^static inline void  odDebugInit(void)$/;"	f
+odDebugInit	usb/usb-leds-class/firmware/usbdrv/oddebug.h	117;"	d
+offsetof	generic/container_of.c	4;"	d	file:
+old_value	char/misc/sysfs/misc-sysfs.c	/^static long old_value;$/;"	v	file:
+old_value	platform/platform-sysfs/sysfs-create.c	/^static long old_value;$/;"	v	file:
+old_value	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static long old_value;$/;"	v	file:
+old_value	spi/shift_reg/shift_reg_spi.c	/^long old_value = 0;$/;"	v
+panic_heartbeats	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^static int panic_heartbeats;$/;"	v	file:
+pdata	spi/bitbang/tight/spi-gpio.c	/^	struct spi_gpio_platform_data	pdata;$/;"	m	struct:spi_gpio	typeref:struct:spi_gpio::spi_gpio_platform_data	file:
+pdata	spi/bitbang/tight/spi-gpio.c	109;"	d	file:
+pdata	spi/bitbang/tight/spi-gpio.c	126;"	d	file:
+pdev	input/virtual_mouse/vmd.c	/^static struct platform_device *pdev;$/;"	v	typeref:struct:platform_device	file:
+pdev	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   struct platform_device *pdev;$/;"	m	struct:spi_device_platform_data	typeref:struct:spi_device_platform_data::platform_device	file:
+pdev	spi/bitbang/tight/spi-gpio.c	/^	struct platform_device		*pdev;$/;"	m	struct:spi_gpio	typeref:struct:spi_gpio::platform_device	file:
+period	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^	unsigned int period;$/;"	m	struct:heartbeat_trig_data	file:
+phase	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^	unsigned int phase;$/;"	m	struct:heartbeat_trig_data	file:
+phase	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define phase   x4$/;"	d
+phase	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define phase   x4$/;"	d
+power_gpio	platform/custom/custom.c	/^   int power_gpio;$/;"	m	struct:my_device_platform_data	file:
+power_gpio	platform/platform-sysfs/sysfs-create.c	/^   int power_gpio;$/;"	m	struct:my_device_platform_data	file:
+power_off	platform/custom/custom.c	/^   void (*power_off)(struct my_device_platform_data *);$/;"	m	struct:my_device_platform_data	file:
+power_off	platform/platform-sysfs/sysfs-create.c	/^   void (*power_off)(struct my_device_platform_data *,struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+power_off	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   void (*power_off)(struct spi_device_platform_data *,struct platform_device *pdev);$/;"	m	struct:spi_device_platform_data	file:
+power_on	platform/custom/custom.c	/^   void (*power_on)(struct my_device_platform_data *);$/;"	m	struct:my_device_platform_data	file:
+power_on	platform/platform-sysfs/sysfs-create.c	/^   void (*power_on)(struct my_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:my_device_platform_data	file:
+power_on	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   int (*power_on)(struct spi_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:spi_device_platform_data	file:
+printHex	usb/usb-blink-led/firmware/usbdrv/oddebug.c	/^static void printHex(uchar c)$/;"	f	file:
+printHex	usb/usb-leds-class/firmware/usbdrv/oddebug.c	/^static void printHex(uchar c)$/;"	f	file:
+reset	platform/custom/custom.c	/^   void (*reset)(struct my_device_platform_data *);$/;"	m	struct:my_device_platform_data	file:
+reset	platform/platform-sysfs/sysfs-create.c	/^   void (*reset)(struct my_device_platform_data *);$/;"	m	struct:my_device_platform_data	file:
+reset	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   void (*reset)(struct spi_device_platform_data *, struct platform_device *pdev);$/;"	m	struct:spi_device_platform_data	file:
+reset_gpio	platform/custom/custom.c	/^   int reset_gpio;$/;"	m	struct:my_device_platform_data	file:
+reset_gpio	platform/platform-sysfs/sysfs-create.c	/^   int reset_gpio;$/;"	m	struct:my_device_platform_data	file:
+ret	kthread/create/kthread.c	/^static int ret;$/;"	v	file:
+ret	kthread/run/run.c	/^static int ret;$/;"	v	file:
+ret	kthread/signal/signal.c	/^static int ret;$/;"	v	file:
+rst	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   unsigned mosi, miso, sck, rst;$/;"	m	struct:spi_device_platform_data	file:
+s_pDeviceClass	spi/shift_reg/shift_reg_spi.c	/^static struct class *s_pDeviceClass;$/;"	v	typeref:struct:class	file:
+s_pDeviceObject	spi/shift_reg/shift_reg_spi.c	/^static struct device *s_pDeviceObject;$/;"	v	typeref:struct:device	file:
+sample_platform_device	platform/simple/platform_device.c	/^static struct platform_device sample_platform_device = {$/;"	v	typeref:struct:platform_device	file:
+sample_platform_driver	platform/custom/custom.c	/^static struct platform_driver sample_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+sample_platform_driver	platform/gpio-irqchip/gpio-irqchip.c	/^static struct platform_driver sample_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+sample_platform_driver	platform/platform-gpio/platform-gpio.c	/^static struct platform_driver sample_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+sample_platform_driver	platform/platform-sysfs/sysfs-create.c	/^static struct platform_driver sample_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+sample_platform_driver	platform/simple/platform_driver.c	/^static struct platform_driver sample_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+sample_resources	platform/simple/platform_device.c	/^static struct resource sample_resources[] = {$/;"	v	typeref:struct:resource	file:
+schar	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	163;"	d
+schar	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	163;"	d
+sck	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   unsigned mosi, miso, sck, rst;$/;"	m	struct:spi_device_platform_data	file:
+sclkBarPin	spi/shift_reg/shift_reg_spi.c	/^static const int sclkBarPin = 8;$/;"	v	file:
+sdev	spi/basic/spi.c	/^static struct spi_device *sdev;$/;"	v	typeref:struct:spi_device	file:
+sei	usb/usb-blink-led/firmware/usbdrv/usbportability.h	/^static inline void  sei(void)$/;"	f
+sei	usb/usb-blink-led/firmware/usbdrv/usbportability.h	60;"	d
+sei	usb/usb-leds-class/firmware/usbdrv/usbportability.h	/^static inline void  sei(void)$/;"	f
+sei	usb/usb-leds-class/firmware/usbdrv/usbportability.h	60;"	d
+serial_clk	spi/shift_reg/shift_reg_spi.c	/^void serial_clk(void)$/;"	f
+set_speed	usb/usb-sysfs/usb-template.c	/^static ssize_t set_speed(struct device *dev, struct device_attribute *attr,$/;"	f	file:
+set_value	char/misc/sysfs/misc-sysfs.c	/^static ssize_t set_value(struct device *dev,$/;"	f	file:
+set_value	input/virtual_mouse/vmd.c	/^static ssize_t set_value(struct device *dev,$/;"	f	file:
+set_value	platform/platform-sysfs/sysfs-create.c	/^static ssize_t set_value(struct device *dev,$/;"	f	file:
+set_value	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static ssize_t set_value(struct device *dev,$/;"	f	file:
+set_value_callback	spi/shift_reg/shift_reg_spi.c	/^static ssize_t set_value_callback(struct device* dev,$/;"	f	file:
+setmosi	spi/bitbang/tight/spi-gpio.c	/^static inline void setmosi(const struct spi_device *spi, int is_on)$/;"	f	file:
+setsck	spi/bitbang/tight/spi-gpio.c	/^static inline void setsck(const struct spi_device *spi, int is_on)$/;"	f	file:
+shift	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define shift   r18$/;"	d
+shift	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define shift   r18$/;"	d
+show_speed	usb/usb-sysfs/usb-template.c	/^static ssize_t show_speed(struct device *dev, struct device_attribute *attr,$/;"	f	file:
+speed	usb/usb-sysfs/usb-template.c	/^     unsigned int speed;$/;"	m	struct:trancevibrator	file:
+spi_data	spi/bitbang/generic/gpio-spi-data.c	/^static struct spi_gpio_platform_data spi_data = {$/;"	v	typeref:struct:spi_gpio_platform_data	file:
+spi_device_platform_data	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^struct spi_device_platform_data$/;"	s	file:
+spi_gpio	spi/bitbang/tight/spi-gpio.c	/^struct spi_gpio {$/;"	s	file:
+spi_gpio_alloc	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_alloc(unsigned pin, const char *label, bool is_in)$/;"	f	file:
+spi_gpio_chipselect	spi/bitbang/tight/spi-gpio.c	/^static void spi_gpio_chipselect(struct spi_device *spi, int is_active)$/;"	f	file:
+spi_gpio_cleanup	spi/bitbang/tight/spi-gpio.c	/^static void spi_gpio_cleanup(struct spi_device *spi)$/;"	f	file:
+spi_gpio_driver	spi/bitbang/tight/spi-gpio.c	/^module_platform_driver(spi_gpio_driver);$/;"	v
+spi_gpio_driver	spi/bitbang/tight/spi-gpio.c	/^static struct platform_driver spi_gpio_driver = {$/;"	v	typeref:struct:platform_driver	file:
+spi_gpio_dt_ids	spi/bitbang/tight/spi-gpio.c	/^static const struct of_device_id spi_gpio_dt_ids[] = {$/;"	v	typeref:struct:of_device_id	file:
+spi_gpio_probe	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_probe(struct platform_device *pdev)$/;"	f	file:
+spi_gpio_probe_dt	spi/bitbang/tight/spi-gpio.c	/^static inline int spi_gpio_probe_dt(struct platform_device *pdev)$/;"	f	file:
+spi_gpio_probe_dt	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_probe_dt(struct platform_device *pdev)$/;"	f	file:
+spi_gpio_remove	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_remove(struct platform_device *pdev)$/;"	f	file:
+spi_gpio_request	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_request(struct spi_gpio_platform_data *pdata,$/;"	f	file:
+spi_gpio_setup	spi/bitbang/tight/spi-gpio.c	/^static int spi_gpio_setup(struct spi_device *spi)$/;"	f	file:
+spi_gpio_spec_txrx_word_mode0	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_spec_txrx_word_mode0(struct spi_device *spi,$/;"	f	file:
+spi_gpio_spec_txrx_word_mode1	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_spec_txrx_word_mode1(struct spi_device *spi,$/;"	f	file:
+spi_gpio_spec_txrx_word_mode2	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_spec_txrx_word_mode2(struct spi_device *spi,$/;"	f	file:
+spi_gpio_spec_txrx_word_mode3	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_spec_txrx_word_mode3(struct spi_device *spi,$/;"	f	file:
+spi_gpio_txrx_word_mode0	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_txrx_word_mode0(struct spi_device *spi,$/;"	f	file:
+spi_gpio_txrx_word_mode1	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_txrx_word_mode1(struct spi_device *spi,$/;"	f	file:
+spi_gpio_txrx_word_mode2	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_txrx_word_mode2(struct spi_device *spi,$/;"	f	file:
+spi_gpio_txrx_word_mode3	spi/bitbang/tight/spi-gpio.c	/^static u32 spi_gpio_txrx_word_mode3(struct spi_device *spi,$/;"	f	file:
+spi_platform_driver	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^static struct platform_driver spi_platform_driver = {$/;"	v	typeref:struct:platform_driver	file:
+spi_to_pdata	spi/bitbang/tight/spi-gpio.c	/^spi_to_pdata(const struct spi_device *spi)$/;"	f	file:
+spi_to_spi_gpio	spi/bitbang/tight/spi-gpio.c	/^spi_to_spi_gpio(const struct spi_device *spi)$/;"	f	file:
+spidelay	spi/bitbang/tight/spi-gpio.c	134;"	d	file:
+task	kthread/bind/bind.c	/^static struct task_struct *task;$/;"	v	typeref:struct:task_struct	file:
+task	kthread/create/kthread.c	/^static struct task_struct *task;$/;"	v	typeref:struct:task_struct	file:
+task	kthread/run/run.c	/^static struct task_struct *task;$/;"	v	typeref:struct:task_struct	file:
+task	kthread/signal/signal.c	/^static struct task_struct *task;$/;"	v	typeref:struct:task_struct	file:
+task	usb/usb-blink-led/driver/blink-led.c	/^     struct task_struct *task; \/\/kthread ptr$/;"	m	struct:my_usb	typeref:struct:my_usb::task_struct	file:
+test-objs	asm/simple/Makefile	/^test-objs := module.o main.o$/;"	m
+test1	generic/container_of.c	/^struct test1 {$/;"	s	file:
+test2	generic/container_of.c	/^struct test2 {$/;"	s	file:
+thread_function	kthread/bind/bind.c	/^thread_function(void *data)$/;"	f	file:
+thread_function	kthread/create/kthread.c	/^thread_function(void *data)$/;"	f	file:
+thread_function	kthread/run/run.c	/^thread_function(void *data)$/;"	f	file:
+thread_function	kthread/signal/signal.c	/^thread_function(void *data)$/;"	f	file:
+timer	leds/trigger/heartbeat/ledtrig-heartbeat.c	/^	struct timer_list timer;$/;"	m	struct:heartbeat_trig_data	typeref:struct:heartbeat_trig_data::timer_list	file:
+timer_1	timer/simple/timer.c	/^static struct timer_list timer_1;$/;"	v	typeref:struct:timer_list	file:
+timer_timeout	timer/simple/timer.c	/^timer_timeout(unsigned long x)$/;"	f	file:
+trancevibrator	usb/usb-sysfs/usb-template.c	/^struct trancevibrator {$/;"	s	file:
+tv_disconnect	usb/usb-sysfs/usb-template.c	/^static void tv_disconnect(struct usb_interface *interface)$/;"	f	file:
+tv_driver	usb/usb-sysfs/usb-template.c	/^module_usb_driver(tv_driver);$/;"	v
+tv_driver	usb/usb-sysfs/usb-template.c	/^static struct usb_driver tv_driver = {$/;"	v	typeref:struct:usb_driver	file:
+tv_probe	usb/usb-sysfs/usb-template.c	/^static int tv_probe(struct usb_interface *interface,$/;"	f	file:
+tx	spi/bitbang/gpio-spi-bitbang/gpio-spi-bitbang.c	/^   uint8_t (*tx)(struct spi_device_platform_data *, struct platform_device *, uint8_t val);$/;"	m	struct:spi_device_platform_data	file:
+uartPutc	usb/usb-blink-led/firmware/usbdrv/oddebug.c	/^static void uartPutc(char c)$/;"	f	file:
+uartPutc	usb/usb-leds-class/firmware/usbdrv/oddebug.c	/^static void uartPutc(char c)$/;"	f	file:
+uchar	usb/usb-blink-led/firmware/usbdrv/oddebug.h	34;"	d
+uchar	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	160;"	d
+uchar	usb/usb-leds-class/firmware/usbdrv/oddebug.h	34;"	d
+uchar	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	160;"	d
+udev	leds/class/simple/leds.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-blink-led/driver/blink-led.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-gpio/usb-gpio.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-gpio2/usb-gpio2.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-led/usb-led.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-leds-class/driver/leds-class.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-ledtrigg/driver/ledtrigg.c	/^     struct usb_device *udev;$/;"	m	struct:my_usb	typeref:struct:my_usb::usb_device	file:
+udev	usb/usb-sysfs/usb-template.c	/^     struct usb_device *udev;$/;"	m	struct:trancevibrator	typeref:struct:trancevibrator::usb_device	file:
+usbAllRequestsAreDisabled	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	393;"	d
+usbAllRequestsAreDisabled	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	393;"	d
+usbBuildTxBlock	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline void usbBuildTxBlock(void)$/;"	f	file:
+usbBuildTxBlock	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline void usbBuildTxBlock(void)$/;"	f	file:
+usbConfiguration	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbConfiguration;   \/* currently selected configuration. Administered by driver, but not used *\/$/;"	v
+usbConfiguration	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbConfiguration;   \/* currently selected configuration. Administered by driver, but not used *\/$/;"	v
+usbCrc16	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	335;"	d
+usbCrc16	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrc16:$/;"	l
+usbCrc16	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	335;"	d
+usbCrc16	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrc16:$/;"	l
+usbCrc16Append	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	343;"	d
+usbCrc16Append	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrc16Append:$/;"	l
+usbCrc16Append	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	343;"	d
+usbCrc16Append	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrc16Append:$/;"	l
+usbCrc16ByteLoop	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrc16ByteLoop:$/;"	l
+usbCrc16ByteLoop	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrc16ByteLoop:$/;"	l
+usbCrc16LoopTest	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrc16LoopTest:$/;"	l
+usbCrc16LoopTest	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrc16LoopTest:$/;"	l
+usbCrcBitLoop	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrcBitLoop:$/;"	l
+usbCrcBitLoop	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrcBitLoop:$/;"	l
+usbCrcByteLoop	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrcByteLoop:$/;"	l
+usbCrcByteLoop	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrcByteLoop:$/;"	l
+usbCrcLoopEntry	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrcLoopEntry:$/;"	l
+usbCrcLoopEntry	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrcLoopEntry:$/;"	l
+usbCrcNoXor	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrcNoXor:$/;"	l
+usbCrcNoXor	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrcNoXor:$/;"	l
+usbCrcReady	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbCrcReady:$/;"	l
+usbCrcReady	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbCrcReady:$/;"	l
+usbCurrentDataToken	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbCurrentDataToken;\/* when we check data toggling to ignore duplicate packets *\/$/;"	v
+usbCurrentDataToken	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbCurrentDataToken;\/* when we check data toggling to ignore duplicate packets *\/$/;"	v
+usbCurrentTok	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbCurrentTok;      \/* last token received or endpoint number for last OUT token if != 0 *\/$/;"	v
+usbCurrentTok	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbCurrentTok;      \/* last token received or endpoint number for last OUT token if != 0 *\/$/;"	v
+usbDescriptorConfiguration	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorConfiguration[] = {    \/* USB configuration descriptor *\/$/;"	v
+usbDescriptorConfiguration	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorConfiguration[] = {    \/* USB configuration descriptor *\/$/;"	v
+usbDescriptorDevice	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorDevice[] = {    \/* USB device descriptor *\/$/;"	v
+usbDescriptorDevice	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorDevice[] = {    \/* USB device descriptor *\/$/;"	v
+usbDescriptorString0	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorString0[] = { \/* language descriptor *\/$/;"	v
+usbDescriptorString0	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const char usbDescriptorString0[] = { \/* language descriptor *\/$/;"	v
+usbDescriptorStringDevice	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const int  usbDescriptorStringDevice[] = {$/;"	v
+usbDescriptorStringDevice	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const int  usbDescriptorStringDevice[] = {$/;"	v
+usbDescriptorStringSerialNumber	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const int usbDescriptorStringSerialNumber[] = {$/;"	v
+usbDescriptorStringSerialNumber	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const int usbDescriptorStringSerialNumber[] = {$/;"	v
+usbDescriptorStringVendor	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^PROGMEM const int  usbDescriptorStringVendor[] = {$/;"	v
+usbDescriptorStringVendor	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^PROGMEM const int  usbDescriptorStringVendor[] = {$/;"	v
+usbDeviceAddr	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbDeviceAddr;      \/* assigned during enumeration, defaults to 0 *\/$/;"	v
+usbDeviceAddr	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbDeviceAddr;      \/* assigned during enumeration, defaults to 0 *\/$/;"	v
+usbDeviceConnect	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	314;"	d
+usbDeviceConnect	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	319;"	d
+usbDeviceConnect	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	314;"	d
+usbDeviceConnect	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	319;"	d
+usbDeviceDisconnect	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	316;"	d
+usbDeviceDisconnect	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	320;"	d
+usbDeviceDisconnect	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	316;"	d
+usbDeviceDisconnect	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	320;"	d
+usbDeviceRead	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static uchar usbDeviceRead(uchar *data, uchar len)$/;"	f	file:
+usbDeviceRead	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static uchar usbDeviceRead(uchar *data, uchar len)$/;"	f	file:
+usbDisableAllRequests	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	384;"	d
+usbDisableAllRequests	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	384;"	d
+usbDriverDescriptor	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline usbMsgLen_t usbDriverDescriptor(usbRequest_t *rq)$/;"	f	file:
+usbDriverDescriptor	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline usbMsgLen_t usbDriverDescriptor(usbRequest_t *rq)$/;"	f	file:
+usbDriverSetup	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)$/;"	f	file:
+usbDriverSetup	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline usbMsgLen_t usbDriverSetup(usbRequest_t *rq)$/;"	f	file:
+usbEnableAllRequests	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	389;"	d
+usbEnableAllRequests	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	389;"	d
+usbFunctionSetup	usb/usb-blink-led/firmware/main.c	/^usbMsgLen_t usbFunctionSetup(uchar data[8])$/;"	f
+usbFunctionSetup	usb/usb-leds-class/firmware/main.c	/^usbMsgLen_t usbFunctionSetup(uchar data[8])$/;"	f
+usbGenericSetInterrupt	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static void usbGenericSetInterrupt(uchar *data, uchar len, usbTxStatus_t *txStatus)$/;"	f	file:
+usbGenericSetInterrupt	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static void usbGenericSetInterrupt(uchar *data, uchar len, usbTxStatus_t *txStatus)$/;"	f	file:
+usbHandleResetHook	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline void usbHandleResetHook(uchar notResetState)$/;"	f	file:
+usbHandleResetHook	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline void usbHandleResetHook(uchar notResetState)$/;"	f	file:
+usbHidReportDescriptor	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	264;"	d
+usbHidReportDescriptor	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	264;"	d
+usbInit	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbInit(void)$/;"	f
+usbInit	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbInit(void)$/;"	f
+usbInputBufOffset	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbInputBufOffset;  \/* offset in usbRxBuf used for low level receiving *\/$/;"	v
+usbInputBufOffset	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbInputBufOffset;  \/* offset in usbRxBuf used for low level receiving *\/$/;"	v
+usbInterruptIsReady	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	252;"	d
+usbInterruptIsReady	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	252;"	d
+usbInterruptIsReady3	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	259;"	d
+usbInterruptIsReady3	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	259;"	d
+usbMFTime16	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMFTime16:$/;"	l
+usbMFTime16	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMFTime16:$/;"	l
+usbMFTimeout	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMFTimeout:$/;"	l
+usbMFTimeout	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMFTimeout:$/;"	l
+usbMFWaitIdle	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitIdle:              ; then wait until idle again$/;"	l
+usbMFWaitIdle	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitIdle:              ; then wait until idle again$/;"	l
+usbMFWaitLoop	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitLoop:$/;"	l
+usbMFWaitLoop	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitLoop:$/;"	l
+usbMFWaitStrobe	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitStrobe:            ; first wait for D- == 0 (idle strobe)$/;"	l
+usbMFWaitStrobe	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMFWaitStrobe:            ; first wait for D- == 0 (idle strobe)$/;"	l
+usbMeasureFrameLength	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^usbMeasureFrameLength:$/;"	l
+usbMeasureFrameLength	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^usbMeasureFrameLength:$/;"	l
+usbMsgFlags	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static uchar        usbMsgFlags;    \/* flag values see below *\/$/;"	v	file:
+usbMsgFlags	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static uchar        usbMsgFlags;    \/* flag values see below *\/$/;"	v	file:
+usbMsgLen	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static usbMsgLen_t  usbMsgLen = USB_NO_MSG; \/* remaining number of bytes *\/$/;"	v	file:
+usbMsgLen	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static usbMsgLen_t  usbMsgLen = USB_NO_MSG; \/* remaining number of bytes *\/$/;"	v	file:
+usbMsgLen_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	168;"	d
+usbMsgLen_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	170;"	d
+usbMsgLen_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	168;"	d
+usbMsgLen_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	170;"	d
+usbMsgPtr	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^usbMsgPtr_t         usbMsgPtr;      \/* data to transmit next -- ROM or RAM address *\/$/;"	v
+usbMsgPtr	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^usbMsgPtr_t         usbMsgPtr;      \/* data to transmit next -- ROM or RAM address *\/$/;"	v
+usbMsgPtr_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	181;"	d
+usbMsgPtr_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	181;"	d
+usbNewDeviceAddr	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbNewDeviceAddr;   \/* device ID which should be set after status phase *\/$/;"	v
+usbNewDeviceAddr	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbNewDeviceAddr;   \/* device ID which should be set after status phase *\/$/;"	v
+usbPoll	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbPoll(void)$/;"	f
+usbPoll	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbPoll(void)$/;"	f
+usbProcessRx	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline void usbProcessRx(uchar *data, uchar len)$/;"	f	file:
+usbProcessRx	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline void usbProcessRx(uchar *data, uchar len)$/;"	f	file:
+usbRequest	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^typedef struct usbRequest{$/;"	s
+usbRequest	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^typedef struct usbRequest{$/;"	s
+usbRequest_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^}usbRequest_t;$/;"	t	typeref:struct:usbRequest
+usbRequest_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^}usbRequest_t;$/;"	t	typeref:struct:usbRequest
+usbResetDataToggling	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline void  usbResetDataToggling(void)$/;"	f	file:
+usbResetDataToggling	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline void  usbResetDataToggling(void)$/;"	f	file:
+usbResetStall	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^static inline void  usbResetStall(void)$/;"	f	file:
+usbResetStall	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^static inline void  usbResetStall(void)$/;"	f	file:
+usbRxBuf	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar usbRxBuf[2*USB_BUFSIZE];  \/* raw RX buffer: PID, 8 bytes data, 2 bytes CRC *\/$/;"	v
+usbRxBuf	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar usbRxBuf[2*USB_BUFSIZE];  \/* raw RX buffer: PID, 8 bytes data, 2 bytes CRC *\/$/;"	v
+usbRxLen	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^volatile schar usbRxLen;        \/* = 0; number of bytes in usbRxBuf; 0 means free, -1 for flow control *\/$/;"	v
+usbRxLen	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^volatile schar usbRxLen;        \/* = 0; number of bytes in usbRxBuf; 0 means free, -1 for flow control *\/$/;"	v
+usbRxToken	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbRxToken;         \/* token for data we received; or endpont number for last OUT *\/$/;"	v
+usbRxToken	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbRxToken;         \/* token for data we received; or endpont number for last OUT *\/$/;"	v
+usbSetInterrupt	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbSetInterrupt(uchar *data, uchar len)$/;"	f
+usbSetInterrupt	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbSetInterrupt(uchar *data, uchar len)$/;"	f
+usbSetInterrupt3	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbSetInterrupt3(uchar *data, uchar len)$/;"	f
+usbSetInterrupt3	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^USB_PUBLIC void usbSetInterrupt3(uchar *data, uchar len)$/;"	f
+usbSofCount	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^volatile uchar  usbSofCount;    \/* incremented by assembler module every SOF *\/$/;"	v
+usbSofCount	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^volatile uchar  usbSofCount;    \/* incremented by assembler module every SOF *\/$/;"	v
+usbTxBuf	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^uchar       usbTxBuf[USB_BUFSIZE];\/* data to transmit with next IN, free if usbTxLen contains handshake token *\/$/;"	v
+usbTxBuf	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^uchar       usbTxBuf[USB_BUFSIZE];\/* data to transmit with next IN, free if usbTxLen contains handshake token *\/$/;"	v
+usbTxBuf1	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	679;"	d
+usbTxBuf1	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define usbTxBuf1   (usbTxStatus1 + 1)$/;"	d
+usbTxBuf1	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	679;"	d
+usbTxBuf1	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define usbTxBuf1   (usbTxStatus1 + 1)$/;"	d
+usbTxBuf3	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	681;"	d
+usbTxBuf3	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define usbTxBuf3   (usbTxStatus3 + 1)$/;"	d
+usbTxBuf3	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	681;"	d
+usbTxBuf3	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define usbTxBuf3   (usbTxStatus3 + 1)$/;"	d
+usbTxLen	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^volatile uchar usbTxLen = USBPID_NAK;   \/* number of bytes to transmit with next IN token or handshake token *\/$/;"	v
+usbTxLen	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^volatile uchar usbTxLen = USBPID_NAK;   \/* number of bytes to transmit with next IN token or handshake token *\/$/;"	v
+usbTxLen1	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	678;"	d
+usbTxLen1	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define usbTxLen1   usbTxStatus1$/;"	d
+usbTxLen1	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	678;"	d
+usbTxLen1	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define usbTxLen1   usbTxStatus1$/;"	d
+usbTxLen3	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	680;"	d
+usbTxLen3	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define usbTxLen3   usbTxStatus3$/;"	d
+usbTxLen3	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	680;"	d
+usbTxLen3	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define usbTxLen3   usbTxStatus3$/;"	d
+usbTxStatus	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^typedef struct usbTxStatus{$/;"	s
+usbTxStatus	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^typedef struct usbTxStatus{$/;"	s
+usbTxStatus1	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^usbTxStatus_t  usbTxStatus1;$/;"	v
+usbTxStatus1	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^usbTxStatus_t  usbTxStatus1;$/;"	v
+usbTxStatus3	usb/usb-blink-led/firmware/usbdrv/usbdrv.c	/^usbTxStatus_t  usbTxStatus3;$/;"	v
+usbTxStatus3	usb/usb-leds-class/firmware/usbdrv/usbdrv.c	/^usbTxStatus_t  usbTxStatus3;$/;"	v
+usbTxStatus_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^}usbTxStatus_t;$/;"	t	typeref:struct:usbTxStatus
+usbTxStatus_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^}usbTxStatus_t;$/;"	t	typeref:struct:usbTxStatus
+usbWord	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^typedef union usbWord{$/;"	u
+usbWord	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^typedef union usbWord{$/;"	u
+usbWord_t	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^}usbWord_t;$/;"	t	typeref:union:usbWord
+usbWord_t	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^}usbWord_t;$/;"	t	typeref:union:usbWord
+usb_avr_led_set	leds/class/simple/leds.c	/^usb_avr_led_set(struct led_classdev *led,$/;"	f	file:
+usb_avr_led_set	usb/usb-leds-class/driver/leds-class.c	/^usb_avr_led_set(struct led_classdev *led,$/;"	f	file:
+usb_avr_led_set	usb/usb-ledtrigg/driver/ledtrigg.c	/^usb_avr_led_set(struct led_classdev *led,$/;"	f	file:
+usb_avr_led_work	leds/class/simple/leds.c	/^usb_avr_led_work(struct work_struct *work)$/;"	f	file:
+usb_avr_led_work	usb/usb-leds-class/driver/leds-class.c	/^usb_avr_led_work(struct work_struct *work)$/;"	f	file:
+usb_avr_led_work	usb/usb-ledtrigg/driver/ledtrigg.c	/^usb_avr_led_work(struct work_struct *work)$/;"	f	file:
+val	leds/trigger/create-sysfs/ledtrig-echo.c	/^static int8_t val = 0;$/;"	v	file:
+value	leds/class/simple/leds.c	/^static int8_t value = 0;$/;"	v	file:
+value	usb/usb-leds-class/driver/leds-class.c	/^static int8_t value = 0;$/;"	v	file:
+value	usb/usb-ledtrigg/driver/ledtrigg.c	/^static int8_t value = 0;$/;"	v	file:
+wIndex	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wIndex;$/;"	m	struct:usbRequest
+wIndex	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wIndex;$/;"	m	struct:usbRequest
+wLength	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wLength;$/;"	m	struct:usbRequest
+wLength	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wLength;$/;"	m	struct:usbRequest
+wValue	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wValue;$/;"	m	struct:usbRequest
+wValue	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    usbWord_t   wValue;$/;"	m	struct:usbRequest
+wdt_reset	usb/usb-blink-led/firmware/usbdrv/usbportability.h	61;"	d
+wdt_reset	usb/usb-leds-class/firmware/usbdrv/usbportability.h	61;"	d
+word	usb/usb-blink-led/firmware/usbdrv/usbdrv.h	/^    unsigned    word;$/;"	m	union:usbWord
+word	usb/usb-leds-class/firmware/usbdrv/usbdrv.h	/^    unsigned    word;$/;"	m	union:usbWord
+work	leds/class/simple/leds.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-gpio/usb-gpio.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-gpio2/usb-gpio2.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-led/usb-led.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-leds-class/driver/leds-class.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-ledtrigg/driver/ledtrigg.c	/^     struct work_struct work;$/;"	m	struct:my_usb	typeref:struct:my_usb::work_struct	file:
+work	usb/usb-ledtrigg/driver/ledtrigg.c	/^static struct work_struct *work;$/;"	v	typeref:struct:work_struct	file:
+x1	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define x1      r16$/;"	d
+x1	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define x1      r16$/;"	d
+x2	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define x2      r17$/;"	d
+x2	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define x2      r17$/;"	d
+x3	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define x3      r20$/;"	d
+x3	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define x3      r20$/;"	d
+x4	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define x4      r21$/;"	d
+x4	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define x4      r21$/;"	d
+x5	usb/usb-blink-led/firmware/usbdrv/usbdrvasm.S	/^#define x5		r22$/;"	d
+x5	usb/usb-leds-class/firmware/usbdrv/usbdrvasm.S	/^#define x5		r22$/;"	d
+z	generic/container_of.c	/^ struct test1 z;$/;"	m	struct:test2	typeref:struct:test2::test1	file:

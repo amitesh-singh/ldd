@@ -19,9 +19,11 @@
 // 0x50
 // we could add multiple entries here if other i2c devices are connected
 // to GPIO12 i2c bus
+/*
 static struct i2c_board_info ds3231_rtc[] = {
        { I2C_BOARD_INFO("dts-3231", 0x68), },
 };
+*/
 
 struct i2c_client *i2c_device;
 struct i2c_adapter *adapter;
@@ -70,16 +72,16 @@ _i2c_client_driver_init(void)
    i2c_add_driver(&_i2c_driver);
    printk(KERN_ALERT "i2c lcient driver init");
 
-   //adapter = _i2c_driver.adapter;
-
-   adapter =  i2c_get_adapter(8);
+   //adapter =  i2c_get_adapter(8);
+   /*
    if (!adapter)
      {
         printk(KERN_ALERT "Failed to add adapter.");
         return -ENODATA;
      }
-   i2c_put_adapter(adapter);
-   i2c_device = i2c_new_device(adapter, ds3231_rtc);
+     */
+   //i2c_put_adapter(adapter);
+   //i2c_device = i2c_new_device(adapter, ds3231_rtc);
 
    return 0;
 }
