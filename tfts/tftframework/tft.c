@@ -72,6 +72,39 @@ static ssize_t _write(struct fb_info *info, const char __user *buf,
    return res;
 }
 
+/*
+
+struct fb_copyarea {
+	__u32 dx;
+	__u32 dy;
+	__u32 width;
+	__u32 height;
+	__u32 sx;
+	__u32 sy;
+};
+
+struct fb_fillrect {
+	__u32 dx;	// screen-relative 
+	__u32 dy;
+	__u32 width;
+	__u32 height;
+	__u32 color;
+	__u32 rop;
+};
+
+struct fb_image {
+	__u32 dx;		// Where to place image
+	__u32 dy;
+	__u32 width;		// Size of image 
+	__u32 height;
+	__u32 fg_color;		// Only used when a mono bitmap
+	__u32 bg_color;
+  __u8  depth;		// Depth of the image 
+  const char *data;	// Pointer to image data
+	struct fb_cmap cmap;	// color map info 
+};
+*/
+
 void _fillrect(struct fb_info *info, const struct fb_fillrect *rect)
 {
    sys_fillrect(info, rect);
