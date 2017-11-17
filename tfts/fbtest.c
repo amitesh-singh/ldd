@@ -7,6 +7,9 @@
 #include <errno.h>
 #include <string.h>
 #include <sys/mman.h>
+#include <sys/ioctl.h>
+#include <unistd.h>
+
 
  
 const char *FB_NAME = "/dev/fb1";
