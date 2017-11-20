@@ -145,3 +145,27 @@ in your module Makefile
 ### Device Tree
 - https://events.linuxfoundation.org/sites/events/files/slides/petazzoni-device-tree-dummies.pdf
 - install sudo apt install device-tree-compiler @ dtc  
+
+### how to compile latest kernel
+cd linux-stable  
+
+cp /boot/config-`uname -r` .config  
+
+yes '' | make oldconfig  
+
+make menuconfig   
+make clean  
+
+make -j `getconf _NPROCESSORS_ONLN` deb-pkg LOCALVERSION=-custom  
+
+You’ll find your new kernel packages one directory up. They’ll be easily identifiable by their version number  
+
+cd ..  
+sudo dpkg -i linux-firmware-image-4.11.1-custom_4.11.1-custom-1_amd64.deb  
+sudo dpkg -i linux-libc-dev_4.11.1-custom-1_amd64.deb  
+sudo dpkg -i linux-headers-4.11.1-custom_4.11.1-custom-1_amd64.deb  
+sudo dpkg -i linux-image-4.11.1-custom-dbg_4.11.1-custom-1_amd64.deb  
+sudo dpkg -i linux-image-4.11.1-custom_4.11.1-custom-1_amd64.deb  
+
+then reboot
+
