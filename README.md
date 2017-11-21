@@ -147,6 +147,8 @@ in your module Makefile
 - install sudo apt install device-tree-compiler @ dtc  
 
 ### how to compile latest kernel
+
+#### Ubuntu
 cd linux-stable  
 
 cp /boot/config-`uname -r` .config  
@@ -169,3 +171,50 @@ sudo dpkg -i linux-image-4.11.1-custom_4.11.1-custom-1_amd64.deb
 
 then reboot
 
+#### Arch linux
+
+cd linux-src  
+zcat /proc/config.gz > .config  
+yes '' | make oldconfig  
+make menuconfig  
+make clean  
+make -j `getconf _NPROCESSORS_ONLN` LOCALVERSION=-custom  
+make modules_install  
+
+make modules_install  
+
+Copy the kernel to /boot directory  
+cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux414
+
+Make initial RAM disk  
+cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux414.preset
+sudo vim /etc/mkinitcpio.d/linux414.preset
+
+...
+ALL_kver="/boot/vmlinuz-linux48"  
+...  
+default_image="/boot/initramfs-linux48.img"  
+...  
+fallback_image="/boot/initramfs-linux48-fallback.img"  
+
+Finally, generate the initramfs images for the custom kernel in the same way as for an official kernel:   
+ mkinitcpio -p linux414  
+
+ Copy System.map
+
+The System.map file is not required for booting Linux. It is a type of "phone directory" list of functions in a particular build of a kernel. The System.map contains a list of kernel symbols (i.e function names, variable names etc) and their corresponding addresses. This "symbol-name to address mapping" is used by:  
+
+cp System.map /boot/System.map-YourKernelName
+ln -sf /boot/System.map-YourKernelName /boot/System.map
+
+After completing all steps above, you should have the following 3 files and 1 soft symlink in your /boot directory along with any other previously existing files:
+
+    Kernel: vmlinuz-YourKernelName
+    Initramfs: Initramfs-YourKernelName.img
+    System Map: System.map-YourKernelName
+    System Map kernel symlink
+
+
+grub-mkconfig -o /boot/grub/grub.cfg  
+
+and then reboot
