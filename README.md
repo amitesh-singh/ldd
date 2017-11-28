@@ -218,3 +218,8 @@ After completing all steps above, you should have the following 3 files and 1 so
 grub-mkconfig -o /boot/grub/grub.cfg  
 
 and then reboot
+
+#### Rpi3 - arch linux
+- pacman -S linux-headers  
+  choose 14) linux-raspberry-headers
+
