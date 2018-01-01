@@ -9,3 +9,7 @@
 - i2cdetect
   install sudo apt install i2c-tools
 - http://elinux.org/Interfacing_with_I2C_Devices
+
+
+### interesting..
+- https://github.com/allanbian1017/i2c-ch341-usb/blob/master/i2c-ch341-usb.c
