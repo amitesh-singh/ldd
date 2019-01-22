@@ -8,15 +8,23 @@ struct net_device *esp_net_device;
 static int _open(struct net_device *dev)
 {
    printk("open called\n");
+
+   //start up the transmission queue.
+   netif_start_queue(dev);
    return 0;
 }
 
 static int _release(struct net_device *dev)
 {
    printk("release called\n");
+   //shutdown the transmission queue
    netif_stop_queue(dev);
    return 0;
 }
+
+/* Note this method is only needed on some; without it
+   module will fail upon removal or use. At any rate there is a memory
+   leak whenever you try to send a packet through in any case*/
 
 static int _xmit(struct sk_buff *skb, struct net_device *dev)
 {
@@ -42,9 +50,11 @@ static void esp_setup(struct net_device *dev)
 {
    int i = 0;
 
+   //fill the mac address.
    for (;i < ETH_ALEN; ++i)
      dev->dev_addr[i] = (char) i;
 
+   //assign ethernet protocol values to interface protocol specific fields of net_dev structure
    ether_setup(dev);
 
    dev->netdev_ops = &my_netdev_ops;
@@ -77,3 +87,5 @@ static void  __exit _cleanup (void)
 module_init(_init_module);
 module_exit(_cleanup);
 MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Amitesh Singh");
+MODULE_DESCRIPTION("netdriver skeleton");
