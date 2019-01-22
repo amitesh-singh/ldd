@@ -47,10 +47,11 @@ usb_avr_led_work(struct work_struct *work)
                    1000);
 }
 
-static void
+static int
 my_ledtrigg_activate(struct led_classdev *led)
 {
    schedule_work(work);
+   return 0;
 }
 
 static struct led_trigger my_ledtrigg = {
