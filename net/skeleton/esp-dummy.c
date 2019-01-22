@@ -28,8 +28,20 @@ static int _release(struct net_device *dev)
 
 static int _xmit(struct sk_buff *skb, struct net_device *dev)
 {
+   int i =0;
    printk("xmit function called...\n");
+
+   for (; i < skb->len; ++i)
+     {
+        if ((i & 0xf) == 0)
+          printk("\n");
+        printk("%02x ", skb->data[i]);
+     }
+   printk("\n");
+
    dev_kfree_skb(skb);
+   ++dev->stats.tx_packets;
+
    return 0;
 }
 
