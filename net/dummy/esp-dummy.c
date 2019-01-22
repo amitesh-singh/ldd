@@ -62,6 +62,7 @@ static void  __exit _cleanup (void)
 {
    printk ("esp - cleanup\n");
    unregister_netdev (esp_net_device);
+   free_netdev(esp_net_device);
 }
 
 module_init(_init_module);
