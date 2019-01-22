@@ -40,6 +40,13 @@ const struct net_device_ops my_netdev_ops = {
 
 static void esp_setup(struct net_device *dev)
 {
+   int i = 0;
+
+   for (;i < ETH_ALEN; ++i)
+     dev->dev_addr[i] = (char) i;
+
+   ether_setup(dev);
+
    dev->netdev_ops = &my_netdev_ops;
 }
 
@@ -52,8 +59,10 @@ static int __init _init_module(void)
    if((result = register_netdev(esp_net_device)))
      {
         printk(KERN_ALERT "esp: Error %d initalizing card ...", result);
+        free_netdev(esp_net_device);
         return result;
      }
+   printk("interface %s is created\n", dev_name(&esp_net_device->dev));
 
    return 0;
 }
