@@ -1,0 +1,2 @@
+./gettime /dev/rtc
+
