@@ -11,15 +11,15 @@
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Amitesh Singh");
-MODULE_DESCRIPTION("Avr led using led_classdev"); //sysfs
+MODULE_DESCRIPTION("Avr/stm32 led driver"); //sysfs
 MODULE_VERSION("0.1"); //
 
-
 //one structure for each connected device
-struct my_usb {
-     struct usb_device *udev;
-     struct work_struct work;
-     struct led_classdev led;
+struct my_usb
+{
+   struct usb_device *udev;
+   struct work_struct work;
+   struct led_classdev led;
 };
 
 #define MY_USB_VENDOR_ID 0x16c0
@@ -94,7 +94,7 @@ my_usb_probe(struct usb_interface *interface,
    //increase ref count, make sure u call usb_put_dev() in disconnect()
    data->udev = usb_get_dev(udev);
 
-   data->led.name = kasprintf(GFP_KERNEL, "%s-%s:w:ami-led",
+   data->led.name = kasprintf(GFP_KERNEL, "%s-%s:w:stm32-avr-led",
                               dev_driver_string(&data->udev->dev),
                               dev_name(&data->udev->dev));
    data->led.brightness_set = usb_avr_led_set;
@@ -135,7 +135,7 @@ my_usb_disconnect(struct usb_interface *interface)
 }
 
 static struct usb_driver my_usb_driver = {
-     .name = "my first usb driver",
+     .name = "stm32-avr-led",
      .id_table = my_usb_table,
      .probe = my_usb_probe,
      .disconnect = my_usb_disconnect,
