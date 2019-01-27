@@ -22,7 +22,9 @@ _workqueue_init(void)
 static void __exit
 _workqueue_exit(void)
 {
-    cancel_delayed_work(&mywork);
+   //we can use 
+   if (delayed_work_pending(&mywork))
+     cancel_delayed_work(&mywork);
 }
 
 module_init(_workqueue_init);

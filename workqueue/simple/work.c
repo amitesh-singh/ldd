@@ -30,7 +30,10 @@ _work_init(void)
 static void
 _work_exit(void)
 {
-   cancel_work_sync(&mywork);
+   //we can use flush_work(&mywork) instead to cancel out all scheduled work
+   // To flush the kernel-global work queue, call flush_scheduled_work().
+   if (work_pending(&mywork))
+     cancel_work_sync(&mywork);
    printk("module de-init, work sync cancelled\n");
 }
 
