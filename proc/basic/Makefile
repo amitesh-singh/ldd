@@ -5,3 +5,9 @@ all:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+insert:
+	sudo insmod basic.ko
+
+remove:
+	sudo rmmod basic
