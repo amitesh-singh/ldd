@@ -11,3 +11,9 @@ insert:
 
 remove:
 	sudo rmmod basic
+
+read:
+	cat /proc/my_proc
+
+write:
+	sudo echo "Hello baby!" > /proc/my_proc
