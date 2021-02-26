@@ -68,6 +68,8 @@ _platform_driver_init(void)
 {
    printk(KERN_INFO "platform driver init");
    platform_driver_register(&sample_platform_driver);
+
+   return 0;
 }
 
 static void __exit
