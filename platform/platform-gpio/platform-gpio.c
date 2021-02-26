@@ -66,7 +66,11 @@ static void
 _gpio_create(struct my_device_platform_data *sd, struct platform_device *pdev)
 {
    printk(KERN_INFO "GPIO created");
-   sd->chip.dev = &pdev->dev;
+//#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 5, 0)
+   sd->chip.parent = &pdev->dev;
+//#else
+//   sd->chip.dev = &pdev->dev;
+//#endif
    sd->chip.label = "plat-gpio";
    sd->chip.owner = THIS_MODULE;
    sd->chip.base = -1;
@@ -145,11 +149,20 @@ _sample_platform_driver_remove(struct platform_device *pdev)
    return 0;
 }
 
+//for device tree
+static const struct of_device_id gpio_of_table[] = {
+       {.compatible = "platform,gpio"},
+       {}
+};
+
+MODULE_DEVICE_TABLE(of, gpio_of_table);
+
 static struct platform_driver sample_platform_driver = {
      .probe = _sample_platform_driver_probe,
      .remove = _sample_platform_driver_remove,
      .driver = {
           .name = "platform-gpio-device", //platform_device will also use same name
+          .of_match_table = gpio_of_table,
      },
 };
 
