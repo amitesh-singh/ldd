@@ -7,3 +7,12 @@ all:
 
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+insert:
+	sudo insmod platform_driver.ko
+	sudo insmod platform_device.ko
+
+remove:
+	sudo rmmod platform_driver.ko
+	sudo rmmod platform_device.ko
+
