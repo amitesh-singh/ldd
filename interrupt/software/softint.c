@@ -22,6 +22,7 @@ static irqreturn_t irq_handler(int rq, void *dev_id)
 static void delay_work_function(struct work_struct *w)
 {
     //0x20 + 0x10 + irqno
+    //32 + 16 + 2 = 50
     asm("int $50");
     printk("delayed work function called.");
 }
