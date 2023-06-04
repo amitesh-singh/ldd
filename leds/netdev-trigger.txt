@@ -1,0 +1,19 @@
+go to lib/modules/5.xxx/kernel/drivers/leds/trigger
+
+sudo insmod ledtrig-netdev
+
+echo netdev | sudo tee ./trigger
+
+echo eth0 | sudo tree ./device_name
+
+echo 1  | sudo tee rx
+echo 1 | sudo tee tx
+
+https://github.com/torvalds/linux/blob/master/drivers/leds/trigger/ledtrig-netdev.c
+
+
+on virtual box linux,
+
+you could play with caps lock led
+/sys/class/leds/input2::capslock
+
