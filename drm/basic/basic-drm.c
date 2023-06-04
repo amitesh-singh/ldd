@@ -1,13 +1,17 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
+#include <linux/of_platform.h>
+
 #include <drm/drm_drv.h>
+#include <drm/drm_module.h>
+
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Amitesh Singh");
 
 static struct drm_driver my_drm_driver = {
-     .driver_features = DRIVER_MODSET | DRIVER_GEM,
+     .driver_features = DRIVER_MODESET | DRIVER_GEM,
      .name = "ami",
      .desc = "amitesh singh",
      .date = "20230604",
@@ -16,21 +20,59 @@ static struct drm_driver my_drm_driver = {
      .patchlevel = 0,
 };
 
-static int __init
-driver_init(void)
+struct my_dev {
+	struct drm_device drm;
+};
+
+
+
+static int _probe(struct platform_device *pdev)
 {
-   int ret;
+	struct device *dev = &pdev->dev;
+	struct drm_device *ddev;
+	int ret;
 
-   ret = drm_driver_register(&my_drm_driver);
-   if (ret) {
-        pr_err("Failed to register drm driver: %d\n", ret);
-        return ret;
-   }
+	ddev = drm_dev_alloc(&my_drm_driver, dev);
+	if (!ddev) {
+		pr_err("unable to allocate drm_device");
+		return -ENOMEM;
+	}
 
-   return 0;
+	ret = drm_dev_register(ddev, 0);
+//	drm_fbdev_generic_setup(ddev, 16);
+
+
+	platform_set_drvdata(pdev, ddev);
+	
+
+	return 0;
 }
 
-static void __exit
-driver_exit(void)
+static int _remove(struct platform_device *pdev)
 {
+	struct drm_device *ddev = platform_get_drvdata(pdev);
+
+	drm_dev_unregister(ddev);
+	drm_dev_put(ddev);
+	return 0;
 }
+
+static const struct of_device_id x_drv_dts_ids[] = {
+	{ .compatible = "x,xx"},
+	{ /* end node */ },
+};
+MODULE_DEVICE_TABLE(of, x_drv_dts_ids);
+
+
+static struct platform_driver x_drm_platform_driver = {
+	.probe = _probe,
+	.remove = _remove,
+	.driver = {
+		.name = "x,display",
+		.of_match_table = x_drv_dts_ids,
+		//.pm = //TODO: read about .pm
+	},
+};
+
+drm_module_platform_driver(x_drm_platform_driver);
+
