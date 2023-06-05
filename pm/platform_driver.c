@@ -68,9 +68,13 @@ static int _resume(struct device *dev)
 	return 0;
 }
 
+//static const struct dev_pm_ops pm_ops = {
+//	.suspend = _suspend,
+//	.resume = _resume,
+//}; or
+
 static const struct dev_pm_ops pm_ops = {
-	.suspend = _suspend,
-	.resume = _resume,
+	SET_SYSTEM_SLEEP_PM_OPS(_suspend, _resume)
 };
 static struct platform_driver sample_platform_driver = {
      .probe = _sample_platform_driver_probe,
