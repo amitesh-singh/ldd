@@ -14,15 +14,16 @@ upload main.hex file into your vusb based usb device.
 # cd /sys/class/leds/ami-led:r:avr-led
 
 #sudo chmod 666 brightness
-# sudo echo 1 > brightness 
+# sudo echo 1 > brightness
  --> LED is on
-#sudo echo 0 > brightness 
+#sudo echo 0 > brightness
   -- LED is off.
 
 # To enable heartbeat trigger
   sudo insmode ledtrig-heartbeat
 
 #cd /sys/class/leds/ami-led:w:avr-led
-#echo "heartbeat" > trigger
+#echo "heartbeat" | sudo tree trigger > /dev/null
+
 
 To unload the module, sudo rmmod blink_led

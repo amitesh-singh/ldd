@@ -59,7 +59,7 @@ ifeq ($(strip $(OPENCM3_DIR)),)
 
 # where we search for the library
 #LIBPATHS := ./libopencm3 ../../../../libopencm3 ../../../../../libopencm3
-LIBPATHS := $(HOME)/repos/libopencm3
+LIBPATHS := $(HOME)/work/repos/libopencm3
 
 OPENCM3_DIR := $(wildcard $(LIBPATHS:=/locm3.sublime-project))
 OPENCM3_DIR := $(firstword $(dir $(OPENCM3_DIR)))

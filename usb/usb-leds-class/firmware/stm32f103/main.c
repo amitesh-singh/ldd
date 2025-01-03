@@ -24,8 +24,8 @@
 #include <stdlib.h>
 #include <libopencm3/usb/usbd.h>
 
-#define LED_ON 1
-#define LED_OFF 0
+#define LED_ON 0
+#define LED_OFF 1
 
 static const char *usb_strings[] = {
      "ami",
@@ -51,7 +51,7 @@ const struct usb_device_descriptor dev_descr = {
      // definitions meaningless. See
      // http://www.usb.org/developers/docs/InterfaceAssociationDescriptor_ecn.pdf
      // and http://www.usb.org/developers/whitepapers/iadclasscode_r10.pdf
-     .bDeviceClass = 0xFF, // custom class 
+     .bDeviceClass = 0xFF, // custom class
      // common class
      .bDeviceSubClass = 0,
      // interface Association
@@ -211,7 +211,7 @@ static void set_config(usbd_device *dev, uint16_t wValue)
    //we are not going to use this 0x81, EP0 is good enough
    //usbd_ep_setup(dev, 0x81, USB_ENDPOINT_ATTR_INTERRUPT, 9, NULL);
 
-   usbd_register_control_callback(dev, 
+   usbd_register_control_callback(dev,
                                   USB_REQ_TYPE_VENDOR,//USB_REQ_TYPE_STANDARD | USB_REQ_TYPE_INTERFACE,
                                   USB_REQ_TYPE_TYPE, /// | USB_REQ_TYPE_RECIPIENT,
                                   control_request);
@@ -228,7 +228,7 @@ static void my_delay_1( void )
 int main( void )
 {
    //set STM32 to 72 MHz
-   rcc_clock_setup_in_hse_8mhz_out_72mhz();
+   rcc_clock_setup_pll(&rcc_hse_configs[RCC_CLOCK_HSE8_72MHZ]);
    rcc_periph_clock_enable(RCC_GPIOC);
    gpio_set_mode(GPIOC, GPIO_MODE_OUTPUT_2_MHZ,
                  GPIO_CNF_OUTPUT_PUSHPULL, GPIO13);
