@@ -60,16 +60,13 @@ const struct net_device_ops my_netdev_ops = {
 
 static void esp_setup(struct net_device *dev)
 {
-   int i = 0;
-
-   //fill the mac address.
-   for (;i < ETH_ALEN; ++i)
-     dev->dev_addr[i] = (char) i;
-
    //assign ethernet protocol values to interface protocol specific fields of net_dev structure
    ether_setup(dev);
 
    dev->netdev_ops = &my_netdev_ops;
+
+   /* Random mac address */
+   eth_hw_addr_random(dev);
 }
 
 static int __init _init_module(void)
