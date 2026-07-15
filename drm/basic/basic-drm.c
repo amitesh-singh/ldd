@@ -14,7 +14,7 @@ static struct drm_driver my_drm_driver = {
      .driver_features = DRIVER_MODESET | DRIVER_GEM,
      .name = "ami",
      .desc = "amitesh singh",
-     .date = "20230604",
+//     .date = "20230604",
      .major = 1,
      .minor = 0,
      .patchlevel = 0,
@@ -66,7 +66,7 @@ MODULE_DEVICE_TABLE(of, x_drv_dts_ids);
 
 static struct platform_driver x_drm_platform_driver = {
 	.probe = _probe,
-	.remove = _remove,
+//	.remove = _remove,
 	.driver = {
 		.name = "x,display",
 		.of_match_table = x_drv_dts_ids,
